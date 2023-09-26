@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.ant-btn {
+    border-color: transparent !important;
+}
+
+.ant-btn:hover {
+    color: #fff !important;
+    scale: 1.01 !important;
+    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1) !important;
+    border-color: transparent !important;
+}
+
+body {
+    background: #f8f9fa;
+}
+
+.animate-pulse {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Default color */
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    opacity: 0.5;
+    animation: skeletonPulse 2s infinite alternate;
+    transform-origin: center bottom;
+    border-radius: 10px;
+}
+
+@keyframes skeletonPulse {
+    0% {
+        transform: scaleY(1);
+        background-color: #ccc;
+    }
+    100% {
+        transform: scaleY(1.01); /* Scale vertically */
+        background-color: #f0f0f0; /* Color you want to transition to */
+    }
+}
