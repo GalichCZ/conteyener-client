@@ -1,9 +1,14 @@
 import React from 'react';
+import { Result } from "antd";
 
 const NotFoundPage = () => {
     return (
         <div>
-            <h1>404 - Not Found!</h1>
+            <Result
+                status="404"
+                title="404"
+                subTitle="Извините, страница не найдена."
+            />
         </div>
     );
 }

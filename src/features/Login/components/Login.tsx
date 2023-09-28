@@ -3,7 +3,7 @@ import GInputs from "@/components/GInput/GInputs.ts";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Credentials } from "../types/Credentials.ts";
 import GButton from "@/components/GInput/GButton.tsx";
-import AuthenticationLayout from "@/components/Layout/AuthenticationLayout.tsx";
+import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CredentialsSchema } from "../validation/CredentialsSchema.js";
 import { useLogin } from "../hooks/useLogin.ts";
@@ -42,14 +42,14 @@ const Login = () => {
     }, [navigate, success]);
 
     return (
-        <AuthenticationLayout isLoading={isLoading} className="-translate-y-1/2" onFinish={handleSubmit(onSubmit)}>
+        <FormLayout isLoading={isLoading} className="-translate-y-1/2" onFinish={handleSubmit(onSubmit)}>
             <GInputs.Text type="email" placeholder="email" name="email" label="Email"
                           control={control}/>
 
             <GInputs.Password placeholder="Пароль" name="password" label="Пароль" control={control}/>
 
-            <GButton className="w-1/4 h-10 text-lg" text="Войти"/>
-        </AuthenticationLayout>
+            <GButton className="w-1/4 h-10 text-lg mt-2" text="Войти"/>
+        </FormLayout>
     )
 }
 

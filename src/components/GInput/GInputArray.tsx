@@ -1,15 +1,17 @@
-import React, { FC, useState } from 'react';
+import React, { FC, FormEvent, useCallback, useEffect, useState } from 'react';
 import { GInputType } from "./GInputType.ts";
 import { FormItem } from "react-hook-form-antd";
-import { Button, Input } from "antd";
+import { Input } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from 'uuid';
 import { UseFormSetValue } from "react-hook-form";
+import Button from "@/components/Button.tsx";
 
 
 type InputType = Record<string, string>
 
 interface Props extends GInputType {
+    dataArray?: string[];
     setValue: UseFormSetValue<any>;
 }
 
@@ -21,11 +23,28 @@ const GInputArray: FC<Props> = ({
                                     className,
                                     classNameWrap,
                                     label,
-                                    placeholder
+                                    placeholder, dataArray
                                 }) => {
     const [inputList, setInputList] = useState<InputType[]>([]);
 
-    const handleAddInput = () => {
+    const addDataToInputList = useCallback(() => {
+        if (!dataArray) return;
+
+        dataArray.forEach((data) => {
+            const keyName = name + uuidv4();
+            const newInput = { [keyName]: data };
+            setValue(keyName, data);
+            setInputList((prev) => [...prev, newInput]);
+        })
+    }, [dataArray, name, setValue]);
+
+    useEffect(() => {
+        return () => addDataToInputList();
+
+    }, [addDataToInputList, dataArray, name]);
+
+    const handleAddInput = (e: FormEvent | undefined) => {
+        e?.preventDefault();
         const uuid = uuidv4();
         const newInputName = name + uuid;
         const toUpdate = [...inputList];
@@ -51,10 +70,12 @@ const GInputArray: FC<Props> = ({
     }
 
     return (
-        <>
+        <div className="flex flex-col">
+            <label>{label}</label>
             {inputList.map((_i, key) => (
-                <FormItem key={key} label={label} className={classNameWrap} control={control} name={Object.keys(_i)[0]}>
-                    <div className="flex gap-1">
+                <FormItem key={key} className={`mb-0 w-full ${classNameWrap}`} control={control}
+                          name={Object.keys(_i)[0]}>
+                    <div className="flex mt-2">
                         <Input value={_i[Object.keys(_i)[0]]} onChange={(e) => {
                             handleInputChange(e, _i, key)
                         }} placeholder={placeholder} className={className}/>
@@ -62,8 +83,9 @@ const GInputArray: FC<Props> = ({
                     </div>
                 </FormItem>
             ))}
-            <Button onClick={handleAddInput}>Добавить поле</Button>
-        </>
+            <Button className="border-gray-300 bg-gray-200 max-w-fit mt-3 border-[1px]" text="Добавить поле"
+                    onClick={(e) => handleAddInput(e)}/>
+        </div>
     )
 }
 

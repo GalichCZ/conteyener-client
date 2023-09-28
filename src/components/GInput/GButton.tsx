@@ -11,7 +11,8 @@ interface Props {
 const GButton: FC<Props> = ({ text, className, classNameWrap }) => {
     return (
         <Form.Item className={classNameWrap}>
-            <Button style={{ background: Colors.PATRIOT }} className={`text-white ${className}`} htmlType="submit">
+            <Button id="g-button" style={{ background: Colors.PATRIOT }} className={`text-white ${className}`}
+                    htmlType="submit">
                 {text}
             </Button>
         </Form.Item>
