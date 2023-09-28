@@ -21,7 +21,9 @@ export const useGetStockPlaces = () => {
                 setIsLoading(false);
             }
         }
-        callGetStockPlaces();
+        return () => {
+            callGetStockPlaces();
+        }
     }, []);
 
     return { stockPlaces, isLoading, error };

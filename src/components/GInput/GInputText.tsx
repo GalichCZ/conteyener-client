@@ -2,18 +2,21 @@ import { Input } from "antd";
 import React, { ChangeEvent, FC } from "react";
 import { GInputType } from "./GInputType.ts";
 import { FormItem } from "react-hook-form-antd";
+import { Controller } from "react-hook-form";
 
 interface Props extends GInputType {
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const GInputText: FC<Props> = ({
-                                   onChange, name, label, placeholder,
+                                   name, label, placeholder,
                                    className, classNameWrap, control, type
                                }) => {
     return (
         <FormItem name={name} control={control} label={label} className={classNameWrap}>
-            <Input type={type} className={className} onChange={onChange} placeholder={placeholder}/>
+            <Controller control={control} render={
+                ({ field }) => <Input type={type} className={className} placeholder={placeholder} {...field}/>
+            } name={name}/>
         </FormItem>
     );
 }

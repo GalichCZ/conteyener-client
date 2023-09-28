@@ -4,7 +4,7 @@ import SignUp from "@/features/SignUp/components/SignUp.tsx";
 
 const SignUpPage = () => {
     return (
-        <SectionLayout>
+        <SectionLayout items="center" justify="center">
             <SignUp/>
         </SectionLayout>
     )

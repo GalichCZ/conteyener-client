@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserRegister } from "../Types/UserRegister.ts";
 import GInputs from "@/components/GInput/GInputs.ts";
 import GButton from "@/components/GInput/GButton.tsx";
-import AuthenticationLayout from "@/components/Layout/AuthenticationLayout.tsx";
+import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserRegisterSchema } from "../validation/UserRegisterSchema.js";
 import { useRegisterUser } from "@/features/SignUp/hooks/useRegisterUser.ts";
@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { displayError } from "@/utils/displayError.ts";
 
 const SignUp = () => {
-    const [userData, setUserData] = React.useState<UserRegister | null>(null)
+    const [userData, setUserData] = useState<UserRegister | null>(null)
 
     const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ const SignUp = () => {
     }, [navigate, success]);
 
     return (
-        <AuthenticationLayout isLoading={isLoading} className="-translate-y-1/4" onFinish={handleSubmit(onSubmit)}>
+        <FormLayout isLoading={isLoading} className="-translate-y-[10%]" onFinish={handleSubmit(onSubmit)}>
             <GInputs.Text placeholder="Имя" name="first_name" label="Имя" control={control}/>
 
             <GInputs.Text placeholder="Фамилия" name="last_name" label="Фамилия" control={control}/>
@@ -54,8 +54,8 @@ const SignUp = () => {
             <GInputs.Password placeholder="Повторите Пароль" name="passwordConfirmation" label="Повторите Пароль"
                               control={control}/>
 
-            <GButton className="h-10 text-lg" text="Регистрация"/>
-        </AuthenticationLayout>
+            <GButton className="h-10 text-lg mt-2" text="Регистрация"/>
+        </FormLayout>
     )
 }
 

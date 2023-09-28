@@ -7,7 +7,7 @@ import { RoutesEnum } from "@/enums/routesEnum.ts";
 const Header = () => {
     return (
         <header style={{ background: Colors.PATRIOT }}
-                className="flex relative items-center p-4 shadow-lg w-full fixed">
+                className="flex items-center p-4 shadow-lg w-full fixed">
             <Logo className="absolute"/>
             <nav className="w-full flex justify-center">
                 <ul className="flex gap-4 text-white ">

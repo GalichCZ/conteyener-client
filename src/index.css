@@ -7,15 +7,27 @@
     padding: 0;
 }
 
-.ant-btn {
+#g-button {
     border-color: transparent !important;
 }
 
-.ant-btn:hover {
+.ant-input:focus, .ant-input-focused, .ant-input:hover, .ant-input-affix-wrapper:focus, .ant-input-affix-wrapper:hover, .ant-input-affix-wrapper-focused {
+    border-color: #fb511e !important;
+}
+
+#g-button:hover {
     color: #fff !important;
-    scale: 1.01 !important;
+    scale: 1.05 !important;
     box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1) !important;
     border-color: transparent !important;
+}
+
+#g-switch {
+    background: #cccccc;
+}
+
+.ant-switch-checked {
+    background: #fb511e !important;
 }
 
 body {
@@ -25,7 +37,7 @@ body {
 .animate-pulse {
     width: 100%;
     height: 100%;
-    background-color: #ccc; /* Default color */
+    background-color: #ccc;
     position: absolute;
     left: 0;
     top: 0;

@@ -4,7 +4,7 @@ import SectionLayout from "@/components/Layout/SectionLayout.tsx";
 
 const LoginPage = () => {
     return (
-        <SectionLayout>
+        <SectionLayout items="center" justify="center">
             <Login/>
         </SectionLayout>
     )

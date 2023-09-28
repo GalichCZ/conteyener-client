@@ -9,7 +9,7 @@ interface Props {
     isLoading?: boolean
 }
 
-const AuthenticationLayout: FC<Props> = ({ children, onFinish, className, isLoading }) => {
+const FormLayout: FC<Props> = ({ children, onFinish, className, isLoading }) => {
     return (
         <Form layout="vertical" className={`bg-white relative shadow-2xl p-6 rounded-2xl w-[450px] ${className}`}
               onFinish={onFinish}>
@@ -19,4 +19,4 @@ const AuthenticationLayout: FC<Props> = ({ children, onFinish, className, isLoad
     )
 }
 
-export default AuthenticationLayout;
+export default FormLayout;

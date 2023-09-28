@@ -21,7 +21,9 @@ export const useGetStores = () => {
                 setIsLoading(false)
             }
         }
-        callGetStores()
+        return () => {
+            callGetStores()
+        }
     }, []);
 
     return { stores, isLoading, error }
