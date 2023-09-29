@@ -6,7 +6,7 @@ import { AxiosError } from "axios";
 export const useGetStockPlaces = () => {
     const [stockPlaces, setStockPlaces] = useState<StockPlace[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<Error>();
+    const [error, setError] = useState<Error | null>();
 
     useEffect(() => {
         const callGetStockPlaces = async () => {
@@ -26,5 +26,5 @@ export const useGetStockPlaces = () => {
         }
     }, []);
 
-    return { stockPlaces, isLoading, error };
+    return { stockPlaces, isLoading, error, setError };
 }

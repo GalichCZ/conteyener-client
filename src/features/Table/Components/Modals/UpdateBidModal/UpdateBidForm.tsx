@@ -4,16 +4,22 @@ import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
 import GButton from "@/components/GInput/GButton.tsx";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { FormBidUpdateValues } from "@/features/Table/Types/FormBidUpdateValues.ts";
-import { Control } from "react-hook-form";
+import { Control, UseFormSetValue } from "react-hook-form";
 
 interface Props {
-    onSubmit: (data: FormBidUpdateValues) => void;
+    onSubmit: () => void;
     control: Control<FormBidUpdateValues>;
     deliveryValues: string[];
     deliveryToolTips: string[];
+    setValue: UseFormSetValue<FormBidUpdateValues>
+    isLoadingStores: boolean;
+    isLoadingStock: boolean;
 }
 
-const UpdateBidForm: FC<Props> = ({ onSubmit, control }) => {
+const UpdateBidForm: FC<Props> = ({
+                                      onSubmit, control, deliveryValues, setValue,
+                                      deliveryToolTips, isLoadingStores, isLoadingStock
+                                  }) => {
     return (
         <FormLayout className="w-full" onFinish={onSubmit}>
             <div className="grid grid-cols-5 gap-x-10 gap-y-3">
@@ -45,17 +51,17 @@ const UpdateBidForm: FC<Props> = ({ onSubmit, control }) => {
 
                 <GInputs.Array setValue={setValue}
                                placeholder={ColumnsEnum.PRODUCT}
-                               name="product"
+                               name="simple_product_name"
                                label={ColumnsEnum.PRODUCT} control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                placeholder={ColumnsEnum.PROVIDER}
-                               name="provider"
+                               name="providers"
                                label={ColumnsEnum.PROVIDER} control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                placeholder={ColumnsEnum.IMPORTER}
-                               name="importer"
+                               name="importers"
                                label={ColumnsEnum.IMPORTER} control={control}/>
 
                 <GInputs.Array setValue={setValue}
@@ -118,7 +124,7 @@ const UpdateBidForm: FC<Props> = ({ onSubmit, control }) => {
                 <GInputs.Text placeholder={ColumnsEnum.DESTINATION_STATION} name="destination_station"
                               label={ColumnsEnum.DESTINATION_STATION} control={control}/>
 
-                <GInputs.Select values={[]} labels={[]} tooltips={[]}
+                <GInputs.Select isLoading={isLoadingStock} values={[]} labels={[]} tooltips={[]}
                                 placeholder={ColumnsEnum.STOCK_PLACE} name="stock_place"
                                 label={ColumnsEnum.STOCK_PLACE}
                                 control={control}/>
