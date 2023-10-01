@@ -6,12 +6,14 @@ interface Props {
     text: string;
     className?: string;
     classNameWrap?: string;
+    disabled?: boolean;
 }
 
-const GButton: FC<Props> = ({ text, className, classNameWrap }) => {
+const GButton: FC<Props> = ({ text, className, classNameWrap, disabled }) => {
     return (
         <Form.Item className={classNameWrap}>
-            <Button id="g-button" style={{ background: Colors.PATRIOT }} className={`text-white ${className}`}
+            <Button disabled={disabled} id="g-button" style={{ background: Colors.PATRIOT }}
+                    className={`text-white ${className}`}
                     htmlType="submit">
                 {text}
             </Button>

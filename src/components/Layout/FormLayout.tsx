@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Form } from "antd";
-import FillingSkeleton from "@/components/FillingSkeleton.tsx";
+import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 
 interface Props {
     children: React.ReactNode

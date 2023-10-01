@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Switch } from "antd";
-import { GInputType } from "@/components/GInput/GInputType.ts";
+import { GInputType } from "@/components/GInput/types/GInputType.ts";
 import { Controller } from "react-hook-form";
 import { FormItem } from "react-hook-form-antd";
 

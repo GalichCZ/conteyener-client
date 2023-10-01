@@ -1,12 +1,12 @@
 import { FormBidUpdateValues } from "@/features/Table/Types/FormBidUpdateValues.ts";
-import { FollowBid } from "@/Types";
 import { getDateFromDayjs } from "@/utils/getDateFromDayjs.ts";
 import { prepareArraysForBidObject } from "./prepareArraysForBidObject.ts";
+import { UpdateBid } from "@/features/Table/Types/UpdateBid.ts";
 
 export const prepareBidObject = (dataMap: FormBidUpdateValues, id: string) => {
     const arrays = prepareArraysForBidObject(dataMap);
 
-    const bid: FollowBid = {
+    const bid: UpdateBid = {
         id,
         request_date: getDateFromDayjs(dataMap["request_date"]),
         order_number: arrays.order_number,

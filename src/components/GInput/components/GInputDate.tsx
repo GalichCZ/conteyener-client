@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { GInputType } from "@/components/GInput/GInputType.ts";
+import { GInputType } from "@/components/GInput/types/GInputType.ts";
 import { ConfigProvider, DatePicker, DatePickerProps } from "antd";
 import { FormItem } from "react-hook-form-antd";
 import { Controller } from "react-hook-form";

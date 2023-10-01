@@ -19,7 +19,7 @@ export interface FollowBid {
     importers: string[];
     conditions: string[];
     store_name: string | undefined;
-    store: Store | undefined;
+    store: Store | string | undefined;
     delivery_channel: string | undefined;
     agent: string | undefined;
     place_of_dispatch: string | undefined;
@@ -60,13 +60,9 @@ export interface FollowBid {
     note: string;
     creator: string;
     stock_place_name: string | undefined;
-    stock_place: StockPlace | undefined;
+    stock_place: StockPlace | string | undefined;
     hidden: boolean;
     direction: string | undefined;
 
     [key: string]: any;
 }
-
-export type NewFollowBid = Pick<FollowBid, "request_date" | "order_number" | "simple_product_name"
-    | "delivery_method" | "providers" | "importers" | "conditions" | "store_name" | "store" | "agent"
-    | "container_type" | "place_of_dispatch" | "direction">

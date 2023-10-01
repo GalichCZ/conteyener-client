@@ -1,10 +1,9 @@
 import React, { FC, useEffect } from "react";
 import { Modal } from "antd";
-import Button from "@/components/Button.tsx";
+import Button from "@/components/UI/Button.tsx";
 import { useForm } from "react-hook-form";
-import { deliveryEnum, deliveryEnumTooltips } from "@/enums/deliveryMethods.ts";
 import { useGetStores } from "@/hooks/useGetStores.ts";
-import { displayError } from "@/utils/displayError.ts";
+import { handleError } from "@/utils/handleError.ts";
 import { useGetStockPlaces } from "@/hooks/useGetStockPlaces.ts";
 import UpdateBidForm from "./UpdateBidForm.tsx";
 import { FormBidUpdateValues } from "@/features/Table/Types/FormBidUpdateValues.ts";
@@ -26,9 +25,6 @@ const UpdateBidModal: FC<Props> = ({ open, handleOpen, followBid }) => {
     const { isLoading: isLoadingStores, stores, error: errorStores, setError: setStoresError } = useGetStores()
     const { isLoading: isLoadingStock, stockPlaces, error: errorStock, setError: setStockError } = useGetStockPlaces();
 
-    const deliveryValues = Object.values(deliveryEnum);
-    const deliveryToolTips = Object.values(deliveryEnumTooltips);
-
     useEffect(() => {
         if (followBid) {
             setValuesInForm(followBid, setValue);
@@ -42,19 +38,19 @@ const UpdateBidModal: FC<Props> = ({ open, handleOpen, followBid }) => {
 
     useEffect(() => {
         if (errorStores) {
-            displayError(errorStores)
+            handleError(errorStores)
             setStoresError(null);
         }
         if (errorStock) {
-            displayError(errorStock)
+            handleError(errorStock)
             setStockError(null);
         }
-    }, [errorStock, errorStores]);
+    }, [errorStock, errorStores, setStockError, setStoresError]);
 
     return (
-        <Modal width="90%" title="Изменение записи" footer={null} open={open}
+        <Modal width="90%" title="Изменение слежения" footer={null} open={open}
                onCancel={handleOpen}>
-            <UpdateBidForm deliveryToolTips={deliveryToolTips} deliveryValues={deliveryValues} control={control}
+            <UpdateBidForm stores={stores} stockPlaces={stockPlaces} control={control}
                            setValue={setValue} isLoadingStock={isLoadingStock} isLoadingStores={isLoadingStores}
                            onSubmit={handleSubmit(onSubmit)}/>
 

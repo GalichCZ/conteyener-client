@@ -14,6 +14,7 @@ const initialState: AuthenticationState = {
     user: null,
 }
 
+
 const authenticationSlice = createSlice({
     name: "authentication",
     initialState,

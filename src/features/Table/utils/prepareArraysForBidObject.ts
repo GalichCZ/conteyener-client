@@ -1,6 +1,7 @@
 import { FormBidUpdateValues } from "@/features/Table/Types/FormBidUpdateValues.ts";
+import { FormBidCreateValues } from "@/features/Table/Types/FormBidCreateValues.ts";
 
-export const prepareArraysForBidObject = (array: FormBidUpdateValues) => {
+export const prepareArraysForBidObject = (array: FormBidUpdateValues | FormBidCreateValues) => {
     const order_number: string[] = [];
     const inside_number: string[] = [];
     const proform_number: string[] = [];

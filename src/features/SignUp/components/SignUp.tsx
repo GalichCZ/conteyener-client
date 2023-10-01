@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserRegister } from "../Types/UserRegister.ts";
 import GInputs from "@/components/GInput/GInputs.ts";
-import GButton from "@/components/GInput/GButton.tsx";
+import GButton from "@/components/GInput/components/GButton.tsx";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { UserRegisterSchema } from "../validation/UserRegisterSchema.js";
 import { useRegisterUser } from "@/features/SignUp/hooks/useRegisterUser.ts";
 import { RoutesEnum } from "@/enums/routesEnum.ts";
 import { useNavigate } from "react-router-dom";
-import { displayError } from "@/utils/displayError.ts";
+import { handleError } from "@/utils/handleError.ts";
 
 const SignUp = () => {
     const [userData, setUserData] = useState<UserRegister | null>(null)
@@ -29,7 +29,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if (error) {
-            displayError(error)
+            handleError(error)
             setError(null);
             setUserData(null);
         }

@@ -1,35 +1,38 @@
 import React, { FC } from "react";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
-import GButton from "@/components/GInput/GButton.tsx";
+import GButton from "@/components/GInput/components/GButton.tsx";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { FormBidUpdateValues } from "@/features/Table/Types/FormBidUpdateValues.ts";
 import { Control, UseFormSetValue } from "react-hook-form";
+import SelectDeliveryMethod from "@/features/Table/Components/SelectDeliveryMethod.tsx";
+import { StockPlace, Store } from "@/Types";
+import { prepareValuesAndNames } from "@/features/Table/utils/prepareValuesAndNames.ts";
 
 interface Props {
     onSubmit: () => void;
     control: Control<FormBidUpdateValues>;
-    deliveryValues: string[];
-    deliveryToolTips: string[];
     setValue: UseFormSetValue<FormBidUpdateValues>
     isLoadingStores: boolean;
     isLoadingStock: boolean;
+    stores: Store[],
+    stockPlaces: StockPlace[]
 }
 
 const UpdateBidForm: FC<Props> = ({
-                                      onSubmit, control, deliveryValues, setValue,
-                                      deliveryToolTips, isLoadingStores, isLoadingStock
+                                      onSubmit, control, stores, stockPlaces, setValue, isLoadingStores, isLoadingStock
                                   }) => {
+
+    const preparedStores = prepareValuesAndNames(stores);
+    const preparedStockPlaces = prepareValuesAndNames(stockPlaces);
+
     return (
         <FormLayout className="w-full" onFinish={onSubmit}>
             <div className="grid grid-cols-5 gap-x-10 gap-y-3">
                 <GInputs.Date placeholder={ColumnsEnum.REQUEST_DATE} name="request_date"
                               label={ColumnsEnum.REQUEST_DATE} control={control}/>
 
-                <GInputs.Select values={deliveryValues} labels={deliveryValues} tooltips={deliveryToolTips}
-                                placeholder={ColumnsEnum.DELIVERY_METHOD} name="delivery_method"
-                                label={ColumnsEnum.DELIVERY_METHOD}
-                                control={control}/>
+                <SelectDeliveryMethod control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                placeholder={ColumnsEnum.INSIDE_NUMBER}
@@ -72,7 +75,8 @@ const UpdateBidForm: FC<Props> = ({
                 <GInputs.Text placeholder={ColumnsEnum.DIRECTION} name="direction"
                               label={ColumnsEnum.DIRECTION} control={control}/>
 
-                <GInputs.Select isLoading={isLoadingStores} values={[]} labels={[]} tooltips={[]}
+                <GInputs.Select isLoading={isLoadingStores} values={preparedStores.values}
+                                labels={preparedStores.values} tooltips={[]}
                                 placeholder={ColumnsEnum.STORE} name="store"
                                 label={ColumnsEnum.STORE}
                                 control={control}/>
@@ -124,7 +128,8 @@ const UpdateBidForm: FC<Props> = ({
                 <GInputs.Text placeholder={ColumnsEnum.DESTINATION_STATION} name="destination_station"
                               label={ColumnsEnum.DESTINATION_STATION} control={control}/>
 
-                <GInputs.Select isLoading={isLoadingStock} values={[]} labels={[]} tooltips={[]}
+                <GInputs.Select isLoading={isLoadingStock} values={preparedStockPlaces.values}
+                                labels={preparedStockPlaces.names} tooltips={[]}
                                 placeholder={ColumnsEnum.STOCK_PLACE} name="stock_place"
                                 label={ColumnsEnum.STOCK_PLACE}
                                 control={control}/>
