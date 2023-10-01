@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Credentials } from "../types/Credentials.ts";
-import GButton from "@/components/GInput/GButton.tsx";
+import GButton from "@/components/GInput/components/GButton.tsx";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CredentialsSchema } from "../validation/CredentialsSchema.js";
 import { useLogin } from "../hooks/useLogin.ts";
 import { RoutesEnum } from "@/enums/routesEnum.ts";
 import { useNavigate } from "react-router-dom";
-import { displayError } from "@/utils/displayError.ts";
+import { handleError } from "@/utils/handleError.ts";
 
 const Login = () => {
     const [credentials, setCredentials] = useState<Credentials | null>(null);
@@ -23,13 +23,12 @@ const Login = () => {
     });
 
     const onSubmit: SubmitHandler<Credentials> = (data) => {
-        console.log(data);
         setCredentials(data);
     }
 
     useEffect(() => {
         if (error) {
-            displayError(error)
+            handleError(error)
             setError(null);
             setCredentials(null);
         }

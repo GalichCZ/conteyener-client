@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { FormItem } from "react-hook-form-antd";
-import { GInputType } from "@/components/GInput/GInputType.ts";
+import { GInputType } from "@/components/GInput/types/GInputType.ts";
 import { ConfigProvider, Select, Tooltip } from "antd";
 import { Controller } from "react-hook-form";
 import InputSkeleton from "@/components/UI/InputSkeleton.tsx";

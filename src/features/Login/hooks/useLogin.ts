@@ -25,7 +25,6 @@ export const useLogin = (credentials: Credentials | null) => {
                 setIsLoading(false);
             } catch (error) {
                 const err = error as AxiosError;
-                console.log(err);
 
                 setError({ message: (err.response?.data as { message: string }).message, status: err.request.status });
                 setIsLoading(false);

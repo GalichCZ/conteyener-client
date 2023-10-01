@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { InputNumber } from "antd";
-import { GInputType } from "./GInputType.ts";
+import { GInputType } from "../types/GInputType.ts";
 import { FormItem } from "react-hook-form-antd";
 
 interface Props extends GInputType {
