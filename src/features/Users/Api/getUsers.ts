@@ -1,6 +1,7 @@
 import axios from '@/provider/axiosInstanse';
 
-const { cacheAxios } = axios;
+const { axiosInstance } = axios;
 export const getUsers = async () => {
-    return await cacheAxios.get("/users");
+    console.log('getUsers')
+    return await axiosInstance.get(`/users?timeStamp=${new Date().getTime()}`);
 }

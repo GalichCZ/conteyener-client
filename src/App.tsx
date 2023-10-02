@@ -10,6 +10,7 @@ import { createPortal } from "react-dom";
 import { Toaster } from "react-hot-toast";
 import { RoutesEnum } from "@/enums/routesEnum.ts";
 import TablePage from "@/pages/TablePage.tsx";
+import UsersPage from "@/pages/UsersPage.tsx";
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
 
                     {/*Private routes*/}
                     <Route path={RoutesEnum.TABLE} element={<TablePage/>}/>
+                    <Route path={RoutesEnum.USERS} element={<UsersPage/>}/>
+
 
                     {/*Catch all*/}
                     <Route path="*" element={<NotFoundPage/>}/>
