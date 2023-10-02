@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { bidsApi } from "@/store/api/bidsApi.ts";
 import authenticationSlice from "./slices/authenticationSlice.ts";
-import canSubmitSlice from "@/store/slices/canSubmitSlice.ts";
+import reDrawSlice from "@/store/slices/reDrawSlice.ts";
 
 export const store = configureStore({
     reducer: {
         [bidsApi.reducerPath]: bidsApi.reducer,
         authentication: authenticationSlice,
-        canSubmit: canSubmitSlice,
+        reDraw: reDrawSlice,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat([bidsApi.middleware]),

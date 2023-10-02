@@ -3,6 +3,7 @@ import Logo from "@/assets/img/Logo.tsx";
 import { Colors } from "@/assets/colors.ts";
 import { Link } from "react-router-dom";
 import { RoutesEnum } from "@/enums/routesEnum.ts";
+import DropdownMenu from "@/features/Header/components/DropdownMenu.tsx";
 
 const Header = () => {
     return (
@@ -38,6 +39,9 @@ const Header = () => {
                         <Link to={RoutesEnum.TABLE_HIDDEN}>
                             Таблица скрытых
                         </Link>
+                    </li>
+                    <li>
+                        <DropdownMenu/>
                     </li>
                 </ul>
             </nav>

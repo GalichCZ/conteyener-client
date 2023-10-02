@@ -1591,22 +1591,22 @@
             <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000"
                      points="1044.29,-2374.88 1041.12,-2369.37 1040.16,-2375.65 1044.29,-2374.88"/>
         </g>
-        <!-- src/store/slices/canSubmitSlice.ts -->
+        <!-- src/store/slices/reDrawSlice.ts -->
         <g id="node43" class="node">
-            <title>src/store/slices/canSubmitSlice.ts</title>
+            <title>src/store/slices/reDrawSlice.ts</title>
             <g id="a_node43">
-                <a xlink:href="src/store/slices/canSubmitSlice.ts" xlink:title="canSubmitSlice.ts">
+                <a xlink:href="src/store/slices/reDrawSlice.ts" xlink:title="reDrawSlice.ts">
                     <path fill="#ddfeff" stroke="black"
                           d="M1548,-2567.13C1548,-2567.13 1462,-2567.13 1462,-2567.13 1459,-2567.13 1456,-2564.13 1456,-2561.13 1456,-2561.13 1456,-2555.13 1456,-2555.13 1456,-2552.13 1459,-2549.13 1462,-2549.13 1462,-2549.13 1548,-2549.13 1548,-2549.13 1551,-2549.13 1554,-2552.13 1554,-2555.13 1554,-2555.13 1554,-2561.13 1554,-2561.13 1554,-2564.13 1551,-2567.13 1548,-2567.13"/>
                     <text text-anchor="start" x="1464" y="-2555.93" font-family="Helvetica,sans-Serif" font-size="9.00">
-                        canSubmitSlice.ts
+                        reDrawSlice.ts
                     </text>
                 </a>
             </g>
         </g>
-        <!-- src/components/GInput/hooks/useValidateCreateArray.ts&#45;&gt;src/store/slices/canSubmitSlice.ts -->
+        <!-- src/components/GInput/hooks/useValidateCreateArray.ts&#45;&gt;src/store/slices/reDrawSlice.ts -->
         <g id="edge53" class="edge">
-            <title>src/components/GInput/hooks/useValidateCreateArray.ts&#45;&gt;src/store/slices/canSubmitSlice.ts
+            <title>src/components/GInput/hooks/useValidateCreateArray.ts&#45;&gt;src/store/slices/reDrawSlice.ts
             </title>
             <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000"
                   d="M1398,-2825.03C1410.19,-2820.53 1422.66,-2813.89 1431.5,-2804.13 1493.64,-2735.53 1502.67,-2616.13 1503.87,-2573.66"/>
@@ -1621,9 +1621,9 @@
             <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000"
                      points="1470.82,-2905.02 1477.17,-2904.97 1472.17,-2901.04 1470.82,-2905.02"/>
         </g>
-        <!-- src/components/GInput/hooks/useValidateFilledAllPoles.ts&#45;&gt;src/store/slices/canSubmitSlice.ts -->
+        <!-- src/components/GInput/hooks/useValidateFilledAllPoles.ts&#45;&gt;src/store/slices/reDrawSlice.ts -->
         <g id="edge55" class="edge">
-            <title>src/components/GInput/hooks/useValidateFilledAllPoles.ts&#45;&gt;src/store/slices/canSubmitSlice.ts
+            <title>src/components/GInput/hooks/useValidateFilledAllPoles.ts&#45;&gt;src/store/slices/reDrawSlice.ts
             </title>
             <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000"
                   d="M1423.74,-2855.06C1426.52,-2853.36 1429.13,-2851.39 1431.5,-2849.13 1472.36,-2810.04 1496.08,-2627.79 1502.32,-2573.45"/>
@@ -3743,9 +3743,9 @@
                 </a>
             </g>
         </g>
-        <!-- src/store/store.ts&#45;&gt;src/store/slices/canSubmitSlice.ts -->
+        <!-- src/store/store.ts&#45;&gt;src/store/slices/reDrawSlice.ts -->
         <g id="edge208" class="edge">
-            <title>src/store/store.ts&#45;&gt;src/store/slices/canSubmitSlice.ts</title>
+            <title>src/store/store.ts&#45;&gt;src/store/slices/reDrawSlice.ts</title>
             <path fill="none" stroke="#000000" stroke-width="2" stroke-opacity="0.200000"
                   d="M1363.75,-2469.27C1376.1,-2486.56 1405.38,-2524.04 1439.5,-2543.13 1442.79,-2544.97 1446.3,-2546.58 1449.91,-2548"/>
             <polygon fill="#000000" fill-opacity="0.200000" stroke="#000000" stroke-width="2" stroke-opacity="0.200000"
