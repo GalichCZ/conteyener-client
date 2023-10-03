@@ -4,5 +4,7 @@ export interface Store {
     name: string;
     receiver: string;
     contact: string;
-    note: string;
+    note?: string;
 }
+
+export type StoreFormType = Omit<Store, '_id'>;
