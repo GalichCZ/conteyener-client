@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { Modal } from "antd";
 import { useForm } from "react-hook-form";
 import CreateBidForm from "./CreateBidForm.tsx";
-import { useGetStores } from "@/hooks/useGetStores.ts";
+import { useGetStores } from "@/features/Store/hooks/useGetStores.ts";
 import { handleError } from "@/utils/handleError.ts";
 import Button from "@/components/UI/Button.tsx";
 import { yupResolver } from "@hookform/resolvers/yup";

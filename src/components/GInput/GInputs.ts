@@ -5,6 +5,7 @@ import GInputArray from "@/components/GInput/components/GInputArray.tsx";
 import GInputPassword from "@/components/GInput/components/GInputPassword.tsx";
 import GInputSelect from "@/components/GInput/components/GInputSelect.tsx";
 import GSwitch from "@/components/GInput/components/GSwitch.tsx";
+import GInputArea from "@/components/GInput/components/GInputArea.tsx";
 
 const GInputs = {
     Text: GInputText,
@@ -13,6 +14,7 @@ const GInputs = {
     Array: GInputArray,
     Password: GInputPassword,
     Select: GInputSelect,
-    Switch: GSwitch
+    Switch: GSwitch,
+    Area: GInputArea,
 }
 export default GInputs

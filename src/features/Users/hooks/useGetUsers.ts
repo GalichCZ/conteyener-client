@@ -22,7 +22,7 @@ export const useGetUsers = () => {
             setError({ message: err.message, status: err.request.status });
             setIsLoading(false);
         }
-    }, [setUsers, setError, setIsLoading]);
+    }, []);
 
     useEffect(() => {
         callGetUsers();

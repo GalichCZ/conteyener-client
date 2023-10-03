@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { RoutesEnum } from "@/enums/routesEnum.ts";
 import TablePage from "@/pages/TablePage.tsx";
 import UsersPage from "@/pages/UsersPage.tsx";
+import StoresPage from "@/pages/StoresPage.tsx";
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
                     {/*Private routes*/}
                     <Route path={RoutesEnum.TABLE} element={<TablePage/>}/>
                     <Route path={RoutesEnum.USERS} element={<UsersPage/>}/>
-
+                    <Route path={RoutesEnum.STORES} element={<StoresPage/>}/>
 
                     {/*Catch all*/}
                     <Route path="*" element={<NotFoundPage/>}/>
