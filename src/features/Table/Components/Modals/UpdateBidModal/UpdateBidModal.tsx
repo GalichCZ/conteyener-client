@@ -2,7 +2,7 @@ import React, { FC, useEffect } from "react";
 import { Modal } from "antd";
 import Button from "@/components/UI/Button.tsx";
 import { useForm } from "react-hook-form";
-import { useGetStores } from "@/features/Store/hooks/useGetStores.ts";
+import { useGetStores } from "@/hooks/useGetStores.ts";
 import { handleError } from "@/utils/handleError.ts";
 import { useGetStockPlaces } from "@/hooks/useGetStockPlaces.ts";
 import UpdateBidForm from "./UpdateBidForm.tsx";

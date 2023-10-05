@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { DeliveryChannel, Error } from "@/Types";
-import { getDeliveryChannels } from "../Api/getDeliveryChannels.ts";
+import { getDeliveryChannels } from "../features/DeliveryChannel/Api/getDeliveryChannels.ts";
 import { AxiosError } from "axios";
 
 export const useGetDeliveryChannels = () => {
     const [deliveryChannels, setDeliveryChannels] = useState<DeliveryChannel[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [error, setError] = useState<Error>();
+    const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
         const callGetDeliveryChannels = async () => {
@@ -24,5 +24,5 @@ export const useGetDeliveryChannels = () => {
         callGetDeliveryChannels();
     }, []);
 
-    return { deliveryChannels, isLoading, error };
+    return { deliveryChannels, isLoading, error, setError };
 }
