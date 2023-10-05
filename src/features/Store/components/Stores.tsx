@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeadNames from "@/features/Store/UI/HeadNames.tsx";
 import StoreInfo from "@/features/Store/components/StoreInfo.tsx";
-import { useGetStores } from "@/features/Store/hooks/useGetStores.ts";
+import { useGetStores } from "@/hooks/useGetStores.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { handleError } from "@/utils/handleError.ts";
 import CreateStoreButton from "@/features/Store/components/CreateStoreButton.tsx";
