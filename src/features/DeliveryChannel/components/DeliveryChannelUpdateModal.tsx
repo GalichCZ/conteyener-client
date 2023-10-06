@@ -1,27 +1,28 @@
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import { Modal } from "antd";
 import DeliveryChannelForm from "@/features/DeliveryChannel/components/DeliveryChannelForm.tsx";
 import { DeliveryChannel } from "@/Types";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DeliveryChannelSchema } from "@/features/DeliveryChannel/validation/DeliveryChannelSchema.js";
-import { usePostDeliveryChannel } from "@/features/DeliveryChannel/hooks/usePostDeliveryChannel.ts";
-import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
-import { handleError } from "@/utils/handleError.ts";
-import { useDispatch } from "react-redux";
+import { useUpdateDeliveryChannel } from "@/features/DeliveryChannel/hooks/useUpdateDeliveryChannel.ts";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
+import { useDispatch } from "react-redux";
+import { handleError } from "@/utils/handleError.ts";
+import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 
 interface Props {
+    deliveryChannel: DeliveryChannel
     open: boolean
     setOpen: (open: boolean) => void
 }
 
-const DeliveryChannelCreateModal: FC<Props> = ({ open, setOpen }) => {
+const DeliveryChannelUpdateModal: FC<Props> = ({ deliveryChannel, setOpen, open }) => {
     const { control, setValue, handleSubmit } = useForm<DeliveryChannel>({
         resolver: yupResolver(DeliveryChannelSchema)
     });
-    const [deliveryChannel, setDeliveryChannel] = React.useState<DeliveryChannel | null>(null);
-    const { success, setError, error, isLoading } = usePostDeliveryChannel(deliveryChannel);
+    const [updatedDeliveryChannel, setUpdatedDeliveryChannel] = useState<DeliveryChannel | null>(null);
+    const { error, setError, isLoading, isSuccess } = useUpdateDeliveryChannel(updatedDeliveryChannel);
     const dispatch = useDispatch();
 
     const handleOpen = useCallback(() => {
@@ -29,32 +30,32 @@ const DeliveryChannelCreateModal: FC<Props> = ({ open, setOpen }) => {
     }, [setOpen]);
 
     useEffect(() => {
-        if (success) {
+        if (isSuccess) {
             dispatch(setReDraw());
             handleOpen();
         }
-    }, [dispatch, handleOpen, success]);
+    }, [dispatch, handleOpen, isSuccess]);
 
     useEffect(() => {
         if (error) {
             handleError(error);
             setError(null);
-            setDeliveryChannel(null);
+            setUpdatedDeliveryChannel(null);
         }
     }, [error, setError]);
 
     const onSubmit = (data: DeliveryChannel) => {
-        console.log(data);
-        setDeliveryChannel(data);
+        setUpdatedDeliveryChannel({ _id: deliveryChannel._id, ...data });
     }
 
+
     return (
-        <Modal footer={null} title="Создание канала поставки" open={open} onCancel={handleOpen}>
+        <Modal title="Редактирование канала" open={open} onCancel={handleOpen} footer={null}>
             {isLoading && <FillingSkeleton/>}
-            <DeliveryChannelForm control={control} onSubmit={handleSubmit(onSubmit)} deliveryChannel={null}
+            <DeliveryChannelForm control={control} onSubmit={handleSubmit(onSubmit)} deliveryChannel={deliveryChannel}
                                  setValue={setValue}/>
         </Modal>
     );
 }
 
-export default DeliveryChannelCreateModal;
+export default DeliveryChannelUpdateModal;

@@ -1,6 +1,6 @@
 import { Error, Store } from "@/Types";
 import { useCallback, useEffect, useState } from "react";
-import { getStores } from "@/features/Store/Api/getStores.ts";
+import { getStores } from "@/GlobalApi/getStores.ts";
 import { AxiosError } from "axios";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 

@@ -1,4 +1,4 @@
-import axios from '@/provider/axiosInstanse';
+import axios from '@/provider/axiosInstanse.ts';
 
 const { cacheAxios } = axios;
 

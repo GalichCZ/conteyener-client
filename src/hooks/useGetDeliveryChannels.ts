@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { DeliveryChannel, Error } from "@/Types";
-import { getDeliveryChannels } from "../features/DeliveryChannel/Api/getDeliveryChannels.ts";
+import { getDeliveryChannels } from "../GlobalApi/getDeliveryChannels.ts";
 import { AxiosError } from "axios";
+import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
 export const useGetDeliveryChannels = () => {
     const [deliveryChannels, setDeliveryChannels] = useState<DeliveryChannel[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null>(null);
+    const reDraw = useAppSelector((state) => state.reDraw.reDraw);
 
     useEffect(() => {
         const callGetDeliveryChannels = async () => {
@@ -22,7 +24,7 @@ export const useGetDeliveryChannels = () => {
             }
         }
         callGetDeliveryChannels();
-    }, []);
+    }, [reDraw]);
 
     return { deliveryChannels, isLoading, error, setError };
 }

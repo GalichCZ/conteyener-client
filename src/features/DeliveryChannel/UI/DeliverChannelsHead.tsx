@@ -4,7 +4,7 @@ import PoleWrap from "@/features/DeliveryChannel/UI/PoleWrap.tsx";
 
 const DeliverChannelsHead = () => {
     return (
-        <RowWrap className="sticky top-0">
+        <RowWrap className="sticky bg-white top-0">
             <PoleWrap>
                 <b>Имя:</b>
             </PoleWrap>
@@ -25,6 +25,12 @@ const DeliverChannelsHead = () => {
             </PoleWrap>
             <PoleWrap>
                 <b>Дата прибытия на склад:</b>
+            </PoleWrap>
+            <PoleWrap>
+                <b></b>
+            </PoleWrap>
+            <PoleWrap>
+                <b></b>
             </PoleWrap>
         </RowWrap>
     );
