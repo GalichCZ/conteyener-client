@@ -1,11 +1,11 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { Modal } from "antd";
 import Button from "@/components/UI/Button.tsx";
 import { useDeleteStore } from "@/features/Store/hooks/useDeleteStore.ts";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import { useDispatch } from "react-redux";
 import { handleError } from "@/utils/handleError.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
+import GModal from "@/components/Layout/GModal.tsx";
 
 interface Props {
     open: boolean;
@@ -43,7 +43,7 @@ const StoreDeleteModal: FC<Props> = ({ open, setOpen, storeId }) => {
 
 
     return (
-        <Modal onCancel={handleOpen} open={open} footer={null}>
+        <GModal onCancel={handleOpen} open={open}>
             {isLoading && <FillingSkeleton/>}
             <div className="flex flex-col">
                 <b className="text-lg">Удалить склад?</b>
@@ -53,7 +53,7 @@ const StoreDeleteModal: FC<Props> = ({ open, setOpen, storeId }) => {
                     <Button onClick={handleOpen} className="border-2 border-gray-300" text="Отменить"/>
                 </div>
             </div>
-        </Modal>
+        </GModal>
     )
 }
 

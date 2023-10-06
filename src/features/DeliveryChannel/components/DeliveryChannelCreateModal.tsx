@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect } from "react";
-import { Modal } from "antd";
 import DeliveryChannelForm from "@/features/DeliveryChannel/components/DeliveryChannelForm.tsx";
 import { DeliveryChannel } from "@/Types";
 import { useForm } from "react-hook-form";
@@ -10,6 +9,7 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { handleError } from "@/utils/handleError.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
+import GModal from "@/components/Layout/GModal.tsx";
 
 interface Props {
     open: boolean
@@ -49,11 +49,11 @@ const DeliveryChannelCreateModal: FC<Props> = ({ open, setOpen }) => {
     }
 
     return (
-        <Modal footer={null} title="Создание канала поставки" open={open} onCancel={handleOpen}>
+        <GModal title="Создание канала поставки" open={open} onCancel={handleOpen}>
             {isLoading && <FillingSkeleton/>}
             <DeliveryChannelForm control={control} onSubmit={handleSubmit(onSubmit)} deliveryChannel={null}
                                  setValue={setValue}/>
-        </Modal>
+        </GModal>
     );
 }
 

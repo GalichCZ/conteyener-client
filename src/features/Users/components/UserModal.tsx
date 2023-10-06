@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { Modal } from "antd";
 import { RolesEnum, RolesLabelEnum } from "@/enums/rolesEnum.ts";
 import { User } from "@/Types";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
@@ -13,6 +12,7 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { handleError } from "@/utils/handleError.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
+import GModal from "@/components/Layout/GModal.tsx";
 
 interface Props {
     open: boolean;
@@ -64,7 +64,7 @@ const UserModal: FC<Props> = ({ open, user, setOpen }) => {
     }, [error, setError]);
 
     return (
-        <Modal footer={null} onCancel={handleOpen} open={open}>
+        <GModal onCancel={handleOpen} open={open}>
             {isLoading && <FillingSkeleton/>}
             <FormLayout className="shadow-none" onFinish={handleSubmit(onSubmit)}>
                 <div className="grid gap-y-4">
@@ -80,7 +80,7 @@ const UserModal: FC<Props> = ({ open, user, setOpen }) => {
                     </div>
                 </div>
             </FormLayout>
-        </Modal>
+        </GModal>
     );
 }
 
