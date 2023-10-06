@@ -12,6 +12,7 @@ import { RoutesEnum } from "@/enums/routesEnum.ts";
 import TablePage from "@/pages/TablePage.tsx";
 import UsersPage from "@/pages/UsersPage.tsx";
 import StoresPage from "@/pages/StoresPage.tsx";
+import DeliveryChannelPage from "@/pages/DeliveryChannelPage.tsx";
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
                     <Route path={RoutesEnum.TABLE} element={<TablePage/>}/>
                     <Route path={RoutesEnum.USERS} element={<UsersPage/>}/>
                     <Route path={RoutesEnum.STORES} element={<StoresPage/>}/>
-
+                    <Route path={RoutesEnum.DELIVERY_CHANNELS} element={<DeliveryChannelPage/>}/>
                     {/*Catch all*/}
                     <Route path="*" element={<NotFoundPage/>}/>
                 </Route>

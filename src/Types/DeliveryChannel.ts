@@ -1,5 +1,5 @@
 export interface DeliveryChannel {
-    id: number;
+    _id?: number;
     name: string;
     eta: number;
     date_do: number;

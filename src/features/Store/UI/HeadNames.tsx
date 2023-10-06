@@ -23,6 +23,9 @@ const HeadNames = () => {
             <PoleWrap>
                 <b></b>
             </PoleWrap>
+            <PoleWrap>
+                <b></b>
+            </PoleWrap>
         </RowWrap>
     );
 }
