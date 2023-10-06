@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { Modal } from "antd";
 import StoreForm from "@/features/Store/components/StoreForm.tsx";
 import { useForm } from "react-hook-form";
 import { Store } from "@/Types";
@@ -10,6 +9,7 @@ import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import { useDispatch } from "react-redux";
 import { handleError } from "@/utils/handleError.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
+import GModal from "@/components/Layout/GModal.tsx";
 
 interface Props {
     open: boolean;
@@ -48,10 +48,10 @@ const StoreUpdateModal: FC<Props> = ({ open, store, setOpen }) => {
     }
 
     return (
-        <Modal title="Редактировать склад" footer={null} open={open} onCancel={handleOpen}>
+        <GModal title="Редактировать склад" open={open} onCancel={handleOpen}>
             {isLoading && <FillingSkeleton/>}
             <StoreForm store={store} control={control} setValue={setValue} onSubmit={handleSubmit(onSubmit)}/>
-        </Modal>
+        </GModal>
     )
 }
 

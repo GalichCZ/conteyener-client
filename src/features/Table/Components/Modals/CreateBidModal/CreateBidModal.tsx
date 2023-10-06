@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { Modal } from "antd";
 import { useForm } from "react-hook-form";
 import CreateBidForm from "./CreateBidForm.tsx";
 import { useGetStores } from "@/hooks/useGetStores.ts";
@@ -12,6 +11,7 @@ import { prepareNewBidObject } from "@/features/Table/utils/prepareNewBidObject.
 import { NewBid } from "@/features/Table/Types/NewBid.ts";
 import { useCreateBid } from "@/features/Table/Hooks/useCreateBid.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
+import GModal from "@/components/Layout/GModal.tsx";
 
 interface Props {
     open: boolean;
@@ -49,13 +49,13 @@ const CreateBidModal: FC<Props> = ({ open, handleOpen }) => {
     }, [error, setError, setStoreError, storeError]);
 
     return (
-        <Modal width="90%" title="Создать слежение" footer={null} open={open}
-               onCancel={handleOpen}>
+        <GModal width="90%" title="Создать слежение" open={open}
+                onCancel={handleOpen}>
             {isLoading && <FillingSkeleton/>}
             <CreateBidForm stores={stores} isLoadingStores={isStoreLoading} setValue={setValue} control={control}
                            onSubmit={handleSubmit(onSubmit)}/>
             <Button className="mt-10 border-red-500 border-[1px] text-red-500" text="Отмена"/>
-        </Modal>
+        </GModal>
     )
 }
 

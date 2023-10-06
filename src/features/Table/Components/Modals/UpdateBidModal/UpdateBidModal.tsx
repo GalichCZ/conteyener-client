@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from "react";
-import { Modal } from "antd";
 import Button from "@/components/UI/Button.tsx";
 import { useForm } from "react-hook-form";
 import { useGetStores } from "@/hooks/useGetStores.ts";
@@ -11,6 +10,7 @@ import { getDateFromDayjs } from "@/utils/getDateFromDayjs.ts";
 import { prepareBidObject } from "@/features/Table/utils/prepareBidObject.ts";
 import { FollowBid } from "@/Types";
 import { setValuesInForm } from "@/features/Table/utils/setValuesInForm.ts";
+import GModal from "@/components/Layout/GModal.tsx";
 
 interface Props {
     open: boolean;
@@ -48,14 +48,14 @@ const UpdateBidModal: FC<Props> = ({ open, handleOpen, followBid }) => {
     }, [errorStock, errorStores, setStockError, setStoresError]);
 
     return (
-        <Modal width="90%" title="Изменение слежения" footer={null} open={open}
-               onCancel={handleOpen}>
+        <GModal width="90%" title="Изменение слежения" open={open}
+                onCancel={handleOpen}>
             <UpdateBidForm stores={stores} stockPlaces={stockPlaces} control={control}
                            setValue={setValue} isLoadingStock={isLoadingStock} isLoadingStores={isLoadingStores}
                            onSubmit={handleSubmit(onSubmit)}/>
 
             <Button className="mt-10 border-red-500 border-[1px] text-red-500" text="Отмена"/>
-        </Modal>
+        </GModal>
     )
 }
 

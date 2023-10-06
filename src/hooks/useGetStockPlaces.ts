@@ -1,6 +1,6 @@
 import { Error, StockPlace } from "@/Types";
 import { useEffect, useState } from "react";
-import { getStockPlaces } from "@/features/ContainerStock/Api/getStockPlaces.ts";
+import { getStockPlaces } from "@/GlobalApi/getStockPlaces.ts";
 import { AxiosError } from "axios";
 
 export const useGetStockPlaces = () => {
