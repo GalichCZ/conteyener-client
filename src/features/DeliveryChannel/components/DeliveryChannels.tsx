@@ -7,6 +7,8 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import CreateDeliveryChannelButton from "@/features/DeliveryChannel/components/CreateDeliveryChannelButton.tsx";
 import { createPortal } from "react-dom";
 import DeliveryChannelCreateModal from "@/features/DeliveryChannel/components/DeliveryChannelCreateModal.tsx";
+import TechPageBlock from "@/components/UI/TechPageBlock.tsx";
+import TechBlockFooter from "@/components/UI/TechBlockFooter.tsx";
 
 const DeliveryChannels = () => {
     const { deliveryChannels, isLoading, error, setError } = useGetDeliveryChannels();
@@ -26,16 +28,16 @@ const DeliveryChannels = () => {
     return (
         <>
             {createPortal(<DeliveryChannelCreateModal open={open} setOpen={setOpen}/>, document.body)}
-            <div className="mt-20 relative overflow-auto rounded-xl bg-white h-3/4 w-3/4">
+            <TechPageBlock>
                 <DeliverChannelsHead/>
                 {isLoading && <FillingSkeleton/>}
                 {deliveryChannels.length === 0 && <p className="text-center mt-10">Каналы поставки отсутствуют</p>}
                 {deliveryChannels.map((deliveryChannel) => <DeliveryChannelInfo key={deliveryChannel._id}
                                                                                 deliveryChannel={deliveryChannel}/>)}
-                <div className="absolute bottom-0 bg-white">
+                <TechBlockFooter>
                     <CreateDeliveryChannelButton onClick={handleOpen}/>
-                </div>
-            </div>
+                </TechBlockFooter>
+            </TechPageBlock>
         </>
     );
 }

@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
 import { RolesLabelEnumMap } from "@/enums/rolesEnum.ts";
 import PoleWrapper from "@/features/Users/UI/PoleWrapper.tsx";
-import RowWrapper from "@/features/Users/UI/RowWrapper.tsx";
 import { User } from "@/Types";
 import Button from "@/components/UI/Button.tsx";
 import { createPortal } from "react-dom";
 import UserModal from "@/features/Users/components/UserModal.tsx";
+import RowWrap from "@/components/UI/RowWrap.tsx";
 
 interface Props {
     user: User;
@@ -24,7 +24,7 @@ const UserInfo: FC<Props> = ({ user }) => {
         <>
             {createPortal(<UserModal setOpen={setOpen} user={user}
                                      open={open}/>, document.body)}
-            <RowWrapper className="border-b-[1px] mt-4 pb-4 items-center">
+            <RowWrap className="border-b-[1px] mt-4 pb-4 items-center">
                 <PoleWrapper>
                     <p>{first_name}</p>
                 </PoleWrapper>
@@ -40,7 +40,7 @@ const UserInfo: FC<Props> = ({ user }) => {
                 <PoleWrapper>
                     <Button onClick={handleOpen} className="shadow-sm border-b-gray-200 border-2" text="Редактировать"/>
                 </PoleWrapper>
-            </RowWrapper>
+            </RowWrap>
         </>
 
     );

@@ -1,6 +1,6 @@
 import React from "react";
-import RowWrap from "@/features/Store/UI/RowWrap.tsx";
 import PoleWrap from "@/features/Store/UI/PoleWrap.tsx";
+import RowWrap from "@/components/UI/RowWrap";
 
 const HeadNames = () => {
     return (

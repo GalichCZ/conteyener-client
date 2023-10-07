@@ -7,6 +7,8 @@ import { handleError } from "@/utils/handleError.ts";
 import CreateStoreButton from "@/features/Store/components/CreateStoreButton.tsx";
 import StoreCreateModal from "@/features/Store/components/StoreCreateModal.tsx";
 import { createPortal } from "react-dom";
+import TechPageBlock from "@/components/UI/TechPageBlock.tsx";
+import TechBlockFooter from "@/components/UI/TechBlockFooter.tsx";
 
 const Stores = () => {
     const { stores, isLoading, error, setError } = useGetStores()
@@ -28,15 +30,17 @@ const Stores = () => {
     return (
         <>
             {open && createPortal(<StoreCreateModal open={open} setOpen={setOpen}/>, document.body)}
-            <div className="bg-white shadow-2xl overflow-auto relative max-h-[60%] w-3/4">
+            <TechPageBlock>
                 {isLoading && <FillingSkeleton/>}
                 <HeadNames/>
                 {noStores && <p className="text-center text-2xl">Нет складов</p>}
                 {stores.map((store) => (
                     <StoreInfo key={store._id} store={store}/>
                 ))}
-                <CreateStoreButton onClick={handleOpen}/>
-            </div>
+                <TechBlockFooter>
+                    <CreateStoreButton onClick={handleOpen}/>
+                </TechBlockFooter>
+            </TechPageBlock>
         </>
     );
 }

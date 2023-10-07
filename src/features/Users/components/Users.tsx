@@ -4,6 +4,7 @@ import ListHead from "@/features/Users/UI/ListHead.tsx";
 import { useGetUsers } from "@/features/Users/hooks/useGetUsers.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { handleError } from "@/utils/handleError.ts";
+import TechPageBlock from "@/components/UI/TechPageBlock.tsx";
 
 const Users = () => {
     const { isLoading, users, error, setError } = useGetUsers();
@@ -18,13 +19,13 @@ const Users = () => {
     const noUsers = (!isLoading && users === undefined) || (!isLoading && users?.length === 0);
 
     return (
-        <div className="w-[70%] relative overflow-auto h-[70%] mt-20 bg-white px-7 rounded-lg shadow-2xl">
+        <TechPageBlock>
             <ListHead/>
             {isLoading && <FillingSkeleton/>}
             {noUsers && <p className="text-center text-2xl mt-10">Нет пользователей</p>}
             {users?.map((user) => <UserInfo key={user._id}
                                             user={user}/>)}
-        </div>
+        </TechPageBlock>
     );
 }
 
