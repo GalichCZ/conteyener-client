@@ -13,6 +13,7 @@ import TablePage from "@/pages/TablePage.tsx";
 import UsersPage from "@/pages/UsersPage.tsx";
 import StoresPage from "@/pages/StoresPage.tsx";
 import DeliveryChannelPage from "@/pages/DeliveryChannelPage.tsx";
+import StockPlacesPage from "@/pages/StockPlacesPage.tsx";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path={RoutesEnum.USERS} element={<UsersPage/>}/>
                     <Route path={RoutesEnum.STORES} element={<StoresPage/>}/>
                     <Route path={RoutesEnum.DELIVERY_CHANNELS} element={<DeliveryChannelPage/>}/>
+                    <Route path={RoutesEnum.CONTAINER_STOCK} element={<StockPlacesPage/>}/>
                     {/*Catch all*/}
                     <Route path="*" element={<NotFoundPage/>}/>
                 </Route>

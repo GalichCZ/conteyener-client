@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
-import RowWrap from "@/features/Store/UI/RowWrap.tsx";
 import PoleWrap from "@/features/Store/UI/PoleWrap.tsx";
 import Button from "@/components/UI/Button.tsx";
 import { Store } from "@/Types";
 import { createPortal } from "react-dom";
 import StoreUpdateModal from "@/features/Store/components/StoreUpdateModal.tsx";
 import StoreDeleteModal from "@/features/Store/components/StoreDeleteModal.tsx";
+import RowWrap from "@/components/UI/RowWrap.tsx";
 
 interface Props {
     store: Store;

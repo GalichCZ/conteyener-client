@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
-import RowWrap from "@/features/DeliveryChannel/UI/RowWrap.tsx";
 import PoleWrap from "@/features/DeliveryChannel/UI/PoleWrap.tsx";
 import { DeliveryChannel } from "@/Types";
 import Button from "@/components/UI/Button.tsx";
 import { Tooltip } from 'react-tooltip'
 import DeliveryChannelUpdateModal from "@/features/DeliveryChannel/components/DeliveryChannelUpdateModal.tsx";
 import { createPortal } from "react-dom";
+import RowWrap from "@/components/UI/RowWrap.tsx";
 
 interface Props {
     deliveryChannel: DeliveryChannel

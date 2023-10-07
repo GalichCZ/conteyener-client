@@ -1,10 +1,10 @@
 import React from "react";
 import PoleWrapper from "@/features/Users/UI/PoleWrapper.tsx";
-import RowWrapper from "@/features/Users/UI/RowWrapper.tsx";
+import RowWrap from "@/components/UI/RowWrap.tsx";
 
 const ListHead = () => {
     return (
-        <RowWrapper className="sticky top-0 bg-white mb-4 z-[2] border-b-2 py-4">
+        <RowWrap className="sticky top-0 bg-white mb-4 z-[2] border-b-2 py-4">
             <PoleWrapper>
                 <b>Имя:</b>
             </PoleWrapper>
@@ -20,7 +20,7 @@ const ListHead = () => {
             <PoleWrapper>
                 <b></b>
             </PoleWrapper>
-        </RowWrapper>
+        </RowWrap>
     );
 }
 

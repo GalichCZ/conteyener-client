@@ -1,6 +1,6 @@
 import React from "react";
-import RowWrap from "@/features/DeliveryChannel/UI/RowWrap.tsx";
 import PoleWrap from "@/features/DeliveryChannel/UI/PoleWrap.tsx";
+import RowWrap from "@/components/UI/RowWrap";
 
 const DeliverChannelsHead = () => {
     return (

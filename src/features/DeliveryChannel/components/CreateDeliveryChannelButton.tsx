@@ -8,7 +8,7 @@ interface Props {
 
 const CreateDeliveryChannelButton: FC<Props> = ({ onClick, className }) => {
     return (
-        <Button type="primary" text="Создать канал поставки" className={`${className} m-4`} onClick={onClick}/>
+        <Button type="primary" text="Создать канал поставки" className={`${className}`} onClick={onClick}/>
     )
 }
 

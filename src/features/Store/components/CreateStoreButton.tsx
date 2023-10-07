@@ -7,10 +7,10 @@ interface Props {
 
 const CreateStoreButton: FC<Props> = ({ onClick }) => {
     return (
-        <div className="p-4">
+        <>
             <Button onClick={onClick} type="primary" text="Создать склад"
                     className="hover:scale-105 transition-all ease-linear duration-75"/>
-        </div>
+        </>
     );
 }
 
