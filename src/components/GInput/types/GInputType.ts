@@ -8,4 +8,6 @@ export interface GInputType {
     label: string;
     type?: string;
     control: Control<any>;
+    getValues: any;
+    watch?: any;
 }

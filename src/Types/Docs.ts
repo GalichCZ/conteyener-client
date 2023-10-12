@@ -10,3 +10,5 @@ export interface Docs {
     bill: boolean;
     order_number: string;
 }
+
+export type DocsFormType = Omit<Docs, "order_number">;

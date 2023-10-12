@@ -1,9 +1,26 @@
-import React from "react";
+import React, { FC, useState } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
+import { FollowBid } from "@/Types";
+import { formatDate } from "@/utils/convertDate.ts";
+import { createPortal } from "react-dom";
+import EtdUpdateModal from "@/features/Table/Components/Modals/EtdUpdateModal/Components/EtdUpdateModal.tsx";
+import { DatesTypesEnum } from "@/enums/datesTypesEnum.ts";
 
-const EtdUpdateCell = () => {
+interface Props {
+    bid: FollowBid;
+}
+
+const EtdUpdateCell: FC<Props> = ({ bid }) => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+
     return (
-        <TableCell.Cell>etd</TableCell.Cell>
+        <>
+            {open && createPortal(<EtdUpdateModal bidId={bid._id} etd={bid.etd} dateType={DatesTypesEnum.ETD}
+                                                  deliveryChannel={bid.delivery_channel} open={open}
+                                                  setOpen={setOpen}/>, document.body)}
+            <TableCell.Cell onClick={handleOpen}>{formatDate(bid.etd)}</TableCell.Cell>
+        </>
     )
 }
 

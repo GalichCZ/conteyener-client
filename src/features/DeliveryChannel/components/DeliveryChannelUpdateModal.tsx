@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import DeliveryChannelForm from "@/features/DeliveryChannel/components/DeliveryChannelForm.tsx";
-import { DeliveryChannel } from "@/Types";
+import { DeliveryChannel, DeliveryChannelFormType } from "@/Types";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DeliveryChannelSchema } from "@/features/DeliveryChannel/validation/DeliveryChannelSchema.js";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const DeliveryChannelUpdateModal: FC<Props> = ({ deliveryChannel, setOpen, open }) => {
-    const { control, setValue, handleSubmit } = useForm<DeliveryChannel>({
+    const { control, setValue, handleSubmit } = useForm<DeliveryChannelFormType>({
         resolver: yupResolver(DeliveryChannelSchema)
     });
     const [updatedDeliveryChannel, setUpdatedDeliveryChannel] = useState<DeliveryChannel | null>(null);
@@ -44,8 +44,8 @@ const DeliveryChannelUpdateModal: FC<Props> = ({ deliveryChannel, setOpen, open 
         }
     }, [error, setError]);
 
-    const onSubmit = (data: DeliveryChannel) => {
-        setUpdatedDeliveryChannel({ _id: deliveryChannel._id, ...data });
+    const onSubmit = (data: DeliveryChannelFormType) => {
+        setUpdatedDeliveryChannel({ ...data, _id: deliveryChannel._id });
     }
 
 

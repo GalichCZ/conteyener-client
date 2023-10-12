@@ -1,14 +1,22 @@
 import React, { FC } from 'react';
+import { Docs } from "@/Types";
+
+type onProductClick = (product: string) => void;
+type onDocsClick = (docsCount: string, docs: Docs) => void;
 
 interface Props {
+    modelArray: Docs[];
+    onClick?: onProductClick | onDocsClick;
     dataArray: string[];
 }
 
-const TableCellArray: FC<Props> = ({ dataArray }) => {
+const TableCellArray: FC<Props> = ({ dataArray, onClick, modelArray }) => {
+
     return (
-        <td>
+        <td className={`border-2 px-4 border-black h-full text-center relative ${onClick && 'cursor-pointer'}`}>
             <div>
-                {dataArray.map((data, key) => <p key={key}>{data}</p>)}
+                {dataArray.map((data, key) => <p onClick={() => onClick && onClick(data, modelArray[key])}
+                                                 key={key}>{data}</p>)}
             </div>
         </td>
     );

@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
-import { DeliveryChannel } from "@/Types";
+import { DeliveryChannel, DeliveryChannelFormType } from "@/Types";
 import { Control, UseFormSetValue } from "react-hook-form";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { DatesTypesFormNamesEnum, DatesTypesLabelsEnum } from "@/enums/datesTypesEnum.ts";
@@ -8,10 +8,10 @@ import GButton from "@/components/GInput/components/GButton.tsx";
 import { DevTool } from "@hookform/devtools";
 
 interface Props {
-    control: Control<DeliveryChannel>
+    control: Control<DeliveryChannelFormType>
     onSubmit: () => void;
     deliveryChannel: DeliveryChannel | null;
-    setValue: UseFormSetValue<DeliveryChannel>
+    setValue: UseFormSetValue<DeliveryChannelFormType>
 }
 
 const DeliveryChannelForm: FC<Props> = ({ control, deliveryChannel, setValue, onSubmit }) => {

@@ -1,7 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
+import { FollowBid } from "@/Types";
 
-const CommentsCell = () => {
+interface Props {
+    bid: FollowBid;
+}
+
+const CommentsCell: FC<Props> = ({ bid }) => {
     return (
         <TableCell.Cell>
             ...

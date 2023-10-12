@@ -15,6 +15,14 @@
     border-color: #fb511e !important;
 }
 
+.ant-switch {
+    background-color: #cccccc !important;
+}
+
+.ant-switch-checked {
+    background-color: #fb511e !important;
+}
+
 #g-button:hover {
     color: #fff !important;
     scale: 1.05 !important;
@@ -22,13 +30,13 @@
     border-color: transparent !important;
 }
 
-#g-switch {
-    background: #cccccc;
-}
+/*#g-switch {*/
+/*    background: #000000 !important;*/
+/*}*/
 
-.ant-switch-checked {
-    background: #fb511e !important;
-}
+/*.ant-switch-checked {*/
+/*    background: #fb511e !important;*/
+/*}*/
 
 body {
     background: #f8f9fa;
@@ -57,4 +65,12 @@ body {
         transform: scaleY(1.01); /* Scale vertically */
         background-color: #f0f0f0; /* Color you want to transition to */
     }
+}
+
+.table-row-extern:nth-child(odd) {
+    background-color: rgba(126, 125, 125, 0.25);
+}
+
+.table-body-extern tr:hover, .table-body-extern tr td:hover {
+    background: rgba(251, 81, 30, 0.38);
 }

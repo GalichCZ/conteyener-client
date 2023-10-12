@@ -10,7 +10,7 @@ interface Props {
 
 const Cell: FC<Props> = ({ children, className, onClick }) => {
     return <td onClick={onClick}
-               className={`border-2 px-4 border-black h-full text-center relative ${className}`}>{children}</td>;
+               className={`border-2 px-4 border-black h-full text-center relative ${onClick && "cursor-pointer "} ${className}`}>{children}</td>;
 }
 
 const TableCell = {

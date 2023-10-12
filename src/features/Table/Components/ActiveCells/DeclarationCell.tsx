@@ -1,9 +1,14 @@
-import React from "react";
+import React, { FC } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
+import { FollowBid } from "@/Types";
 
-const DeclarationCell = () => {
+interface Props {
+    bid: FollowBid;
+}
+
+const DeclarationCell: FC<Props> = ({ bid }) => {
     return (
-        <TableCell.ArrayTooltip dataArray={['']}/>
+        <TableCell.ArrayTooltip cutLength={15} dataArray={bid.declaration_number}/>
     )
 }
 

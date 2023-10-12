@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+interface Params {
+    page: number;
+    reDraw: boolean;
+}
+
 export const bidsApi = createApi({
     reducerPath: "bidsApi",
     baseQuery: fetchBaseQuery({
@@ -11,10 +16,10 @@ export const bidsApi = createApi({
     }),
     endpoints: (build) => ({
         getBids: build.query({
-            query: (page: number) => `/item/${page}`
+            query: ({ page, reDraw }: Params) => `/item/${page}?reDraw=${reDraw}`
         }),
         getHiddenBids: build.query({
-            query: (page: number) => `/item/hidden/${page}`
+            query: ({ page, reDraw }: Params) => `/item/hidden/${page}?reDraw=${reDraw}`
         })
     })
 })

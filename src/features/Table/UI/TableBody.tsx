@@ -1,62 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import Row from "@/features/Table/Components/Row.tsx";
+import { FollowBid } from "@/Types";
 
-const TableBody = () => {
+interface Props {
+    bids: FollowBid[];
+}
+
+const TableBody: FC<Props> = ({ bids }) => {
+
     return (
-        <tbody className="bg-white">
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
-        <Row/>
+        <tbody className="bg-white table-body-extern">
+        {bids ? bids.map((bid, index) => <Row key={index} bid={bid}/>) : null}
         </tbody>
     );
 }

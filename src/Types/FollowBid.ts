@@ -1,10 +1,9 @@
 import { Container } from "@/Types/Container.ts";
 import { Docs } from "@/Types/Docs.ts";
 import { StockPlace } from "@/Types/StockPlace.ts";
-import { Store } from "@/Types/Store.ts";
 
 export interface FollowBid {
-    id: string;
+    _id: string;
     request_date: string | null;
     order_number: string[];
     inside_number: string[];
@@ -14,13 +13,13 @@ export interface FollowBid {
     container_type: string | undefined
     simple_product_name: string[];
     product: string[];
-    delivery_method: string | undefined
+    delivery_method: string;
     providers: string[];
     importers: string[];
     conditions: string[];
     store_name: string | undefined;
-    store: Store | string | undefined;
-    delivery_channel: string | undefined;
+    store: { _id: string, name: string };
+    delivery_channel: string;
     agent: string | undefined;
     place_of_dispatch: string | undefined;
     line: string | undefined;

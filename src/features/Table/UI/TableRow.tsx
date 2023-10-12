@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TableRow: FC<Props> = ({ children, className }) => {
-    return <tr className={className}>{children}</tr>;
+    return <tr className={`table-row-extern min-h-[50px] h-[50px] ${className}`}>{children}</tr>;
 }
 
 export default TableRow;

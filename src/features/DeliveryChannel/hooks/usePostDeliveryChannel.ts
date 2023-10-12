@@ -1,9 +1,9 @@
-import { DeliveryChannel, Error } from "@/Types";
+import { DeliveryChannelFormType, Error } from "@/Types";
 import { useEffect, useState } from "react";
 import { postDeliveryChannel } from "@/features/DeliveryChannel/Api/postDeliveryChannel.ts";
 import { AxiosError } from "axios";
 
-export const usePostDeliveryChannel = (deliveryChannel: DeliveryChannel | null) => {
+export const usePostDeliveryChannel = (deliveryChannel: DeliveryChannelFormType | null) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null>(null);
     const [success, setSuccess] = useState<boolean>(false);
