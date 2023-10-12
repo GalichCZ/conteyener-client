@@ -3,7 +3,7 @@ import { FollowBid } from "@/Types";
 import { useGetHiddenBidsQuery } from "@/store/api/bidsApi.ts";
 
 export const useGetHiddenBids = (page: number) => {
-    const { data, isLoading, error } = useGetHiddenBidsQuery(page);
+    const { data, isLoading, error } = useGetHiddenBidsQuery({ page, reDraw: null });
     const [hiddenBids, setHiddenBids] = useState<FollowBid[]>();
 
     useEffect(() => {

@@ -7,6 +7,7 @@ import { useGetBidsQuery } from "@/store";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import { displayMessage } from "@/utils/displayMessage.ts";
 
+
 const Table = () => {
     const [page, setPage] = useState(1);
     const reDraw = useAppSelector(state => state.reDraw.reDraw)
@@ -34,7 +35,7 @@ const Table = () => {
             {isLoading || isFetching ?
                 <p className="text-center absolute text-xl">Загрузка данных</p> :
                 <>
-                    <div className="w-[95%] bg-white mt-8 h-[85%] overflow-auto shadow-2xl">
+                    <div id="table2" className="w-[95%] bg-white mt-8 h-[85%] overflow-auto shadow-2xl">
                         <table className="relative">
                             <TableHead/>
                             <TableBody bids={data?.items}/>

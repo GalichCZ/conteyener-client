@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { AxiosError } from "axios";
 import { updateDocs } from "@/features/Table/Components/Modals/UpdateDocsModal/Api/updateDocs.ts";
 
-export const useUpdateDocs = (data: DocsFormType | null, bidId: string) => {
+export const useUpdateDocs = (data: DocsFormType | null, bidId: string, confirmed: boolean) => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState<Error | null>(null);
     const [loading, setLoading] = useState(false);
@@ -23,9 +23,9 @@ export const useUpdateDocs = (data: DocsFormType | null, bidId: string) => {
     }, [bidId]);
 
     useEffect(() => {
-        if (!data) return;
+        if (!data || !confirmed) return;
         callUpdateDocs(data);
-    }, [callUpdateDocs, data]);
+    }, [callUpdateDocs, confirmed, data]);
 
     return { success, error, loading, setError };
 }

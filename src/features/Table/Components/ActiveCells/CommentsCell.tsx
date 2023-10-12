@@ -7,6 +7,7 @@ interface Props {
 }
 
 const CommentsCell: FC<Props> = ({ bid }) => {
+    // console.log(bid);
     return (
         <TableCell.Cell>
             ...

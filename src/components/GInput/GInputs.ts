@@ -6,6 +6,7 @@ import GInputPassword from "@/components/GInput/components/GInputPassword.tsx";
 import GInputSelect from "@/components/GInput/components/GInputSelect.tsx";
 import GSwitch from "@/components/GInput/components/GSwitch.tsx";
 import GInputArea from "@/components/GInput/components/GInputArea.tsx";
+import GCheckBox from "@/components/GInput/components/GCheckBox.tsx";
 
 const GInputs = {
     Text: GInputText,
@@ -15,6 +16,7 @@ const GInputs = {
     Password: GInputPassword,
     Select: GInputSelect,
     Switch: GSwitch,
+    Checkbox: GCheckBox,
     Area: GInputArea,
 }
 export default GInputs
