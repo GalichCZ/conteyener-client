@@ -1,6 +1,5 @@
 import { Container } from "@/Types/Container.ts";
 import { Docs } from "@/Types/Docs.ts";
-import { StockPlace } from "@/Types/StockPlace.ts";
 
 export interface FollowBid {
     _id: string;
@@ -59,7 +58,7 @@ export interface FollowBid {
     note: string;
     creator: string;
     stock_place_name: string | undefined;
-    stock_place: StockPlace | string | undefined;
+    stock_place: { _id: string, name: string };
     hidden: boolean;
     direction: string | undefined;
 
