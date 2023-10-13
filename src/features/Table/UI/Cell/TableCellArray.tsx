@@ -13,9 +13,10 @@ interface Props {
 const TableCellArray: FC<Props> = ({ dataArray, onClick, modelArray }) => {
 
     return (
-        <td className={`border-2 px-4 border-black h-full text-center relative ${onClick && 'cursor-pointer'}`}>
+        <td className={`border-2 px-4 border-black h-full text-center relative`}>
             <div>
-                {dataArray.map((data, key) => <p onClick={() => onClick && onClick(data, modelArray[key])}
+                {dataArray.map((data, key) => <p className={onClick && 'cursor-pointer'}
+                                                 onClick={() => onClick && onClick(data, modelArray[key])}
                                                  key={key}>{data}</p>)}
             </div>
         </td>
