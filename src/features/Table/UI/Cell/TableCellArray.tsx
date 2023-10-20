@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
 import { Docs } from "@/Types";
+import { onDocsClick, onProductClick } from "@/features/Table/UI/Cell/TableCell.tsx";
 
-type onProductClick = (product: string) => void;
-type onDocsClick = (docsCount: string, docs: Docs) => void;
 
 interface Props {
     modelArray: Docs[];

@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 import TableCellArray from "@/features/Table/UI/Cell/TableCellArray.tsx";
 import TableCellArrayTooltip from "@/features/Table/UI/Cell/TableCellArrayTooltip.tsx";
+import { Docs } from "@/Types";
+
+export type onProductClick = (product: string) => void;
+export type onDocsClick = (docsCount: string, docs: Docs) => void;
 
 interface Props {
     children: React.ReactNode;
