@@ -1,19 +1,21 @@
-import React, { FC } from "react";
+import React from "react";
 import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { deliveryEnum, deliveryEnumTooltips } from "@/features/Table/enums/deliveryMethods.ts";
-import { Control } from "react-hook-form";
+import { Control, FieldValues } from "react-hook-form";
 
-interface Props {
-    control: Control<any>;
+interface Props<T extends FieldValues> {
+    control: Control<T>;
 }
 
-const SelectDeliveryMethod: FC<Props> = ({ control }) => {
+function SelectDeliveryMethod<T extends FieldValues>({ control }: Props<T>) {
     const deliveryValues = Object.values(deliveryEnum);
     const deliveryToolTips = Object.values(deliveryEnumTooltips);
+    const deliveries = deliveryValues.map(i => {
+        return { key: i, value: i }
+    })
 
-
-    return (<GInputs.Select values={deliveryValues} labels={deliveryValues} tooltips={deliveryToolTips}
+    return (<GInputs.Select values={deliveries} tooltips={deliveryToolTips}
                             placeholder={ColumnsEnum.DELIVERY_METHOD} name="delivery_method"
                             label={ColumnsEnum.DELIVERY_METHOD}
                             control={control}/>)

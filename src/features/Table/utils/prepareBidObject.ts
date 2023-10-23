@@ -3,11 +3,10 @@ import { getDateFromDayjs } from "@/utils/getDateFromDayjs.ts";
 import { prepareArraysForBidObject } from "./prepareArraysForBidObject.ts";
 import { UpdateBid } from "@/features/Table/Types/UpdateBid.ts";
 
-export const prepareBidObject = (dataMap: FormBidUpdateValues, id: string) => {
+export const prepareBidObject = (dataMap: FormBidUpdateValues, _id: string) => {
     const arrays = prepareArraysForBidObject(dataMap);
-
     const bid: UpdateBid = {
-        id,
+        _id,
         request_date: getDateFromDayjs(dataMap["request_date"]),
         order_number: arrays.order_number,
         inside_number: arrays.inside_number,
@@ -33,6 +32,7 @@ export const prepareBidObject = (dataMap: FormBidUpdateValues, id: string) => {
         td: dataMap["td"] as boolean,
         port: dataMap["port"]?.toString(),
         is_ds: dataMap["is_ds"] as boolean,
+        is_docs: dataMap["is_docs"],
         fraht_account: dataMap["fraht_account"]?.toString(),
         declaration_number: arrays.declaration_number,
         availability_of_ob: getDateFromDayjs(dataMap["availability_of_ob"]),

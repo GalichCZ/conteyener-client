@@ -1,11 +1,10 @@
-import React, { FC } from "react";
+import React from "react";
 import { FormItem } from "react-hook-form-antd";
 import { GInputType } from "@/components/GInput/types/GInputType.ts";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 
-const GInputArea: FC<GInputType> = ({
-                                        name, label, className, classNameWrap, control
-                                    }) => {
+
+function GInputArea<T extends FieldValues>({ name, label, className, classNameWrap, control }: GInputType<T>) {
     return (
         <FormItem control={control} name={name} className={classNameWrap} label={label}>
             <Controller name={name} render={

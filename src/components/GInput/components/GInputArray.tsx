@@ -1,56 +1,59 @@
-import React, { FC, FormEvent, useCallback, useEffect, useState } from 'react';
+import React, { FormEvent, useCallback, useEffect, useState } from 'react';
 import { GInputType } from "../types/GInputType.ts";
 import { FormItem } from "react-hook-form-antd";
 import { Input } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { v4 as uuidv4 } from 'uuid';
-import { UseFormSetValue } from "react-hook-form";
+import { FieldValues, Path, PathValue, UseFormSetValue, UseFormUnregister } from "react-hook-form";
 import Button from "@/components/UI/Button.tsx";
 import InputError from "@/components/UI/InputError.tsx";
 import { InputRecord } from "@/components/GInput/types/InputRecord.ts";
 import { useValidateCreateArray } from "@/components/GInput/hooks/useValidateCreateArray.ts";
 import { useValidateFilledAllPoles } from "@/components/GInput/hooks/useValidateFilledAllPoles.ts";
 
-
-interface Props extends GInputType {
+//TODO: change any's for generic types
+interface Props<T extends FieldValues> extends GInputType<T> {
     dataArray?: string[];
     isSubmitted?: boolean;
     isCreation?: boolean;
-    setValue: UseFormSetValue<any>;
+    setValue: UseFormSetValue<T>;
+    unregister?: UseFormUnregister<T>;
 }
 
 //TODO: change logic of inputs to save values after delete but avoid re-renders
-const GInputArray: FC<Props> = ({
-                                    setValue,
-                                    control,
-                                    name,
-                                    className,
-                                    classNameWrap,
-                                    label,
-                                    placeholder,
-                                    dataArray,
-                                    isSubmitted,
-                                    isCreation,
-                                }) => {
+function GInputArray<T extends FieldValues>({
+                                                setValue,
+                                                control,
+                                                name,
+                                                className,
+                                                classNameWrap,
+                                                label,
+                                                placeholder,
+                                                dataArray,
+                                                isSubmitted,
+                                                isCreation,
+                                                unregister
+                                            }: Props<T>) {
     const [inputList, setInputList] = useState<InputRecord[]>([]);
     const existenceError = useValidateCreateArray({ inputList, isCreation })
     const isAllFilled = useValidateFilledAllPoles({ inputList, isSubmitted });
+    const [dataAdded, setDataAdded] = useState(false);
 
     const addDataToInputList = useCallback(() => {
-        if (!dataArray) return;
+        if (!dataArray || dataAdded) return;
 
         dataArray.forEach((data) => {
             const keyName = name + uuidv4();
             const newInput = { [keyName]: data };
-            setValue(keyName, data);
+            setValue(keyName as Path<T>, data as PathValue<T, Path<T>>);
             setInputList((prev) => [...prev, newInput]);
         })
-    }, [dataArray, name, setValue]);
+        setDataAdded(true);
+    }, [dataAdded, dataArray, name, setValue]);
 
     useEffect(() => {
-        return () => addDataToInputList();
-
-    }, [addDataToInputList, dataArray, name]);
+        addDataToInputList();
+    }, [addDataToInputList]);
 
     const handleAddInput = (e: FormEvent | undefined) => {
         e?.preventDefault();
@@ -64,16 +67,17 @@ const GInputArray: FC<Props> = ({
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>, input: InputRecord, index: number) => {
         const keyName = Object.keys(input)[0];
-        const { value } = e.target;
         const updatedList = [...inputList];
-        updatedList[index] = { [keyName]: value };
+        updatedList[index] = { [keyName]: e.target.value };
         setInputList(updatedList);
     }
 
     const handleRemoveInput = (i: InputRecord, index: number) => {
         const keyName = Object.keys(i)[0];
+        console.log(keyName)
         const newInputList = [...inputList]
-        setValue(keyName, '');
+        setValue(keyName as Path<T>, '' as PathValue<T, Path<T>>);
+        unregister && unregister(keyName as Path<T>);
         newInputList.splice(index, 1)
         setInputList(newInputList);
     }
@@ -84,7 +88,7 @@ const GInputArray: FC<Props> = ({
 
             {inputList.map((_i, key) => (
                 <FormItem key={key} className={`mb-0 w-full ${classNameWrap}`} control={control}
-                          name={Object.keys(_i)[0]}>
+                          name={Object.keys(_i)[0] as Path<T>}>
                     <div className="flex mt-2">
                         <Input value={_i[Object.keys(_i)[0]]} onChange={(e) => {
                             handleInputChange(e, _i, key)

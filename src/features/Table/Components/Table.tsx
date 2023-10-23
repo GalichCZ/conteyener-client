@@ -6,8 +6,10 @@ import PageHandler from "@/features/Table/UI/PageHandler.tsx";
 import { useGetBidsQuery } from "@/store";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import { displayMessage } from "@/utils/displayMessage.ts";
+import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 
-
+//TODO: finish the update modal
+// make all dates set time 13:00 (dayjs)
 const Table = () => {
     const [page, setPage] = useState(1);
     const reDraw = useAppSelector(state => state.reDraw.reDraw)
@@ -32,17 +34,13 @@ const Table = () => {
     return (
         <>
             <GDrawer/>
-            {isLoading || isFetching ?
-                <p className="text-center absolute text-xl">Загрузка данных</p> :
-                <>
-                    <div id="table2" className="w-[95%] bg-white mt-8 h-[85%] overflow-auto shadow-2xl">
-                        <table className="relative">
-                            <TableHead/>
-                            <TableBody bids={data?.items}/>
-                        </table>
-                    </div>
-                </>
-            }
+            <div id="table2" className="w-[95%] bg-white mt-8 h-[85%] overflow-auto shadow-2xl">
+                {isLoading || isFetching && <FillingSkeleton/>}
+                <table className="relative">
+                    <TableHead/>
+                    <TableBody bids={data?.items}/>
+                </table>
+            </div>
             <PageHandler decrementPage={decrementPage} incrementPage={incrementPage} page={page}
                          totalPages={data?.totalPages ?? 0}/>
         </>

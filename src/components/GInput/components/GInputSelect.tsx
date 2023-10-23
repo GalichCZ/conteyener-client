@@ -1,30 +1,29 @@
-import React, { FC } from "react";
+import React from "react";
 import { FormItem } from "react-hook-form-antd";
 import { GInputType } from "@/components/GInput/types/GInputType.ts";
 import { ConfigProvider, Select, Tooltip } from "antd";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import InputSkeleton from "@/components/UI/InputSkeleton.tsx";
 import { theme } from "@/assets/antdConfig.ts";
+import { SelectOption } from "@/Types";
 
-interface Props extends GInputType {
-    values: string[];
-    labels: string[];
+interface Props<T extends FieldValues> extends GInputType<T> {
+    values: SelectOption[];
     tooltips: string[];
     isLoading?: boolean;
 }
 
-const GInputSelect: FC<Props> = ({
-                                     values,
-                                     labels,
-                                     tooltips,
-                                     name,
-                                     control,
-                                     className,
-                                     classNameWrap,
-                                     label,
-                                     placeholder,
-                                     isLoading
-                                 }) => {
+function GInputSelect<T extends FieldValues>({
+                                                 values,
+                                                 tooltips,
+                                                 name,
+                                                 control,
+                                                 className,
+                                                 classNameWrap,
+                                                 label,
+                                                 placeholder,
+                                                 isLoading
+                                             }: Props<T>) {
 
     if (isLoading) {
         return (<InputSkeleton/>);
@@ -40,15 +39,14 @@ const GInputSelect: FC<Props> = ({
                         <Select
                             placeholder={placeholder} className={className} {...field}>
                             {values.map((value, index) => (
-                                <Select.Option key={index} value={value} label={labels[index]}>
+                                <Select.Option key={index} value={value.key} label={label}>
                                     {tooltips.length > 0 ?
                                         <Tooltip destroyTooltipOnHide={true} title={tooltips[index]}>
-                                            <p>{labels[index]}</p>
+                                            <p>{value.value}</p>
                                         </Tooltip>
                                         :
-                                        <p>{labels[index]}</p>
+                                        <p>{value.value}</p>
                                     }
-
                                 </Select.Option>
                             ))}
                         </Select>

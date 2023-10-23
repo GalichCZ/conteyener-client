@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import FormLayout from "@/components/Layout/FormLayout.tsx";
-import { Control, UseFormSetValue } from "react-hook-form";
+import { Control, FieldValues, UseFormSetValue, UseFormUnregister } from "react-hook-form";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
 import SelectDeliveryMethod from "@/features/Table/Components/SelectDeliveryMethod.tsx";
@@ -8,15 +8,25 @@ import GButton from "@/components/GInput/components/GButton.tsx";
 import { Store } from "@/Types";
 import { prepareValuesAndNames } from "@/features/Table/utils/prepareValuesAndNames.ts";
 
-interface Props {
+interface Props<T extends FieldValues> {
     onSubmit: () => void;
-    control: Control<any>;
-    setValue: UseFormSetValue<any>;
+    control: Control<T>;
+    setValue: UseFormSetValue<T>;
     isLoadingStores: boolean;
     stores: Store[];
+    unregister: UseFormUnregister<T>;
 }
 
-const CreateBidForm: FC<Props> = ({ onSubmit, control, setValue, isLoadingStores, stores }) => {
+const columns = ColumnsEnum;
+
+function CreateBidForm<T extends FieldValues>({
+                                                  onSubmit,
+                                                  control,
+                                                  setValue,
+                                                  isLoadingStores,
+                                                  stores,
+                                                  unregister
+                                              }: Props<T>) {
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     //TODO: add validation for all fields(arrays)
@@ -29,67 +39,72 @@ const CreateBidForm: FC<Props> = ({ onSubmit, control, setValue, isLoadingStores
         }, 5000);
     }
 
-    const { names, values } = prepareValuesAndNames(stores);
+    const values = prepareValuesAndNames(stores);
 
     return (
         <FormLayout className="w-full" onFinish={submitHandler}>
             <div className="grid grid-cols-5 gap-x-10 gap-y-3">
-                <GInputs.Date placeholder={ColumnsEnum.REQUEST_DATE} name="request_date"
-                              label={ColumnsEnum.REQUEST_DATE} control={control}/>
+                <GInputs.Date placeholder={columns.REQUEST_DATE} name="request_date"
+                              label={columns.REQUEST_DATE} control={control}/>
 
                 <GInputs.Array setValue={setValue}
-                               placeholder={ColumnsEnum.ORDER_NUMBER}
+                               placeholder={columns.ORDER_NUMBER}
                                name="order_number"
                                isCreation={true}
+                               unregister={unregister}
                                isSubmitted={isSubmitted}
-                               label={ColumnsEnum.ORDER_NUMBER} control={control}/>
+                               label={columns.ORDER_NUMBER} control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                isCreation={true}
                                isSubmitted={isSubmitted}
-                               placeholder={ColumnsEnum.PRODUCT}
+                               placeholder={columns.PRODUCT}
                                name="simple_product_name"
-                               label={ColumnsEnum.PRODUCT} control={control}/>
+                               unregister={unregister}
+                               label={columns.PRODUCT} control={control}/>
 
                 <SelectDeliveryMethod control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                isCreation={true}
                                isSubmitted={isSubmitted}
-                               placeholder={ColumnsEnum.PROVIDER}
+                               placeholder={columns.PROVIDER}
                                name="providers"
-                               label={ColumnsEnum.PROVIDER} control={control}/>
+                               unregister={unregister}
+                               label={columns.PROVIDER} control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                isCreation={true}
                                isSubmitted={isSubmitted}
-                               placeholder={ColumnsEnum.IMPORTER}
+                               placeholder={columns.IMPORTER}
                                name="importers"
-                               label={ColumnsEnum.IMPORTER} control={control}/>
+                               unregister={unregister}
+                               label={columns.IMPORTER} control={control}/>
 
                 <GInputs.Array setValue={setValue}
                                isCreation={true}
                                isSubmitted={isSubmitted}
-                               placeholder={ColumnsEnum.CONDITIONS}
+                               placeholder={columns.CONDITIONS}
                                name="conditions"
-                               label={ColumnsEnum.CONDITIONS} control={control}/>
+                               unregister={unregister}
+                               label={columns.CONDITIONS} control={control}/>
 
-                <GInputs.Select isLoading={isLoadingStores} values={values} labels={names} tooltips={[]}
-                                placeholder={ColumnsEnum.STORE} name="store"
-                                label={ColumnsEnum.STORE}
+                <GInputs.Select isLoading={isLoadingStores} values={values} tooltips={[]}
+                                placeholder={columns.STORE} name="store"
+                                label={columns.STORE}
                                 control={control}/>
 
-                <GInputs.Text placeholder={ColumnsEnum.DIRECTION} name="direction"
-                              label={ColumnsEnum.DIRECTION} control={control}/>
+                <GInputs.Text placeholder={columns.DIRECTION} name="direction"
+                              label={columns.DIRECTION} control={control}/>
 
-                <GInputs.Text placeholder={ColumnsEnum.AGENT} name="agent"
-                              label={ColumnsEnum.AGENT} control={control}/>
+                <GInputs.Text placeholder={columns.AGENT} name="agent"
+                              label={columns.AGENT} control={control}/>
 
-                <GInputs.Text placeholder={ColumnsEnum.CONTAINER_TYPE} name="container_type"
-                              label={ColumnsEnum.CONTAINER_TYPE} control={control}/>
+                <GInputs.Text placeholder={columns.CONTAINER_TYPE} name="container_type"
+                              label={columns.CONTAINER_TYPE} control={control}/>
 
-                <GInputs.Text placeholder={ColumnsEnum.PLACE_OF_DISPATCH} name="place_of_dispatch"
-                              label={ColumnsEnum.PLACE_OF_DISPATCH} control={control}/>
+                <GInputs.Text placeholder={columns.PLACE_OF_DISPATCH} name="place_of_dispatch"
+                              label={columns.PLACE_OF_DISPATCH} control={control}/>
 
             </div>
             <GButton text="Создать"/>

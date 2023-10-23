@@ -64,3 +64,11 @@ export interface FollowBid {
 
     [key: string]: any;
 }
+
+export enum Dates {
+    request_date = "request_date",
+    ready_date = "ready_date",
+    loading_date = "loading_date",
+    availibility_if_ob = "availibility_if_ob",
+    answer_of_ob = "answer_of_ob",
+}

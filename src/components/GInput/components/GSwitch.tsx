@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React from "react";
 import { Switch } from "antd";
 import { GInputType } from "@/components/GInput/types/GInputType.ts";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 import { FormItem } from "react-hook-form-antd";
 
-const GSwitch: FC<GInputType> = ({ control, className, classNameWrap, name, label }) => {
+function GSwitch<T extends FieldValues>({ control, className, classNameWrap, name, label }: GInputType<T>) {
     return (
         <FormItem valuePropName="checked" label={label} control={control} name={name} className={classNameWrap}>
             <Controller

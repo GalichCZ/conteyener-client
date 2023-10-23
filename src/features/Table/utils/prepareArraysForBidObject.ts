@@ -13,6 +13,7 @@ export const prepareArraysForBidObject = (array: FormBidUpdateValues | FormBidCr
 
     Object.keys(array).forEach((key) => {
         if (key.includes("order_number")) {
+            console.log(key)
             order_number.push(<string>array[key]);
         }
         if (key.includes("inside_number")) {

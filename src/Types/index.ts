@@ -11,3 +11,4 @@ export * from "./Error.ts";
 export * from "./DeliveryChannel.ts"
 export * from "./Store.ts"
 export * from "./Declaration.ts"
+export * from "./SelectOption.ts"
