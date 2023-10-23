@@ -4,9 +4,10 @@ import { DatesTypesLabelsEnum } from "@/enums/datesTypesEnum.ts";
 import GButton from "@/components/GInput/components/GButton.tsx";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { Control } from "react-hook-form";
-import { DateCalculateFormType } from "@/Types";
+import { DateCalculateFormType, SelectOption } from "@/Types";
 import { useGetDeliveryChannels } from "@/hooks/useGetDeliveryChannels.ts";
 import { handleError } from "@/utils/handleError.ts";
+import { prepareValuesAndNames } from "@/features/Table/utils/prepareValuesAndNames.ts";
 
 interface Props {
     onSubmit: () => void;
@@ -15,19 +16,11 @@ interface Props {
 
 const EtdUpdateForm: FC<Props> = ({ onSubmit, control }) => {
     const { error, setError, isLoading, deliveryChannels } = useGetDeliveryChannels();
-    const [deliveryChannelsLabels, setDeliveryChannelsLabels] = useState<string[]>([]);
-    const [deliveryChannelsValues, setDeliveryChannelsValues] = useState<string[]>([]);
+    const [deliveryChannelsOptions, setDeliveryChannelsOptions] = useState<SelectOption[]>([])
 
     useEffect(() => {
-        if (deliveryChannels.length === 0) return;
-        const labels: string[] = [];
-        const values: string[] = [];
-        deliveryChannels.forEach((deliveryChannel) => {
-            labels.push(deliveryChannel.name);
-            values.push(deliveryChannel._id);
-        })
-        setDeliveryChannelsLabels(labels);
-        setDeliveryChannelsValues(values);
+        const values = prepareValuesAndNames(deliveryChannels)
+        setDeliveryChannelsOptions(values);
     }, [deliveryChannels]);
 
     useEffect(() => {
@@ -41,9 +34,7 @@ const EtdUpdateForm: FC<Props> = ({ onSubmit, control }) => {
         <FormLayout className="shadow-none" onFinish={onSubmit}>
             <GInputs.Date name="date" label={DatesTypesLabelsEnum.ETD} control={control}/>
             <GInputs.Select name="delivery_channel" label="Канал поставки"
-                            control={control}
-                            values={deliveryChannelsValues}
-                            labels={deliveryChannelsLabels} tooltips={[]} isLoading={isLoading}/>
+                            control={control} values={deliveryChannelsOptions} tooltips={[]} isLoading={isLoading}/>
             <GButton className="mt-2" text="Сохранить"/>
         </FormLayout>
     )

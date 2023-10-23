@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import { RolesEnum, RolesLabelEnum } from "@/enums/rolesEnum.ts";
 import { User } from "@/Types";
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { useForm } from "react-hook-form";
@@ -13,6 +12,7 @@ import { handleError } from "@/utils/handleError.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import GModal from "@/components/Layout/GModal.tsx";
+import { getKeyAndValues } from "@/features/Users/utils/getKeyAndValues.ts";
 
 interface Props {
     open: boolean;
@@ -25,8 +25,7 @@ interface FormValues {
 }
 
 const UserModal: FC<Props> = ({ open, user, setOpen }) => {
-    const roleValues = Object.values(RolesEnum);
-    const roleLabels = Object.values(RolesLabelEnum);
+    const values = getKeyAndValues();
     const dispatch = useDispatch();
 
     const { first_name, last_name, email, role } = user;
@@ -71,7 +70,7 @@ const UserModal: FC<Props> = ({ open, user, setOpen }) => {
                     <p>Имя: {first_name}</p>
                     <p>Фамилия: {last_name}</p>
                     <p>Email: {email}</p>
-                    <GInputs.Select values={roleValues} labels={roleLabels} tooltips={[]} name="role" label="Роль:"
+                    <GInputs.Select values={values} tooltips={[]} name="role" label="Роль:"
                                     control={control}/>
                     <div className="flex justify-between h-9">
                         <GButton text="Сохранить"/>

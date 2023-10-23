@@ -1,19 +1,19 @@
-import React, { FC } from "react";
+import React from "react";
 import { InputNumber } from "antd";
 import { GInputType } from "../types/GInputType.ts";
 import { FormItem } from "react-hook-form-antd";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
 
-interface Props extends GInputType {
+interface Props<T extends FieldValues> extends GInputType<T> {
     min: number;
     max: number;
     onChange?: (value: number | null) => void;
 }
 
-const GInputNumber: FC<Props> = ({
-                                     min, max, onChange, placeholder,
-                                     name, className, classNameWrap, label, control
-                                 }) => {
+function GInputNumber<T extends FieldValues>({
+                                                 min, max, onChange, placeholder,
+                                                 name, className, classNameWrap, label, control
+                                             }: Props<T>) {
     return (
         <FormItem control={control} name={name} label={label} className={classNameWrap}>
             <Controller control={control} render={

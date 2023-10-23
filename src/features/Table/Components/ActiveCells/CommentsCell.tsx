@@ -6,7 +6,7 @@ interface Props {
     bid: FollowBid;
 }
 
-const CommentsCell: FC<Props> = ({ bid }) => {
+const CommentsCell: FC<Props> = () => {
     // console.log(bid);
     return (
         <TableCell.Cell>

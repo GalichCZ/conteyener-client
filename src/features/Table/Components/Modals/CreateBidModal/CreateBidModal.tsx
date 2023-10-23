@@ -20,7 +20,7 @@ interface Props {
 
 const CreateBidModal: FC<Props> = ({ open, handleOpen }) => {
     const [newBid, setNewBid] = useState<NewBid | null>(null);
-    const { control, handleSubmit, setValue } = useForm({
+    const { control, handleSubmit, setValue, unregister } = useForm({
         resolver: yupResolver(CreateBidSchema),
     });
     const { isLoading: isStoreLoading, stores, error: storeError, setError: setStoreError } = useGetStores()
@@ -53,7 +53,7 @@ const CreateBidModal: FC<Props> = ({ open, handleOpen }) => {
                 onCancel={handleOpen}>
             {isLoading && <FillingSkeleton/>}
             <CreateBidForm stores={stores} isLoadingStores={isStoreLoading} setValue={setValue} control={control}
-                           onSubmit={handleSubmit(onSubmit)}/>
+                           onSubmit={handleSubmit(onSubmit)} unregister={unregister}/>
             <Button className="mt-10 border-red-500 border-[1px] text-red-500" text="Отмена"/>
         </GModal>
     )

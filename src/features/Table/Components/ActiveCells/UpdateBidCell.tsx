@@ -18,7 +18,7 @@ const UpdateBidCell: FC<Props> = ({ bid }) => {
 
     return (
         <>
-            {open && createPortal(<UpdateBidModal followBid={bid} open={open} handleOpen={handleOpen}/>, document.body)}
+            {open && createPortal(<UpdateBidModal followBid={bid} open={open} setOpen={setOpen}/>, document.body)}
             <TableCell.Cell onClick={handleOpen}
                             className="cursor-pointer">{formatDate(bid.request_date)}</TableCell.Cell>
         </>
