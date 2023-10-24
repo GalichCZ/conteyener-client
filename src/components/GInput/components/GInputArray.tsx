@@ -10,6 +10,7 @@ import InputError from "@/components/UI/InputError.tsx";
 import { InputRecord } from "@/components/GInput/types/InputRecord.ts";
 import { useValidateCreateArray } from "@/components/GInput/hooks/useValidateCreateArray.ts";
 import { useValidateFilledAllPoles } from "@/components/GInput/hooks/useValidateFilledAllPoles.ts";
+import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
 
 //TODO: change any's for generic types
 interface Props<T extends FieldValues> extends GInputType<T> {
@@ -74,13 +75,36 @@ function GInputArray<T extends FieldValues>({
 
     const handleRemoveInput = (i: InputRecord, index: number) => {
         const keyName = Object.keys(i)[0];
-        console.log(keyName)
         const newInputList = [...inputList]
         setValue(keyName as Path<T>, '' as PathValue<T, Path<T>>);
         unregister && unregister(keyName as Path<T>);
         newInputList.splice(index, 1)
         setInputList(newInputList);
     }
+
+    const handleDuplicates = useCallback(() => {
+        if (name === "order_number" || name === "container_number") {
+            const duplicateName = ColumnsEnum[name.toUpperCase() as keyof typeof ColumnsEnum]
+            console.log(duplicateName)
+            const duplicates: string[] = []
+            const stringArr = inputList.map(item => Object.values(item)[0])
+            stringArr.sort();
+            stringArr.forEach((str, index) => {
+                if (str === stringArr[index + 1] && str) duplicates.push(str);
+            })
+            return `Повторяющийся ${duplicateName}: ` + duplicates.join(', ');
+        }
+    }, [inputList, name])
+
+    useEffect(() => {
+        // if (!isSubmitted) return
+        //
+        // const duplicates = handleDuplicates()
+        //
+        // if (duplicates) {
+        //     displayMessage(duplicates)
+        // }
+    }, [handleDuplicates, isSubmitted]);
 
     return (
         <div className="flex flex-col">
@@ -102,6 +126,7 @@ function GInputArray<T extends FieldValues>({
             <Button className="border-gray-300 bg-gray-200 max-w-fit mt-3 border-[1px]" text="Добавить поле"
                     onClick={(e) => handleAddInput(e)}/>
 
+            {}
             {existenceError && isSubmitted && <InputError>Поля не могут отсутствовать</InputError>}
             {!isAllFilled && isSubmitted && <InputError>Все поля должны быть заполнены</InputError>}
         </div>

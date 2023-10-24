@@ -6,10 +6,10 @@ export const handleError = (error: Error) => {
     displayError(error);
     if (error.status === 403) {
         displayMessage("Логин сессия просрочена - перенаправление на страницу логина");
-        // setTimeout(() => {
-        //     window.location.href = "/login";
-        //     localStorage.removeItem("token");
-        // }, 3000);
+        setTimeout(() => {
+            window.location.href = "/login";
+            localStorage.removeItem("token");
+        }, 3000);
     }
 }
 

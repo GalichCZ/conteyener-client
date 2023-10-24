@@ -1,4 +1,11 @@
 export const checkArrayDuplicates = (array: string[]) => {
-    const uniqueSet = new Set(array);
-    return uniqueSet.size !== array.length;
+    const duplicates: string[] = []
+    array.sort()
+    array.forEach((str, index) => {
+        if (str === array[index + 1] && str) duplicates.push(str);
+
+    })
+    if (duplicates.length > 0)
+        return duplicates.join(',')
+    return null
 }
