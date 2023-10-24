@@ -10,6 +10,8 @@ import UpdateBidForm from "@/features/Table/Components/Modals/UpdateBidModal/Upd
 import { useUpdateBid } from "@/features/Table/Hooks/useUpdateBid.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { prepareBidObject } from "@/features/Table/utils/prepareBidObject.ts";
+import { useDispatch } from "react-redux";
+import { setReDraw } from "@/store";
 
 interface Props {
     open: boolean;
@@ -19,7 +21,7 @@ interface Props {
 
 
 const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
-
+    const dispatch = useDispatch();
     const { control, setValue, handleSubmit, unregister } = useForm<FormBidUpdateValues>();
     const { loading, error, success, setError, callUpdateBid } = useUpdateBid();
 
@@ -43,9 +45,10 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
 
     useEffect(() => {
         if (success) {
+            dispatch(setReDraw());
             handleOpen()
         }
-    }, [handleOpen, success]);
+    }, [dispatch, handleOpen, success]);
 
     useEffect(() => {
         if (error) {

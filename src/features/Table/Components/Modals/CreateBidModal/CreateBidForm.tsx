@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FormLayout from "@/components/Layout/FormLayout.tsx";
 import { Control, FieldValues, UseFormSetValue, UseFormUnregister } from "react-hook-form";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
 import SelectDeliveryMethod from "@/features/Table/Components/SelectDeliveryMethod.tsx";
 import GButton from "@/components/GInput/components/GButton.tsx";
-import { Store } from "@/Types";
 import { prepareValuesAndNames } from "@/features/Table/utils/prepareValuesAndNames.ts";
+import { useGetStores } from "@/hooks/useGetStores.ts";
+import { handleError } from "@/utils/handleError.ts";
 
 interface Props<T extends FieldValues> {
     onSubmit: () => void;
     control: Control<T>;
     setValue: UseFormSetValue<T>;
-    isLoadingStores: boolean;
-    stores: Store[];
     unregister: UseFormUnregister<T>;
 }
 
@@ -23,13 +22,19 @@ function CreateBidForm<T extends FieldValues>({
                                                   onSubmit,
                                                   control,
                                                   setValue,
-                                                  isLoadingStores,
-                                                  stores,
                                                   unregister
                                               }: Props<T>) {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const { isLoading, stores, error, setError } = useGetStores()
 
-    //TODO: add validation for all fields(arrays)
+    //TODO: add validation for all fields(arrays), check duplicates, add this logic to update
+
+    useEffect(() => {
+        if (error) {
+            handleError(error);
+            setError(null);
+        }
+    }, [error, setError]);
 
     const submitHandler = () => {
         setIsSubmitted(true);
@@ -89,7 +94,7 @@ function CreateBidForm<T extends FieldValues>({
                                unregister={unregister}
                                label={columns.CONDITIONS} control={control}/>
 
-                <GInputs.Select isLoading={isLoadingStores} values={values} tooltips={[]}
+                <GInputs.Select isLoading={isLoading} values={values} tooltips={[]}
                                 placeholder={columns.STORE} name="store"
                                 label={columns.STORE}
                                 control={control}/>

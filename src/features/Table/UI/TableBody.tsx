@@ -3,7 +3,7 @@ import Row from "@/features/Table/Components/Row.tsx";
 import { FollowBid } from "@/Types";
 
 interface Props {
-    bids: FollowBid[];
+    bids: FollowBid[] | undefined;
 }
 
 const TableBody: FC<Props> = ({ bids }) => {
