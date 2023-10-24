@@ -1,7 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { FilterFilled } from "@ant-design/icons";
 import { createPortal } from "react-dom";
 import FilterTooltip from "@/features/Filters/Components/FilterTooltip.tsx";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@/hooks/hooksRedux.ts";
+import { setTooltipId } from "@/store/slices/uiSlice.ts";
 
 interface Props {
     key_name: string;
@@ -9,12 +12,18 @@ interface Props {
 
 const Filter: FC<Props> = ({ key_name }) => {
     const [open, setOpen] = useState(false);
-    const [tooltipId, setTooltipId] = useState<string>("");
+    const dispatch = useDispatch();
+    const tooltipId = useAppSelector(state => state.ui.tooltipId);
 
     const handleFilter = () => {
-        setTooltipId(key_name);
-        setOpen((prev) => !prev);
+        const id = open ? "" : key_name
+        dispatch(setTooltipId({ tooltipId: id }))
+        setOpen(true);
     }
+
+    useEffect(() => {
+        if (tooltipId === "") setOpen(false)
+    }, [tooltipId]);
 
     return (
         <>
