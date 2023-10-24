@@ -11,8 +11,6 @@ import { handleError } from "@/utils/handleError.ts";
 // make all dates set time 13:00 (dayjs)
 const Table = () => {
     const [page, setPage] = useState(1);
-
-    // const { isLoading, data, error, isFetching } = useGetBidsQuery({ page, reDraw });
     const { loading, bids, error, setError, pages } = useGetBids(page, false);
 
     const decrementPage = () => {
