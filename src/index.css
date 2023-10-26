@@ -23,6 +23,10 @@
     background-color: #fb511e !important;
 }
 
+.ant-upload-list-item-container {
+    display: none;
+}
+
 #g-button:hover {
     color: #fff !important;
     scale: 1.05 !important;

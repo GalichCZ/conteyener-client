@@ -35,7 +35,7 @@ const DeliveryChannelForm: FC<Props> = ({ control, deliveryChannel, setValue, on
         <FormLayout className="shadow-none" onFinish={onSubmit}>
             <GInputs.Text name="name" label="Наименование" control={control}/>
             <div className="grid grid-cols-3">
-                <GInputs.Number min={0} max={1000} name={names.ETA} label={labels.ETA} control={control}/>
+                <GInputs.Number min={0} max={1000} name="eta" label={labels.ETA} control={control}/>
                 <GInputs.Number min={0} max={1000} name={names.DATE_DO} label={labels.DATE_DO}
                                 control={control}/>
                 <GInputs.Number min={0} max={1000} name={names.DECLARATION_ISSUE_DATE}

@@ -7,18 +7,17 @@ import { Controller, FieldValues } from "react-hook-form";
 interface Props<T extends FieldValues> extends GInputType<T> {
     min: number;
     max: number;
-    onChange?: (value: number | null) => void;
 }
 
 function GInputNumber<T extends FieldValues>({
-                                                 min, max, onChange, placeholder,
+                                                 min, max, placeholder,
                                                  name, className, classNameWrap, label, control
                                              }: Props<T>) {
     return (
         <FormItem control={control} name={name} label={label} className={classNameWrap}>
             <Controller control={control} render={
                 ({ field }) => (
-                    <InputNumber min={min} max={max} {...field} onChange={onChange} placeholder={placeholder}
+                    <InputNumber min={min} max={max} {...field} placeholder={placeholder}
                                  className={className}/>)
             } name={name}/>
         </FormItem>

@@ -11,6 +11,7 @@ import { prepareValuesAndNames } from "@/features/Table/utils/prepareValuesAndNa
 import { useGetStores } from "@/hooks/useGetStores.ts";
 import { useGetStockPlaces } from "@/hooks/useGetStockPlaces.ts";
 import { handleError } from "@/utils/handleError.ts";
+import { DevTool } from "@hookform/devtools";
 
 interface Props {
     onSubmit: () => void;
@@ -127,8 +128,8 @@ const UpdateBidForm: FC<Props> = ({
                 <GInputs.Date placeholder={columns.READY_DATE} name="ready_date"
                               label={columns.READY_DATE} control={control}/>
 
-                <GInputs.Date placeholder={columns.LOADING_DATE} name="loading_date"
-                              label={columns.LOADING_DATE} control={control}/>
+                <GInputs.Date placeholder={columns.LOAD_DATE} name="load_date"
+                              label={columns.LOAD_DATE} control={control}/>
 
                 <GInputs.Switch name="bl_smgs_cmr" label={columns.BL_SMGS_CMR} control={control}/>
 
@@ -149,7 +150,7 @@ const UpdateBidForm: FC<Props> = ({
                                name="declaration_number"
                                label={columns.DECLARATION_NUMBER} control={control}/>
 
-                <GInputs.Date placeholder={columns.AVAILIBILITY_IF_OB} name="availibility_if_ob"
+                <GInputs.Date placeholder={columns.AVAILIBILITY_IF_OB} name="availability_of_ob"
                               label={columns.AVAILIBILITY_IF_OB} control={control}/>
 
                 <GInputs.Date placeholder={columns.ANSWER_OF_OB} name="answer_of_ob"
@@ -170,6 +171,7 @@ const UpdateBidForm: FC<Props> = ({
                               label={columns.PICKUP} control={control}/>
             </div>
             <GButton text="Изменить"/>
+            <DevTool control={control}/>
         </FormLayout>
     )
 }

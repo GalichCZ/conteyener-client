@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CreateBidSchema } from "./validation/CreateBidSchema.js";
 import { FormBidCreateValues } from "@/features/Table/Types/FormBidCreateValues.ts";
 import { prepareNewBidObject } from "@/features/Table/utils/prepareNewBidObject.ts";
-import { useCreateBid } from "@/features/Table/Hooks/useCreateBid.ts";
+import { useCreateBid } from "@/features/Table/hooks/useCreateBid.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import GModal from "@/components/Layout/GModal.tsx";
 import { useDispatch } from "react-redux";

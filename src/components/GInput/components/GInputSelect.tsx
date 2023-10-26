@@ -29,6 +29,8 @@ function GInputSelect<T extends FieldValues>({
         return (<InputSkeleton/>);
     }
 
+    console.log(values)
+
     return (
         <FormItem label={label} control={control} name={name} className={classNameWrap}>
             <Controller render={

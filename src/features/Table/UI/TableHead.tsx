@@ -3,20 +3,20 @@ import TableRow from "@/features/Table/UI/TableRow.tsx";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import { getColumns } from "@/features/Table/utils/getColumns.ts";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
-import { RolesEnum } from "@/enums/rolesEnum.ts";
 import Filter from "@/features/Filters/Components/Filter.tsx";
 
 const TableHead = () => {
     const user = useAppSelector(state => state.authentication.user);
-    const { columnsNames, columnsKeys } = getColumns(RolesEnum.MANAGER_INT);
     const [columns, setColumns] = useState<string[]>([]);
+    const [columnsKeys, setColumnsKeys] = useState<string[]>([]);
 
     useEffect(() => {
         if (user) {
-            // setColumns(getColumns(user.role));
+            const { columnsNames, columnsKeys } = getColumns(user.role);
+            setColumns(columnsNames);
+            setColumnsKeys(columnsKeys)
         }
-        setColumns(columnsNames);
-    }, [columnsNames, user]);
+    }, [user]);
 
     return (
         <thead className="h-10 sticky top-0 z-10 bg-gray-300">

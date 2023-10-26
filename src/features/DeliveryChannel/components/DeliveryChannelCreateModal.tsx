@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
 import DeliveryChannelForm from "@/features/DeliveryChannel/components/DeliveryChannelForm.tsx";
 import { DeliveryChannelFormType } from "@/Types";
 import { useForm } from "react-hook-form";
@@ -20,7 +20,7 @@ const DeliveryChannelCreateModal: FC<Props> = ({ open, setOpen }) => {
     const { control, setValue, handleSubmit } = useForm<DeliveryChannelFormType>({
         resolver: yupResolver(DeliveryChannelSchema)
     });
-    const [deliveryChannel, setDeliveryChannel] = React.useState<DeliveryChannelFormType | null>(null);
+    const [deliveryChannel, setDeliveryChannel] = useState<DeliveryChannelFormType | null>(null);
     const { success, setError, error, isLoading } = usePostDeliveryChannel(deliveryChannel);
     const dispatch = useDispatch();
 
