@@ -7,11 +7,12 @@ import { FollowBid } from "@/Types";
 import GModal from "@/components/Layout/GModal.tsx";
 import { setValuesInForm } from "@/features/Table/utils/setValuesInForm.ts";
 import UpdateBidForm from "@/features/Table/Components/Modals/UpdateBidModal/UpdateBidForm.tsx";
-import { useUpdateBid } from "@/features/Table/Hooks/useUpdateBid.ts";
+import { useUpdateBid } from "@/features/Table/hooks/useUpdateBid.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { prepareBidObject } from "@/features/Table/utils/prepareBidObject.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
+import dayjs from "dayjs";
 
 interface Props {
     open: boolean;
@@ -33,8 +34,11 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
         if (followBid) {
             setValuesInForm(followBid, setValue);
             //TODO: need to find the reason of this wierd null behaviour
-            setValue("ready_date", null);
-            setValue("answer_of_ob", null);
+            setValue("ready_date", dayjs(followBid.ready_date));
+            setValue("answer_of_ob", dayjs(followBid.answer_of_ob));
+            setValue("availability_of_ob", dayjs(followBid.availability_of_ob));
+            setValue("request_date", dayjs(followBid.request_date));
+            setValue("load_date", dayjs(followBid.load_date));
         }
     }, [followBid, setValue]);
 

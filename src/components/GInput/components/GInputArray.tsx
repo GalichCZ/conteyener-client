@@ -10,7 +10,6 @@ import InputError from "@/components/UI/InputError.tsx";
 import { InputRecord } from "@/components/GInput/types/InputRecord.ts";
 import { useValidateCreateArray } from "@/components/GInput/hooks/useValidateCreateArray.ts";
 import { useValidateFilledAllPoles } from "@/components/GInput/hooks/useValidateFilledAllPoles.ts";
-import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
 
 //TODO: change any's for generic types
 interface Props<T extends FieldValues> extends GInputType<T> {
@@ -81,30 +80,6 @@ function GInputArray<T extends FieldValues>({
         newInputList.splice(index, 1)
         setInputList(newInputList);
     }
-
-    const handleDuplicates = useCallback(() => {
-        if (name === "order_number" || name === "container_number") {
-            const duplicateName = ColumnsEnum[name.toUpperCase() as keyof typeof ColumnsEnum]
-            console.log(duplicateName)
-            const duplicates: string[] = []
-            const stringArr = inputList.map(item => Object.values(item)[0])
-            stringArr.sort();
-            stringArr.forEach((str, index) => {
-                if (str === stringArr[index + 1] && str) duplicates.push(str);
-            })
-            return `Повторяющийся ${duplicateName}: ` + duplicates.join(', ');
-        }
-    }, [inputList, name])
-
-    useEffect(() => {
-        // if (!isSubmitted) return
-        //
-        // const duplicates = handleDuplicates()
-        //
-        // if (duplicates) {
-        //     displayMessage(duplicates)
-        // }
-    }, [handleDuplicates, isSubmitted]);
 
     return (
         <div className="flex flex-col">

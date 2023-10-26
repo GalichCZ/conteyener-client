@@ -7,7 +7,7 @@ interface Props {
 
 const PoleWrap: FC<Props> = ({ children, className }) => {
     return (
-        <div className={`${className} w-[150px]`}>
+        <div className={`${className} w-[170px]`}>
             {children}
         </div>
     )

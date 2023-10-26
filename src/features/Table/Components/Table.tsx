@@ -4,11 +4,11 @@ import TableBody from "@/features/Table/UI/TableBody.tsx";
 import GDrawer from "@/features/Table/Components/Drawer/GDrawer.tsx";
 import PageHandler from "@/features/Table/UI/PageHandler.tsx";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
-import { useGetBids } from "@/features/Table/Hooks/useGetBids.ts";
 import { handleError } from "@/utils/handleError.ts";
+import Search from "@/features/Table/Components/Search/Search.tsx";
+import { useGetBids } from "@/features/Table/hooks/useGetBids.ts";
 
-//TODO: finish the update modal
-// make all dates set time 13:00 (dayjs)
+//TODO: make all dates set time 13:00 (dayjs)
 const Table = () => {
     const [page, setPage] = useState(1);
     const { loading, bids, error, setError, pages } = useGetBids(page, false);
@@ -32,7 +32,8 @@ const Table = () => {
     return (
         <>
             <GDrawer/>
-            <div id="table2" className="w-[95%] bg-white mt-8 h-[85%] overflow-auto shadow-2xl">
+            <Search/>
+            <div id="table2" className="w-[95%] bg-white mt-8 h-[83%] translate-y-[10px] overflow-auto shadow-2xl">
                 {loading && <FillingSkeleton/>}
                 <table className="relative">
                     <TableHead/>

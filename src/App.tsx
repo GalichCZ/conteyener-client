@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "@/components/Layout/Layout.tsx";
 import LoginPage from "@/pages/LoginPage.tsx";
@@ -14,8 +14,20 @@ import UsersPage from "@/pages/UsersPage.tsx";
 import StoresPage from "@/pages/StoresPage.tsx";
 import DeliveryChannelPage from "@/pages/DeliveryChannelPage.tsx";
 import StockPlacesPage from "@/pages/StockPlacesPage.tsx";
+import { useGetMe } from "@/hooks/useGetMe.ts";
+import { handleError } from "@/utils/handleError.ts";
 
 function App() {
+    const { callGetMe, error } = useGetMe();
+    useEffect(() => {
+        callGetMe()
+    }, [callGetMe]);
+
+    useEffect(() => {
+        if (error) {
+            handleError(error)
+        }
+    }, [error]);
 
     return (
         <>

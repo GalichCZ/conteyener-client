@@ -5,14 +5,28 @@ import { FollowBid } from "@/Types";
 import { createPortal } from "react-dom";
 import UploadProductModal
     from "@/features/Table/Components/Modals/UploadProductCellModal/Components/UploadProductModal.tsx";
+import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
 interface Props {
     bid: FollowBid;
 }
 
+enum allowedRoles {
+    manager_int = "manager_int",
+    head = "head",
+    manager_store = "manager_store",
+    manager_sales = "manager_sales",
+    manager_buyer = "manager_buyer",
+    manager_patriot = "manager_patriot",
+}
+
 const UploadProductCell: FC<Props> = ({ bid }) => {
     const [open, setOpen] = useState(false);
     const [product, setProduct] = useState<string>("");
+    const user = useAppSelector(state => state.authentication.user);
+
+    if (user && user.role !== allowedRoles[user.role as keyof typeof allowedRoles])
+        return (<></>)
 
     const onProductClick = (product: string) => {
         setProduct(product);

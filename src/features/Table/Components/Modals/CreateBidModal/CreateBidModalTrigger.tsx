@@ -20,7 +20,7 @@ const CreateBidModalTrigger: FC<Props> = ({ triggerClose }) => {
 
     return (
         <>
-            <Button onClick={handleOnClick} text="Создать запись" className="border-2 border-gray-300"/>
+            <Button onClick={handleOnClick} text="Создать запись" className="border-2 border-gray-300 w-[170px]"/>
             {open && createPortal(<CreateBidModal open={open}
                                                   handleOpen={handleOpen}/>, document.body)}
         </>
