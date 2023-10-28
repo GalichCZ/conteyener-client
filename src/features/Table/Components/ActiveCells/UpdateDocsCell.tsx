@@ -3,7 +3,7 @@ import React, { FC, useState } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
 import { Docs, FollowBid } from "@/Types";
 import { createPortal } from "react-dom";
-import UpdateDocsModal from "@/features/Table/Components/Modals/UpdateDocsModal/Components/UpdateDocsModal.tsx";
+import UpdateDocsModal from "@/features/UpdateDocsModal/Components/UpdateDocsModal.tsx";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import { roleType6 } from "@/features/Table/enums/roleTypes.ts";
 

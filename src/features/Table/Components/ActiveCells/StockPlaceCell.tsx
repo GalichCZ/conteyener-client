@@ -3,7 +3,7 @@ import TableCell from "../../UI/Cell/TableCell";
 import { FollowBid } from "@/Types";
 import { stringCut } from "@/utils/stringCut.ts";
 import { createPortal } from "react-dom";
-import StockPlaceModal from "@/features/Table/Components/Modals/StockPlaceModal/Components/StockPlaceModal.tsx";
+import StockPlaceModal from "@/features/StockPlaceModal/Components/StockPlaceModal.tsx";
 import { roleType7 } from "@/features/Table/enums/roleTypes.ts";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 

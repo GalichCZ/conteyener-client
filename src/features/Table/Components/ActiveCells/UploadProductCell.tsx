@@ -3,8 +3,7 @@ import React, { FC, useState } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
 import { FollowBid } from "@/Types";
 import { createPortal } from "react-dom";
-import UploadProductModal
-    from "@/features/Table/Components/Modals/UploadProductCellModal/Components/UploadProductModal.tsx";
+import UploadProductModal from "@/features/UploadProductCellModal/Components/UploadProductModal.tsx";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
 interface Props {

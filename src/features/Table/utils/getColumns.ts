@@ -1,5 +1,5 @@
 import { RolesEnum } from "@/enums/rolesEnum"
-import { ColumnsEnum, ColumnsKeysEnum } from "@/features/Table/enums/columnsEnum.ts";
+import { ColumnsEnum, ColumnsKeysEnum } from "@/enums/columnsEnum.ts";
 
 const columns = ColumnsEnum
 const columnsKeys = ColumnsKeysEnum

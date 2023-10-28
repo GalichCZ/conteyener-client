@@ -1,8 +1,9 @@
 import axios from "@/provider/axiosInstanse.ts";
+import { SearchField } from "@/store/slices/searchSlice.ts";
 
 const { axiosInstance } = axios
-//&query_string=${searchValue}&search_filter=other&timeStamp=${new Date().getTime()}
-export const getBids = async (page: number, hidden: boolean, filters: string, searchValue: string) => {
+
+export const getBids = async (page: number, hidden: boolean, filters: string, searchValue: string, searchField: SearchField) => {
     const url = hidden ? "item/hidden" : "item";
-    return await axiosInstance.get(`${url}/${page}/${searchValue}/other${filters}`)
+    return await axiosInstance.get(`${url}/${page}/${searchValue}/${searchField}${filters}`)
 }

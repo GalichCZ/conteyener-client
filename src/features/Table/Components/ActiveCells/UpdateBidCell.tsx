@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
 import { createPortal } from "react-dom";
-import UpdateBidModal from "@/features/Table/Components/Modals/UpdateBidModal/UpdateBidModal.tsx";
+import UpdateBidModal from "@/features/UpdateBidModal/UpdateBidModal.tsx";
 import { FollowBid } from "@/Types";
 import { formatDate } from "@/utils/convertDate.ts";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";

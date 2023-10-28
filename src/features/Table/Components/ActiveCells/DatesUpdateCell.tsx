@@ -2,8 +2,7 @@ import React, { FC, useState } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
 import { formatDate } from "@/utils/convertDate.ts";
 import { createPortal } from "react-dom";
-import DateCalculateModal
-    from "@/features/Table/Components/Modals/DateCalculationModal/Components/DateCalculateModal.tsx";
+import DateCalculateModal from "@/features/DateCalculationModal/Components/DateCalculateModal.tsx";
 import { FollowBid } from "@/Types";
 
 interface Props {
