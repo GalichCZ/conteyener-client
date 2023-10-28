@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import TableCell from "@/features/Table/UI/Cell/TableCell.tsx";
 import { FollowBid } from "@/Types";
 import { createPortal } from "react-dom";
-import DeclarationModal from "@/features/Table/Components/Modals/DeclarationModal/components/DeclarationModal.tsx";
+import DeclarationModal from "@/features/DeclarationModal/components/DeclarationModal.tsx";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import { roleType2 } from "@/features/Table/enums/roleTypes.ts";
 

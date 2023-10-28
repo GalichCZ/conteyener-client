@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import GDrawerWrap from "./GDrawerWrap.tsx";
-import CreateBidModalTrigger from "@/features/Table/Components/Modals/CreateBidModal/CreateBidModalTrigger.tsx";
+import CreateBidModalTrigger from "@/features/CreateBidModal/CreateBidModalTrigger.tsx";
 import GlobalUpload from "@/features/Table/Components/GlobalUpload.tsx";
 import UploadBids from "@/features/Table/Components/UploadBids.tsx";
+import DownloadExcel from "@/features/Table/Components/DownloadExcel.tsx";
 
 const GDrawer = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -17,6 +18,7 @@ const GDrawer = () => {
                 <CreateBidModalTrigger triggerClose={handleOpen}/>
                 <GlobalUpload/>
                 <UploadBids/>
+                <DownloadExcel setOpen={setOpen}/>
             </div>
         </GDrawerWrap>
     )

@@ -14,10 +14,11 @@ export const useGetBids = (page: number, hidden: boolean) => {
     const searchValue = useAppSelector(state => state.search.searchValue);
     const location = useLocation()
     const params = location.search;
+    const searchField = useAppSelector(state => state.search.searchField)
     const callGetBids = useCallback(async () => {
         setLoading(true)
         try {
-            const { data } = await getBids(page, hidden, params, searchValue || "null");
+            const { data } = await getBids(page, hidden, params, searchValue || "null", searchField);
             setBids(data.items);
             setPages(data.totalPages);
             setLoading(false);

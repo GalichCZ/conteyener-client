@@ -1,5 +1,5 @@
 import React from "react";
-import { ColumnsEnum } from "@/features/Table/enums/columnsEnum.ts";
+import { ColumnsEnum } from "@/enums/columnsEnum.ts";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { deliveryEnum, deliveryEnumTooltips } from "@/features/Table/enums/deliveryMethods.ts";
 import { Control, FieldValues } from "react-hook-form";
