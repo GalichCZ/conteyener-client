@@ -8,7 +8,6 @@ import { handleError } from "@/utils/handleError.ts";
 import Search from "@/features/Table/Components/Search/Search.tsx";
 import { useGetBids } from "@/features/Table/hooks/useGetBids.ts";
 
-//TODO: make all dates set time 13:00 (dayjs)
 const Table = () => {
     const [page, setPage] = useState(1);
     const { loading, bids, error, setError, pages } = useGetBids(page, false);

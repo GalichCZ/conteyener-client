@@ -9,10 +9,10 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { setReDraw } from "@/store";
 import { useDispatch } from "react-redux";
 import EtdUpdateForm from "@/features/EtdUpdateModal/Components/EtdUpdateForm.tsx";
+import { ModalProps } from "@/Types/ModalProps.ts";
+import { getDateFromDayjs } from "@/utils/getDateFromDayjs.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (open: boolean) => void;
+interface Props extends ModalProps {
     etd: string;
     deliveryChannel: string;
     dateType: number;
@@ -55,7 +55,8 @@ const EtdUpdateModal: FC<Props> = ({ open, setOpen, etd, deliveryChannel, dateTy
     }, [bidId, dateType, deliveryChannel, etd, setValue]);
 
     const onSubmit = (data: DateCalculateFormType) => {
-        setDateCalculate(data);
+        const dataToSend = { ...data, date: getDateFromDayjs(data.date) }
+        setDateCalculate(dataToSend);
     }
 
     return (

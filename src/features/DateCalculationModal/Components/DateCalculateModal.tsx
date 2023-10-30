@@ -9,10 +9,10 @@ import { handleError } from "@/utils/handleError.ts";
 import { useCalculateDate } from "@/features/DateCalculationModal/hooks/useCalculateDate.ts";
 import { setReDraw } from "@/store";
 import { useDispatch } from "react-redux";
+import { ModalProps } from "@/Types/ModalProps.ts";
+import { getDateFromDayjs } from "@/utils/getDateFromDayjs.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (open: boolean) => void;
+interface Props extends ModalProps {
     dateType: number;
     dateLabel: string;
     bid: FollowBid;
@@ -54,8 +54,8 @@ const DateCalculateModal: FC<Props> = ({
     }, [bid, date, dateType, setValue]);
 
     const onSubmit = (data: DateCalculateFormType) => {
-        console.log(data);
-        setData(data);
+        const dataToSend = { ...data, date: getDateFromDayjs(data.date) }
+        setData(dataToSend);
     }
 
     return (

@@ -22,7 +22,6 @@ function GInputDate<T extends FieldValues>({
                         <DatePicker format="DD-MM-YYYY" placeholder={placeholder}
                                     className={className} {...field}/>
                     </ConfigProvider>
-
             } name={name}/>
         </FormItem>
     )

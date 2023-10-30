@@ -14,7 +14,7 @@ export interface DeliveryChannel {
 export type DeliveryChannelFormType = Omit<DeliveryChannel, "_id">;
 
 export interface DateCalculateFormType {
-    date: Dayjs;
+    date: Dayjs | string | null;
     date_type: number;
     bidId: string;
     delivery_channel: string;

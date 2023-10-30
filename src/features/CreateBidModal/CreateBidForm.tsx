@@ -8,6 +8,7 @@ import GButton from "@/components/GInput/components/GButton.tsx";
 import { prepareValuesAndNames } from "@/utils/prepareValuesAndNames.ts";
 import { useGetStores } from "@/hooks/useGetStores.ts";
 import { handleError } from "@/utils/handleError.ts";
+import { DevTool } from "@hookform/devtools";
 
 interface Props<T extends FieldValues> {
     onSubmit: () => void;
@@ -113,6 +114,7 @@ function CreateBidForm<T extends FieldValues>({
 
             </div>
             <GButton text="Создать"/>
+            <DevTool control={control}/>
         </FormLayout>
     )
 }

@@ -6,10 +6,9 @@ import { useDeleteStockPlace } from "@/features/StockPlaces/hooks/useDeleteStock
 import { handleError } from "@/utils/handleError.ts";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import { useDispatch } from "react-redux";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (value: boolean) => void;
+interface Props extends ModalProps {
     stockPlaceId: string | undefined;
 }
 

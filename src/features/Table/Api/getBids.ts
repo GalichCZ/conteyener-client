@@ -5,5 +5,8 @@ const { axiosInstance } = axios
 
 export const getBids = async (page: number, hidden: boolean, filters: string, searchValue: string, searchField: SearchField) => {
     const url = hidden ? "item/hidden" : "item";
-    return await axiosInstance.get(`${url}/${page}/${searchValue}/${searchField}${filters}`)
+    return await axiosInstance.post(`${url}/${page}${filters}&timeStamp=${new Date().getTime()}`, JSON.stringify({
+        search_query: searchValue,
+        search_filter: searchField
+    }))
 }

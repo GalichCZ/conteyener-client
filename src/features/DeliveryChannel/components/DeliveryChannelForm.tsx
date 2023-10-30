@@ -21,7 +21,6 @@ const DeliveryChannelForm: FC<Props> = ({ control, deliveryChannel, setValue, on
     useEffect(() => {
         if (!deliveryChannel) return;
         const channel = deliveryChannel
-        console.log(channel);
         setValue("name", channel.name);
         setValue(names.ETA, channel.eta);
         setValue(names.DATE_DO, channel.date_do);

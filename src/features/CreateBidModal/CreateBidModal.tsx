@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import CreateBidForm from "./CreateBidForm.tsx";
 import { handleError } from "@/utils/handleError.ts";
@@ -12,18 +12,19 @@ import GModal from "@/components/Layout/GModal.tsx";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
 import { prepareNewBidObject } from "@/features/CreateBidModal/utils/prepareNewBidObject.ts";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    handleOpen: () => void;
-}
-
-const CreateBidModal: FC<Props> = ({ open, handleOpen }) => {
+const CreateBidModal: FC<ModalProps> = ({ open, setOpen }) => {
     const { control, handleSubmit, setValue, unregister } = useForm({
         resolver: yupResolver(CreateBidSchema),
     });
     const dispatch = useDispatch();
     const { error, setError, isLoading, isSuccess, callCreateBid } = useCreateBid();
+
+    const handleOpen = useCallback(() => {
+        setOpen(false)
+    }, [setOpen])
+
     const onSubmit = (data: FormBidCreateValues) => {
         const newBid = prepareNewBidObject(data);
         callCreateBid(newBid)

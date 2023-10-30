@@ -18,6 +18,21 @@ export enum DatesTypesFormNamesEnum {
     STORE_ARRIVE_DATE = 'store_arrive_date',
 }
 
+export enum AllDatesEnum {
+    ETD = "etd",
+    ETA = "eta",
+    DATE_DO = "date_do",
+    DECLARATION_ISSUE_DATE = 'declaration_issue_date',
+    TRAIN_DEPART_DATE = 'train_depart_date',
+    TRAIN_ARRIVE_DATE = 'train_arrive_date',
+    STORE_ARRIVE_DATE = 'store_arrive_date',
+    READY_DATE = 'ready_date',
+    LOAD_DATE = 'load_date',
+    AVAILABILITY_OF_OB = 'availability_of_ob',
+    ANSWER_OF_OB = 'answer_of_ob',
+    REQUEST_DATE = 'request_date'
+}
+
 export enum DatesTypesLabelsEnum {
     ETD = "ETD",
     ETA = "ETA",
