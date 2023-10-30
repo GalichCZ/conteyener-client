@@ -6,7 +6,7 @@ import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
 
 interface Props {
-    modelArray: Docs[];
+    modelArray?: Docs[];
     onClick?: onProductClick | onDocsClick;
     dataArray: string[];
 }
@@ -18,12 +18,13 @@ const TableCellArray: FC<Props> = ({ dataArray, onClick, modelArray }) => {
         return getColor(data, searchValue)
     }, [getColor, searchValue])
 
+
     return (
         <td className={`border-2 px-4 border-black h-full text-center relative`}>
             <div>
                 {dataArray.map((data, key) => {
                     return <p className={`${onClick ? 'cursor-pointer' : ''} ${color(data)}`}
-                              onClick={() => onClick && onClick(data, modelArray[key])}
+                              onClick={() => (onClick && modelArray) && onClick(data, modelArray[key])}
                               key={key}>{data}</p>
                 })}
             </div>

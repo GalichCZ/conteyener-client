@@ -10,13 +10,9 @@ import { handleError } from "@/utils/handleError.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import GModal from "@/components/Layout/GModal.tsx";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (value: boolean) => void;
-}
-
-const StoreCreateModal: FC<Props> = ({ open, setOpen }) => {
+const StoreCreateModal: FC<ModalProps> = ({ open, setOpen }) => {
     const { handleSubmit, control, setValue } = useForm<StoreFormType>({
         resolver: yupResolver(StoreSchema)
     });

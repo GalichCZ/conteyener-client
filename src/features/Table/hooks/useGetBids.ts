@@ -20,6 +20,7 @@ export const useGetBids = (page: number, hidden: boolean) => {
         try {
             const { data } = await getBids(page, hidden, params, searchValue || "null", searchField);
             setBids(data.items);
+            console.log(data.items);
             setPages(data.totalPages);
             setLoading(false);
         } catch (e) {

@@ -9,10 +9,9 @@ import { useDeleteProduct } from "@/features/UploadProductCellModal/hooks/useDel
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
 import UploadButton from "@/features/UploadProductCellModal/Components/UploadButton.tsx";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (open: boolean) => void;
+interface Props extends ModalProps {
     product: string;
     bidId: string;
 }

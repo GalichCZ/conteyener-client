@@ -36,7 +36,7 @@ const Login = () => {
 
     useEffect(() => {
         if (success) {
-            navigate(RoutesEnum.MAIN);
+            window.location.href = RoutesEnum.MAIN;
         }
     }, [navigate, success]);
 

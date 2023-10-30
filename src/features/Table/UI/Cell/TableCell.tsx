@@ -18,13 +18,24 @@ const Cell: FC<Props> = ({ children, className, onClick }) => {
     const getColor = useColorText;
     const searchValue = useAppSelector(state => state.search.searchValue);
 
+    function getString() {
+        if (Array.isArray(children)) return "";
+        if (!(children as string)) return "";
+        if (!children) return "";
+
+        return children.toString();
+    }
+
+    const string = getString()
+
     const color = useCallback(() => {
-        return getColor(children as string, searchValue)
-    }, [children, getColor, searchValue])
+        return getColor(string, searchValue)
+    }, [getColor, searchValue, string])
+
 
     return <td onClick={onClick}
                className={`border-2 px-4 border-black h-full text-center relative ${onClick && "cursor-pointer "} ${className}`}>
-        <p className={`${color}`}>
+        <p className={`${color()}`}>
             {children}
         </p>
     </td>;

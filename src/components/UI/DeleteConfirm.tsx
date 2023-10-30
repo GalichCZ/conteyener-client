@@ -13,7 +13,7 @@ const DeleteConfirm: FC<Props> = ({ handleDelete, theme, handleOpen }) => {
             <b className="text-lg">Удалить {theme}?</b>
             <div className="w-1/2 mt-10 flex justify-between">
                 <Button onClick={handleDelete} text="Удалить"
-                        className="bg-red-500 text-white border-red-700 border-2"/>
+                        type="delete"/>
                 <Button onClick={handleOpen} className="border-2 border-gray-300" text="Отменить"/>
             </div>
         </div>

@@ -6,10 +6,9 @@ import { useForm } from "react-hook-form";
 import { Declaration } from "@/Types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DeclarationSchema } from "@/features/DeclarationModal/validation/declaration.schema.js";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (open: boolean) => void;
+interface Props extends ModalProps {
     declaration: string;
 }
 

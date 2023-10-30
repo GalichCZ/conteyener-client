@@ -6,10 +6,9 @@ import { handleError } from "@/utils/handleError.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import GModal from "@/components/Layout/GModal.tsx";
 import DeleteConfirm from "@/components/UI/DeleteConfirm.tsx";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (value: boolean) => void;
+interface Props extends ModalProps {
     storeId: string | undefined;
 }
 

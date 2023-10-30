@@ -15,6 +15,7 @@ export const prepareNewBidObject = (data: FormBidCreateValues) => {
         conditions: arrays.conditions,
         store: data["store"].toString(),
         direction: data["direction"].toString(),
+        delivery_method: data["delivery_method"].toString(),
         agent: data["agent"].toString(),
         container_type: data["container_type"].toString(),
         place_of_dispatch: data["place_of_dispatch"].toString(),

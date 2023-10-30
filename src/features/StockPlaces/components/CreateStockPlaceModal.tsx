@@ -10,13 +10,9 @@ import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import { useAppDispatch } from "@/hooks/hooksRedux.ts";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { StockPlaceSchema } from "@/features/StockPlaces/validation/StockPlaceSchema.js";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (value: boolean) => void;
-}
-
-const CreateStockPlaceModal: FC<Props> = ({ open, setOpen }) => {
+const CreateStockPlaceModal: FC<ModalProps> = ({ open, setOpen }) => {
     const { control, handleSubmit, setValue } = useForm<StockPlace>({
         resolver: yupResolver(StockPlaceSchema)
     })

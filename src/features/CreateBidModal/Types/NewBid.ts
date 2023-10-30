@@ -5,6 +5,6 @@ interface NewBidStore {
 }
 
 type NewBidPoles = Pick<FollowBid, "request_date" | "order_number" | "simple_product_name"
-    | "providers" | "importers" | "conditions" | "direction" | "agent" | "container_type" | "place_of_dispatch">
+    | "providers" | "importers" | "conditions" | "direction" | "agent" | "container_type" | "place_of_dispatch" | "delivery_method">
 
 export type NewBid = NewBidStore & NewBidPoles;

@@ -3,10 +3,9 @@ import GModal from "@/components/Layout/GModal.tsx";
 import { handleError } from "@/utils/handleError.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { useGetSingleStockPlace } from "@/features/StockPlaceModal/hooks/useGetSingleStockPlace.ts";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (open: boolean) => void;
+interface Props extends ModalProps {
     stockPlaceId: string;
 }
 

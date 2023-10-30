@@ -12,12 +12,10 @@ export const useGetSingleStore = (id: string) => {
         setLoading(true);
         try {
             const { data } = await getSingleStore(id);
-            console.log(data);
             setStore(data);
             setLoading(false);
         } catch (error) {
             const err = error as AxiosError;
-            console.log(err);
             setError({
                 message: err.request?.statusText,
                 status: err.request.status
@@ -27,9 +25,7 @@ export const useGetSingleStore = (id: string) => {
     }, [id]);
 
     useEffect(() => {
-        return () => {
-            callGetSingleStore()
-        };
+        callGetSingleStore()
     }, [callGetSingleStore]);
 
     return { store, loading, error, setError };

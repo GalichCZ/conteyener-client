@@ -12,6 +12,7 @@ export const useGetMe = () => {
 
     const callGetMe = async () => {
         setLoading(true);
+        if (!localStorage.getItem("token")) return
         try {
             const { data } = await getMe();
             dispatch(setUser(data.user))

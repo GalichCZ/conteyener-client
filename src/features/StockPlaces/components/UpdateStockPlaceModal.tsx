@@ -10,10 +10,9 @@ import { useAppDispatch } from "@/hooks/hooksRedux.ts";
 import { handleError } from "@/utils/handleError.ts";
 import { setReDraw } from "@/store/slices/reDrawSlice.ts";
 import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
+import { ModalProps } from "@/Types/ModalProps.ts";
 
-interface Props {
-    open: boolean;
-    setOpen: (value: boolean) => void;
+interface Props extends ModalProps {
     stockPlace: StockPlace;
 }
 
