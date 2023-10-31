@@ -16,6 +16,7 @@ import DeliveryChannelPage from "@/pages/DeliveryChannelPage.tsx";
 import StockPlacesPage from "@/pages/StockPlacesPage.tsx";
 import { useGetMe } from "@/hooks/useGetMe.ts";
 import { handleError } from "@/utils/handleError.ts";
+import HiddenTablePage from "@/pages/HiddenTablePage.tsx";
 
 function App() {
     const { callGetMe, error } = useGetMe();
@@ -47,6 +48,7 @@ function App() {
                     <Route path={RoutesEnum.STORES} element={<StoresPage/>}/>
                     <Route path={RoutesEnum.DELIVERY_CHANNELS} element={<DeliveryChannelPage/>}/>
                     <Route path={RoutesEnum.CONTAINER_STOCK} element={<StockPlacesPage/>}/>
+                    <Route path={RoutesEnum.TABLE_HIDDEN} element={<HiddenTablePage/>}/>
                     {/*Catch all*/}
                     <Route path="*" element={<NotFoundPage/>}/>
                 </Route>

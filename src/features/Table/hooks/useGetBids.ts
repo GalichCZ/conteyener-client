@@ -20,7 +20,6 @@ export const useGetBids = (page: number, hidden: boolean) => {
         try {
             const { data } = await getBids(page, hidden, params, searchValue || "null", searchField);
             setBids(data.items);
-            console.log(data.items);
             setPages(data.totalPages);
             setLoading(false);
         } catch (e) {
@@ -28,7 +27,7 @@ export const useGetBids = (page: number, hidden: boolean) => {
             const err = e as AxiosError;
             setError({ message: err.message, status: err.request.status });
         }
-    }, [hidden, page, params, searchValue]);
+    }, [hidden, page, params, searchField, searchValue]);
 
     useEffect(() => {
         callGetBids();
