@@ -6,18 +6,19 @@ interface Props {
     className?: string;
     disabled?: boolean;
     onClick?: (e?: FormEvent) => void;
-    type?: "primary" | "delete";
+    type?: "primary" | "delete" | "side";
+}
+
+const buttonTypes = {
+    "primary": { backgroundColor: Colors.PATRIOT, color: "#fff" },
+    "delete": { backgroundColor: Colors.DELETE, border: `solid 2px ${Colors.DELETE_BORDER}`, color: "#fff" },
+    "side": { backgroundColor: "#fff", border: `solid 1px ${Colors.PATRIOT}`, color: `${Colors.PATRIOT}` },
+    "default": {}
 }
 
 const Button: FC<Props> = ({ text, type, disabled, className, onClick }) => {
     const getButtonStyles = () => {
-        if (type === "primary") {
-            return { backgroundColor: Colors.PATRIOT, color: "#fff" }
-        }
-        if (type === "delete") {
-            return { backgroundColor: Colors.DELETE, border: `solid 2px ${Colors.DELETE_BORDER}`, color: "#fff" }
-        }
-        return {};
+        return buttonTypes[type || "default"];
     }
 
     return (<button onClick={onClick} disabled={disabled}

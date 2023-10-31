@@ -8,9 +8,9 @@ import { handleError } from "@/utils/handleError.ts";
 import Search from "@/features/Table/Components/Search/Search.tsx";
 import { useGetBids } from "@/features/Table/hooks/useGetBids.ts";
 
-const Table = () => {
+const Table = ({ hidden }: { hidden: boolean }) => {
     const [page, setPage] = useState(1);
-    const { loading, bids, error, setError, pages } = useGetBids(page, false);
+    const { loading, bids, error, setError, pages } = useGetBids(page, hidden);
 
     const decrementPage = () => {
         if (page === 1) return;
@@ -30,7 +30,7 @@ const Table = () => {
 
     return (
         <>
-            <GDrawer/>
+            {!hidden && <GDrawer/>}
             <Search/>
             <div id="table2" className="w-[95%] bg-white mt-8 h-[83%] translate-y-[10px] overflow-auto shadow-2xl">
                 {loading && <FillingSkeleton/>}
