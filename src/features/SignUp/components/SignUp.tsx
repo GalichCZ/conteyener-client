@@ -23,7 +23,6 @@ const SignUp = () => {
     });
 
     const onSubmit: SubmitHandler<UserRegister> = (data) => {
-        console.log(data);
         setUserData(data)
     }
 
@@ -37,7 +36,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if (success) {
-            navigate(RoutesEnum.MAIN);
+            window.location.href = RoutesEnum.MAIN;
         }
     }, [navigate, success]);
 

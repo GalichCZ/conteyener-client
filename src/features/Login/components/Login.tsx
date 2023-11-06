@@ -8,13 +8,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { CredentialsSchema } from "../validation/CredentialsSchema.js";
 import { useLogin } from "../hooks/useLogin.ts";
 import { RoutesEnum } from "@/enums/routesEnum.ts";
-import { useNavigate } from "react-router-dom";
 import { handleError } from "@/utils/handleError.ts";
 
 const Login = () => {
     const [credentials, setCredentials] = useState<Credentials | null>(null);
-
-    const navigate = useNavigate();
 
     const { isLoading, success, error, setError } = useLogin(credentials);
 
@@ -38,7 +35,7 @@ const Login = () => {
         if (success) {
             window.location.href = RoutesEnum.MAIN;
         }
-    }, [navigate, success]);
+    }, [success]);
 
     return (
         <FormLayout isLoading={isLoading} className="-translate-y-1/2" onFinish={handleSubmit(onSubmit)}>
