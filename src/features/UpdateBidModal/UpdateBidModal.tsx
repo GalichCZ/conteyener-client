@@ -12,7 +12,6 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { prepareBidObject } from "@/features/UpdateBidModal/utils/prepareBidObject.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
-import dayjs from "dayjs";
 import { ModalProps } from "@/Types/ModalProps.ts";
 import UpdateBidModalDelete from "@/features/UpdateBidModal/UpdateBidModalDelete.tsx";
 import { useHideBid } from "@/features/UpdateBidModal/hooks/useHideBid.ts";
@@ -50,12 +49,6 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
     useEffect(() => {
         if (followBid) {
             setValuesInForm(followBid, setValue);
-            //TODO: need to find the reason of this wierd null behaviour
-            setValue("ready_date", dayjs(followBid.ready_date));
-            setValue("answer_of_ob", dayjs(followBid.answer_of_ob));
-            setValue("availability_of_ob", dayjs(followBid.availability_of_ob));
-            setValue("request_date", dayjs(followBid.request_date));
-            setValue("load_date", dayjs(followBid.load_date));
         }
     }, [followBid, setValue]);
 

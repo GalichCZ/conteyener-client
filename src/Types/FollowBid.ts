@@ -68,7 +68,7 @@ export interface FollowBid {
 export enum Dates {
     request_date = "request_date",
     ready_date = "ready_date",
-    LOAD_DATE = "LOAD_DATE",
+    load_date = "load_date",
     availability_of_ob = "availability_of_ob",
     answer_of_ob = "answer_of_ob",
 }
