@@ -14,6 +14,8 @@ export const useLogin = (credentials: Credentials | null) => {
 
     useEffect(() => {
         if (!credentials) return;
+
+        //TODO: make it as function that will be returned from the hook, so i can avoid side effects
         const callLogin = async () => {
             setIsLoading(true);
             try {

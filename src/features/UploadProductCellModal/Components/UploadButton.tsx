@@ -2,7 +2,7 @@ import { Upload } from "antd";
 import React, { FC } from "react";
 import Button from "@/components/UI/Button.tsx";
 import { useDispatch } from "react-redux";
-import { upload } from "@/utils/upload.ts";
+import { useUpload } from "@/hooks/useUpload.ts";
 
 interface Props {
     bidId: string;
@@ -11,7 +11,7 @@ interface Props {
 
 const UploadButton: FC<Props> = ({ bidId, simpleProductName }) => {
     const dispatch = useDispatch();
-    const props = upload(`${import.meta.env.VITE_API_URL}/product/${bidId}/${simpleProductName}`, dispatch);
+    const props = useUpload(`${import.meta.env.VITE_API_URL}/product/${bidId}/${simpleProductName}`, dispatch);
 
     return (
         <Upload {...props}>

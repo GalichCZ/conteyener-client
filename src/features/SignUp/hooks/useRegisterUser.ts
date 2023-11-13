@@ -14,6 +14,7 @@ export const useRegisterUser = (userData: UserRegister | null) => {
 
     useEffect(() => {
         if (!userData) return;
+        //TODO: make it as function that will be returned from the hook, so i can avoid side effects
         const callRegisterUser = async () => {
             setIsLoading(true);
             try {

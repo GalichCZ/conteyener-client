@@ -10,21 +10,24 @@ interface Props {
     dateType: number;
     dateLabel: string;
     bid: FollowBid;
+    isUpdated: boolean
 }
 
-const DatesUpdateCell: FC<Props> = ({ dateType, date, dateLabel, bid }) => {
+const DatesUpdateCell: FC<Props> = ({ dateType, date, dateLabel, bid, isUpdated }) => {
     const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
         setOpen(true);
     }
 
+    const style = isUpdated ? "" : "text-gray-500"
+
     return (
         <>
             {open && createPortal(<DateCalculateModal dateLabel={dateLabel} open={open}
                                                       setOpen={setOpen} bid={bid} date={date}
                                                       dateType={dateType}/>, document.body)}
-            <TableCell.Cell onClick={handleOpen}>{formatDate(date)}</TableCell.Cell>
+            <TableCell.Cell className={style} onClick={handleOpen}>{formatDate(date)}</TableCell.Cell>
         </>
     )
 }

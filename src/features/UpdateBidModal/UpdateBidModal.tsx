@@ -46,16 +46,15 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
         callHideBid(followBid._id);
     }
 
+    const onSubmit = (data: FormBidUpdateValues) => {
+        callUpdateBid(prepareBidObject(data, followBid._id));
+    }
+
     useEffect(() => {
         if (followBid) {
             setValuesInForm(followBid, setValue);
         }
     }, [followBid, setValue]);
-
-
-    const onSubmit = (data: FormBidUpdateValues) => {
-        callUpdateBid(prepareBidObject(data, followBid._id));
-    }
 
     useEffect(() => {
         if (success || isDeleted || hideSuccess) {
