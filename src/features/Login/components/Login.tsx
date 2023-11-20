@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import GInputs from "@/components/GInput/GInputs.ts";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Credentials } from "../types/Credentials.ts";
@@ -11,23 +11,21 @@ import { RoutesEnum } from "@/enums/routesEnum.ts";
 import { handleError } from "@/utils/handleError.ts";
 
 const Login = () => {
-    const [credentials, setCredentials] = useState<Credentials | null>(null);
 
-    const { isLoading, success, error, setError } = useLogin(credentials);
+    const { isLoading, success, error, setError, callLogin } = useLogin();
 
     const { handleSubmit, control } = useForm<Credentials>({
         resolver: yupResolver(CredentialsSchema)
     });
 
     const onSubmit: SubmitHandler<Credentials> = (data) => {
-        setCredentials(data);
+        callLogin(data)
     }
 
     useEffect(() => {
         if (error) {
             handleError(error)
             setError(null);
-            setCredentials(null);
         }
     }, [error, setError]);
 

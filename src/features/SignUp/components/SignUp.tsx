@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserRegister } from "../Types/UserRegister.ts";
 import GInputs from "@/components/GInput/GInputs.ts";
@@ -12,25 +12,22 @@ import { useNavigate } from "react-router-dom";
 import { handleError } from "@/utils/handleError.ts";
 
 const SignUp = () => {
-    const [userData, setUserData] = useState<UserRegister | null>(null)
-
     const navigate = useNavigate();
 
-    const { isLoading, success, error, setError } = useRegisterUser(userData);
+    const { isLoading, success, error, setError, callRegisterUser } = useRegisterUser();
 
     const { handleSubmit, control } = useForm<UserRegister>({
         resolver: yupResolver(UserRegisterSchema)
     });
 
     const onSubmit: SubmitHandler<UserRegister> = (data) => {
-        setUserData(data)
+        callRegisterUser(data);
     }
 
     useEffect(() => {
         if (error) {
             handleError(error)
             setError(null);
-            setUserData(null);
         }
     }, [error, setError]);
 

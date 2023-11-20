@@ -25,8 +25,6 @@ const UpdateDocsModal: FC<Props> = ({ docs, setOpen, open, bidId }) => {
     const { error, setError, success, loading } = useUpdateDocs(docsState, bidId, confirmed);
     const dispatch = useDispatch();
 
-    console.log(docs, docsState)
-
     const handleCancel = useCallback(() => {
         setOpen(false);
     }, [setOpen])
