@@ -11,10 +11,10 @@ interface Props {
 
 const UploadButton: FC<Props> = ({ bidId, simpleProductName }) => {
     const dispatch = useDispatch();
-    const props = useUpload(`${import.meta.env.VITE_API_URL}/product/${bidId}/${simpleProductName}`, dispatch);
+    const { uploadFile } = useUpload(`${import.meta.env.VITE_API_URL}/product/${bidId}/${simpleProductName}`, dispatch);
 
     return (
-        <Upload {...props}>
+        <Upload {...uploadFile()}>
             <Button type="primary" className="mt-4 text-lg" text="Загрузить"/>
         </Upload>
     )
