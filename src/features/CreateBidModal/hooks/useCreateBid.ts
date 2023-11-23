@@ -14,7 +14,7 @@ export const useCreateBid = () => {
 
     const checkIsBidValid = (newBid: NewBid) => {
         const isAllArraysValid = createDataValidate(newBid);
-        const isOrderNumberDuplicates = checkArrayDuplicates(newBid.order_number);
+        const isOrderNumberDuplicates = checkArrayDuplicates(newBid.order_number.map(item => item.order_number));
         if (isOrderNumberDuplicates) {
             setError({
                 message: `Повторяющийся № заказа: ${isOrderNumberDuplicates}`,
