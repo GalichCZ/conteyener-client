@@ -2,7 +2,7 @@ import { FormBidUpdateValues } from "@/features/UpdateBidModal/Type/FormBidUpdat
 import { FormBidCreateValues } from "@/features/CreateBidModal/Types/FormBidCreateValues.ts";
 
 export const prepareArraysForBidObject = (array: FormBidUpdateValues | FormBidCreateValues) => {
-    const order_number: string[] = [];
+    const order_number: { key: number, order_number: string }[] = [];
     const inside_number: string[] = [];
     const proform_number: string[] = [];
     const simple_product_number: string[] = [];
@@ -11,10 +11,9 @@ export const prepareArraysForBidObject = (array: FormBidUpdateValues | FormBidCr
     const conditions: string[] = [];
     const declaration_number: string[] = [];
 
-    Object.keys(array).forEach((key) => {
+    Object.keys(array).forEach((key, index) => {
         if (key.includes("order_number")) {
-            console.log(key)
-            order_number.push(<string>array[key]);
+            order_number.push({ key: index, order_number: <string>array[key] });
         }
         if (key.includes("inside_number")) {
             inside_number.push(<string>array[key]);

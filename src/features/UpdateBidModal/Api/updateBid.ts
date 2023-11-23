@@ -4,5 +4,5 @@ import { FormBidUpdateValues } from "@/features/UpdateBidModal/Type/FormBidUpdat
 const { axiosInstance } = axios;
 
 export const updateBid = async (bid: FormBidUpdateValues) => {
-    return await axiosInstance.patch(`/bid`, bid)
+    return await axiosInstance.patch(`/bid`, JSON.stringify(bid))
 }
