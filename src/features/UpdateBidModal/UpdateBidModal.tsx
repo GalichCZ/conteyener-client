@@ -72,10 +72,14 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
 
     useEffect(() => {
         if (error) {
+            if (error.message.includes("Такой способ изменения № заказа приведет к потере документов для подачи")) {
+                setError(null);
+                handleOpen()
+            }
             handleError(error);
             setError(null);
         }
-    }, [error, setError]);
+    }, [error, handleOpen, setError]);
 
     return (
         <GModal width="90%" title="Изменение слежения" open={open}
