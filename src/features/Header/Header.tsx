@@ -22,7 +22,6 @@ const Header = () => {
             <nav className="w-full flex justify-center">
                 <ul className="flex gap-4 text-white ">
 
-
                     {token ? <>
                             <li>
                                 <Link to={RoutesEnum.MAIN}>

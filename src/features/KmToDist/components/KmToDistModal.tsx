@@ -12,6 +12,7 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { handleError } from "@/utils/handleError.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props extends ModalProps {
     bid: FollowBid;
@@ -21,8 +22,9 @@ export type Km = Pick<FollowBid, "km_to_dist">;
 
 const KmToDistModal: FC<Props> = ({ open, setOpen, bid }) => {
     const { loading, setError, success, error, changeKm } = useUpdateKm();
-    const { control, handleSubmit } = useForm<Km>();
+    const { control, handleSubmit, setValue } = useForm<Km>();
     const dispatch = useDispatch();
+    const roleTypes = useGetRoleType();
 
     const handleCancel = useCallback(() => {
         setOpen(false);
@@ -31,6 +33,10 @@ const KmToDistModal: FC<Props> = ({ open, setOpen, bid }) => {
     const onSubmit = (data: Km) => {
         changeKm(data.km_to_dist, bid._id);
     }
+
+    useEffect(() => {
+        if (open) setValue("km_to_dist", bid.km_to_dist);
+    }, [bid.km_to_dist, open, setValue]);
 
     useEffect(() => {
         if (error) {
@@ -50,9 +56,10 @@ const KmToDistModal: FC<Props> = ({ open, setOpen, bid }) => {
         <GModal title='Километров осталось' open={open} onCancel={handleCancel}>
             {loading && <FillingSkeleton/>}
             <FormLayout className="shadow-none" onFinish={handleSubmit(onSubmit)}>
-                <GInputs.Number min={0} max={Number.MAX_SAFE_INTEGER} name={ColumnsKeysEnum.KM_TO_DIST.toLowerCase()}
+                <GInputs.Number disabled={!roleTypes?.isRoleType7} min={0} max={Number.MAX_SAFE_INTEGER}
+                                name={ColumnsKeysEnum.KM_TO_DIST.toLowerCase()}
                                 label="Километров осталось" control={control}/>
-                <GButton text="Подтвердить"/>
+                {roleTypes?.isRoleType7 && <GButton text="Подтвердить"/>}
             </FormLayout>
         </GModal>
     )

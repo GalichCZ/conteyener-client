@@ -11,6 +11,7 @@ interface Props<T extends FieldValues> extends GInputType<T> {
     values: SelectOption[];
     tooltips: string[];
     isLoading?: boolean;
+    disabled?: boolean;
 }
 
 function GInputSelect<T extends FieldValues>({
@@ -22,7 +23,8 @@ function GInputSelect<T extends FieldValues>({
                                                  classNameWrap,
                                                  label,
                                                  placeholder,
-                                                 isLoading
+                                                 isLoading,
+                                                 disabled
                                              }: Props<T>) {
 
     if (isLoading) {
@@ -37,6 +39,7 @@ function GInputSelect<T extends FieldValues>({
                         theme={{ ...theme }}
                     >
                         <Select
+                            disabled={disabled}
                             placeholder={placeholder} className={className} {...field}>
                             {values.map((value, index) => (
                                 <Select.Option key={index} value={value.key} label={label}>

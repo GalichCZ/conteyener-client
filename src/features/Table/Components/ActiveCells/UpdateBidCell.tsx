@@ -6,6 +6,7 @@ import { FollowBid } from "@/Types";
 import { formatDate } from "@/utils/convertDate.ts";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import { roleType1 } from "@/features/Table/enums/roleTypes.ts";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props {
     bid: FollowBid;
@@ -15,7 +16,12 @@ const UpdateBidCell: FC<Props> = ({ bid }) => {
     const [open, setOpen] = useState<boolean>(false);
     const user = useAppSelector(state => state.authentication.user);
 
+    const roleTypes = useGetRoleType();
+
     const handleOpen = () => {
+        if (!roleTypes?.isRoleType7) {
+            return;
+        }
         setOpen((prev) => !prev);
     }
 

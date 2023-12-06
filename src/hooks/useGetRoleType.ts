@@ -14,6 +14,8 @@ export const useGetRoleType = () => {
 
     if (!user) return null;
 
+
+    const isNewOne = user.role === "new_one";
     const isRoleType1 = roleType1[user.role as keyof typeof roleType1] !== undefined;
     const isRoleType2 = roleType2[user.role as keyof typeof roleType2] !== undefined;
     const isRoleType3 = roleType3[user.role as keyof typeof roleType3] !== undefined;
@@ -22,5 +24,5 @@ export const useGetRoleType = () => {
     const isRoleType6 = roleType6[user.role as keyof typeof roleType6] !== undefined;
     const isRoleType7 = roleType7[user.role as keyof typeof roleType7] !== undefined;
 
-    return { isRoleType1, isRoleType2, isRoleType3, isRoleType4, isRoleType5, isRoleType6, isRoleType7 }
+    return { isNewOne, isRoleType1, isRoleType2, isRoleType3, isRoleType4, isRoleType5, isRoleType6, isRoleType7 }
 }

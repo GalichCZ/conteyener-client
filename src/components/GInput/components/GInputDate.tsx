@@ -7,11 +7,12 @@ import { theme } from "@/assets/antdConfig.ts";
 
 interface Props<T extends FieldValues> extends GInputType<T> {
     onChange?: DatePickerProps['onChange']
+    disabled?: boolean
 }
 
 function GInputDate<T extends FieldValues>({
                                                classNameWrap, className,
-                                               name, placeholder, label, control
+                                               name, placeholder, label, control, disabled
                                            }: Props<T>) {
 
     return (
@@ -19,7 +20,7 @@ function GInputDate<T extends FieldValues>({
             <Controller control={control} render={
                 ({ field }) =>
                     <ConfigProvider theme={{ ...theme }}>
-                        <DatePicker format="DD-MM-YYYY" placeholder={placeholder}
+                        <DatePicker disabled={disabled} format="DD-MM-YYYY" placeholder={placeholder}
                                     className={className} {...field}/>
                     </ConfigProvider>
             } name={name}/>

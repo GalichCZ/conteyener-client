@@ -9,6 +9,7 @@ import { setReDraw } from "@/store";
 import { DocsLabelsEnum, DocsNamesEnum } from "@/features/UpdateDocsModal/enums/DocsEnum.ts";
 import { Switch } from "antd";
 import Button from "@/components/UI/Button.tsx";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props {
     docs: Docs;
@@ -24,6 +25,7 @@ const UpdateDocsModal: FC<Props> = ({ docs, setOpen, open, bidId }) => {
     const [confirmed, setConfirmed] = useState(false);
     const { error, setError, success, loading } = useUpdateDocs(docsState, bidId, confirmed);
     const dispatch = useDispatch();
+    const roleTypes = useGetRoleType();
 
     const handleCancel = useCallback(() => {
         setOpen(false);
@@ -72,13 +74,15 @@ const UpdateDocsModal: FC<Props> = ({ docs, setOpen, open, bidId }) => {
                 {Object.values(DocsLabelsEnum).map((key, index) =>
                     <div className="flex flex-col justify-end gap-4">
                         <label>{key}</label>
-                        <Switch checked={returnState(index)} onChange={() => onChangeHandler(index)}
+                        <Switch disabled={!roleTypes?.isRoleType7} checked={returnState(index)}
+                                onChange={() => onChangeHandler(index)}
                                 className="w-[40px]"/>
                     </div>
                 )}
             </div>
 
-            <Button onClick={handleConfirm} type="primary" className="mt-5" text="Подтвердить"/>
+            {roleTypes?.isRoleType7 &&
+                <Button onClick={handleConfirm} type="primary" className="mt-5" text="Подтвердить"/>}
         </GModal>
     )
 }

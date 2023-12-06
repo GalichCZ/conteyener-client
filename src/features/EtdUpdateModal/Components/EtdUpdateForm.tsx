@@ -8,6 +8,7 @@ import { DateCalculateFormType, SelectOption } from "@/Types";
 import { useGetDeliveryChannels } from "@/hooks/useGetDeliveryChannels.ts";
 import { handleError } from "@/utils/handleError.ts";
 import { prepareValuesAndNames } from "@/utils/prepareValuesAndNames.ts";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props {
     onSubmit: () => void;
@@ -17,6 +18,7 @@ interface Props {
 const EtdUpdateForm: FC<Props> = ({ onSubmit, control }) => {
     const { error, setError, isLoading, deliveryChannels } = useGetDeliveryChannels();
     const [deliveryChannelsOptions, setDeliveryChannelsOptions] = useState<SelectOption[]>([])
+    const roleTypes = useGetRoleType();
 
     useEffect(() => {
         const values = prepareValuesAndNames(deliveryChannels)
@@ -33,9 +35,9 @@ const EtdUpdateForm: FC<Props> = ({ onSubmit, control }) => {
     return (
         <FormLayout className="shadow-none" onFinish={onSubmit}>
             <GInputs.Date name="date" label={DatesTypesLabelsEnum.ETD} control={control}/>
-            <GInputs.Select name="delivery_channel" label="Канал поставки"
+            <GInputs.Select disabled={!roleTypes?.isRoleType7} name="delivery_channel" label="Канал поставки"
                             control={control} values={deliveryChannelsOptions} tooltips={[]} isLoading={isLoading}/>
-            <GButton className="mt-2" text="Сохранить"/>
+            {roleTypes?.isRoleType7 && <GButton className="mt-2" text="Сохранить"/>}
         </FormLayout>
     )
 }

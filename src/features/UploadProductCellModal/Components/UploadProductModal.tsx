@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
 import UploadButton from "@/features/UploadProductCellModal/Components/UploadButton.tsx";
 import { ModalProps } from "@/Types/ModalProps.ts";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props extends ModalProps {
     product: string;
@@ -26,6 +27,7 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
         loading: deleteLoading
     } = useDeleteProduct(productId, bidId);
     const dispatch = useDispatch();
+    const roleTypes = useGetRoleType();
 
     useEffect(() => {
         if (error) {
@@ -64,7 +66,7 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
                 <ProductTableHead/>
                 <ProductTableBody handleDelete={handleDelete} products={products}/>
             </table>
-            <UploadButton bidId={bidId} simpleProductName={product}/>
+            {roleTypes?.isRoleType7 && <UploadButton bidId={bidId} simpleProductName={product}/>}
         </GModal>
     )
 }

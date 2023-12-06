@@ -7,6 +7,7 @@ import { Declaration } from "@/Types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { DeclarationSchema } from "@/features/DeclarationModal/validation/declaration.schema.js";
 import { ModalProps } from "@/Types/ModalProps.ts";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props extends ModalProps {
     declaration: string;
@@ -14,6 +15,7 @@ interface Props extends ModalProps {
 
 const DeclarationModal: FC<Props> = ({ open, setOpen, declaration }) => {
     const { control, handleSubmit } = useForm<Declaration>({ resolver: yupResolver(DeclarationSchema) });
+    const roleTypes = useGetRoleType();
 
     const onSubmitHandle = (data: Declaration) => {
         console.log(data);
@@ -25,7 +27,8 @@ const DeclarationModal: FC<Props> = ({ open, setOpen, declaration }) => {
 
     return (
         <GModal title="Статус декларации" open={open} onCancel={onCancelHandle}>
-            <DeclarationStatusForm onClick={handleSubmit(onSubmitHandle)} control={control}/>
+            {roleTypes?.isRoleType7 &&
+                <DeclarationStatusForm onClick={handleSubmit(onSubmitHandle)} control={control}/>}
             <DeclarationTable declarationNumber={declaration}/>
         </GModal>
     )

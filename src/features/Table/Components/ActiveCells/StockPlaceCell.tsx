@@ -16,10 +16,8 @@ const StockPlaceCell: FC<Props> = ({ bid }) => {
 
     const user = useAppSelector(state => state.authentication.user);
 
-
     if (user && user.role !== roleType7[user.role as keyof typeof roleType7])
         return (<></>)
-
 
     const handleOpen = () => {
         setOpen(true);
