@@ -25,9 +25,7 @@ export const useGetSingleStockPlace = (id: string) => {
     }, [id]);
 
     useEffect(() => {
-        return () => {
-            callGetSingleStockPlace()
-        };
+        callGetSingleStockPlace()
     }, [callGetSingleStockPlace]);
 
     return { store: stockPlace, loading, error, setError };

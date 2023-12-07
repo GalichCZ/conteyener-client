@@ -47,7 +47,7 @@ const DateCalculateModal: FC<Props> = ({
     useEffect(() => {
         setValue("date_type", dateType);
         setValue("bidId", bid._id);
-        setValue("delivery_channel", bid.delivery_channel);
+        setValue("delivery_channel", bid.delivery_channel._id);
         if (date) {
             setValue("date", dayjs(date));
         }

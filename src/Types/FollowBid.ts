@@ -18,7 +18,7 @@ export interface FollowBid {
     conditions: string[];
     store_name: string | undefined;
     store: { _id: string, name: string };
-    delivery_channel: string;
+    delivery_channel: { _id: string, name: string };
     agent: string | undefined;
     place_of_dispatch: string | undefined;
     line: string | undefined;

@@ -35,9 +35,9 @@ const EtdUpdateForm: FC<Props> = ({ onSubmit, control }) => {
     return (
         <FormLayout className="shadow-none" onFinish={onSubmit}>
             <GInputs.Date name="date" label={DatesTypesLabelsEnum.ETD} control={control}/>
-            <GInputs.Select disabled={!roleTypes?.isRoleType7} name="delivery_channel" label="Канал поставки"
+            <GInputs.Select disabled={!roleTypes?.isRoleType8} name="delivery_channel" label="Канал поставки"
                             control={control} values={deliveryChannelsOptions} tooltips={[]} isLoading={isLoading}/>
-            {roleTypes?.isRoleType7 && <GButton className="mt-2" text="Сохранить"/>}
+            {roleTypes?.isRoleType8 && <GButton className="mt-2" text="Сохранить"/>}
         </FormLayout>
     )
 }

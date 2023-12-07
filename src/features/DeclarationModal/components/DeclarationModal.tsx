@@ -27,7 +27,7 @@ const DeclarationModal: FC<Props> = ({ open, setOpen, declaration }) => {
 
     return (
         <GModal title="Статус декларации" open={open} onCancel={onCancelHandle}>
-            {roleTypes?.isRoleType7 &&
+            {roleTypes?.isRoleType8 &&
                 <DeclarationStatusForm onClick={handleSubmit(onSubmitHandle)} control={control}/>}
             <DeclarationTable declarationNumber={declaration}/>
         </GModal>

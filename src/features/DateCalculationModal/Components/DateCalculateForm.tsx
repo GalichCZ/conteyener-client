@@ -17,8 +17,8 @@ const DateCalculateForm: FC<Props> = ({ onSubmit, control, label }) => {
 
     return (
         <FormLayout className="shadow-none" onFinish={onSubmit}>
-            <GInputs.Date disabled={!roleTypes?.isRoleType7} name="date" label={label} control={control}/>
-            {roleTypes?.isRoleType7 && <GButton text="Пересчитать" className="mt-8 mb-0"/>}
+            <GInputs.Date disabled={!roleTypes?.isRoleType8} name="date" label={label} control={control}/>
+            {roleTypes?.isRoleType8 && <GButton text="Пересчитать" className="mt-8 mb-0"/>}
         </FormLayout>
     )
 }

@@ -5,7 +5,8 @@ import {
     roleType4,
     roleType5,
     roleType6,
-    roleType7
+    roleType7,
+    roleType8
 } from "@/features/Table/enums/roleTypes.ts";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
@@ -23,6 +24,17 @@ export const useGetRoleType = () => {
     const isRoleType5 = roleType5[user.role as keyof typeof roleType5] !== undefined;
     const isRoleType6 = roleType6[user.role as keyof typeof roleType6] !== undefined;
     const isRoleType7 = roleType7[user.role as keyof typeof roleType7] !== undefined;
+    const isRoleType8 = roleType8[user.role as keyof typeof roleType8] !== undefined;
 
-    return { isNewOne, isRoleType1, isRoleType2, isRoleType3, isRoleType4, isRoleType5, isRoleType6, isRoleType7 }
+    return {
+        isNewOne,
+        isRoleType1,
+        isRoleType2,
+        isRoleType3,
+        isRoleType4,
+        isRoleType5,
+        isRoleType6,
+        isRoleType7,
+        isRoleType8
+    }
 }

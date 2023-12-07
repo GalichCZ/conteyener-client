@@ -19,7 +19,7 @@ const UpdateBidCell: FC<Props> = ({ bid }) => {
     const roleTypes = useGetRoleType();
 
     const handleOpen = () => {
-        if (!roleTypes?.isRoleType7) {
+        if (!roleTypes?.isRoleType8) {
             return;
         }
         setOpen((prev) => !prev);

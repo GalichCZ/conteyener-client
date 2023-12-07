@@ -30,8 +30,9 @@ const DeliveryChannelCreateModal: FC<Props> = ({ open, setOpen }) => {
 
     useEffect(() => {
         if (success) {
-            dispatch(setReDraw());
             handleOpen();
+            dispatch(setReDraw());
+            setDeliveryChannel(null);
         }
     }, [dispatch, handleOpen, success]);
 
@@ -44,7 +45,6 @@ const DeliveryChannelCreateModal: FC<Props> = ({ open, setOpen }) => {
     }, [error, setError]);
 
     const onSubmit = (data: DeliveryChannelFormType) => {
-        console.log(data);
         setDeliveryChannel(data);
     }
 

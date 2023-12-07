@@ -19,15 +19,15 @@ const DeliveryChannelForm: FC<Props> = ({ control, deliveryChannel, setValue, on
     const labels = DatesTypesLabelsEnum;
 
     useEffect(() => {
-        if (!deliveryChannel) return;
-        const channel = deliveryChannel
-        setValue("name", channel.name);
-        setValue(names.ETA, channel.eta);
-        setValue(names.DATE_DO, channel.date_do);
-        setValue(names.DECLARATION_ISSUE_DATE, channel.declaration_issue_date);
-        setValue(names.TRAIN_DEPART_DATE, channel.train_depart_date);
-        setValue(names.TRAIN_ARRIVE_DATE, channel.train_arrive_date);
-        setValue(names.STORE_ARRIVE_DATE, channel.store_arrive_date);
+        if (deliveryChannel) {
+            const channel = deliveryChannel
+            setValue("name", channel.name);
+            setValue(names.ETA, channel.eta);
+            setValue(names.DATE_DO, channel.date_do);
+            setValue(names.DECLARATION_ISSUE_DATE, channel.declaration_issue_date);
+            setValue(names.TRAIN_DEPART_DATE, channel.train_depart_date);
+            setValue(names.TRAIN_ARRIVE_DATE, channel.train_arrive_date);
+        }
     }, [deliveryChannel, names, setValue]);
 
     return (

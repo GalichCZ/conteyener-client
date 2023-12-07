@@ -74,14 +74,14 @@ const UpdateDocsModal: FC<Props> = ({ docs, setOpen, open, bidId }) => {
                 {Object.values(DocsLabelsEnum).map((key, index) =>
                     <div className="flex flex-col justify-end gap-4">
                         <label>{key}</label>
-                        <Switch disabled={!roleTypes?.isRoleType7} checked={returnState(index)}
+                        <Switch disabled={!roleTypes?.isRoleType8} checked={returnState(index)}
                                 onChange={() => onChangeHandler(index)}
                                 className="w-[40px]"/>
                     </div>
                 )}
             </div>
 
-            {roleTypes?.isRoleType7 &&
+            {roleTypes?.isRoleType8 &&
                 <Button onClick={handleConfirm} type="primary" className="mt-5" text="Подтвердить"/>}
         </GModal>
     )

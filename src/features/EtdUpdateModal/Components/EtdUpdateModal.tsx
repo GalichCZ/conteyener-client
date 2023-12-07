@@ -14,7 +14,7 @@ import { getDateFromDayjs } from "@/utils/getDateFromDayjs.ts";
 
 interface Props extends ModalProps {
     etd: string;
-    deliveryChannel: string;
+    deliveryChannel: { _id: string, name: string };
     dateType: number;
     bidId: string;
 }
@@ -50,7 +50,7 @@ const EtdUpdateModal: FC<Props> = ({ open, setOpen, etd, deliveryChannel, dateTy
             setValue("date", dayjs(etd));
         }
         setValue("bidId", bidId);
-        setValue("delivery_channel", deliveryChannel);
+        setValue("delivery_channel", deliveryChannel._id);
         setValue("date_type", dateType);
     }, [bidId, dateType, deliveryChannel, etd, setValue]);
 

@@ -48,3 +48,7 @@ export enum roleType7 {
     manager_int = "manager_int",
     head = "head",
 }
+
+export enum roleType8 {
+    manager_int = "manager_int",
+}

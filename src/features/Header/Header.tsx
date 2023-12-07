@@ -42,7 +42,7 @@ const Header = () => {
                                     Таблица скрытых
                                 </Link>
                             </li>
-                            {(roleTypes && roleTypes.isRoleType7) && <li>
+                            {(roleTypes && roleTypes.isRoleType8) && <li>
                                 <DropdownMenu/>
                             </li>}
                         </> :

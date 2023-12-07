@@ -55,6 +55,7 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
     }
 
     const handleDelete = (id: string) => {
+        if (!roleTypes?.isRoleType8) return
         setProductId(id);
     }
 
@@ -66,7 +67,7 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
                 <ProductTableHead/>
                 <ProductTableBody handleDelete={handleDelete} products={products}/>
             </table>
-            {roleTypes?.isRoleType7 && <UploadButton bidId={bidId} simpleProductName={product}/>}
+            {roleTypes?.isRoleType8 && <UploadButton bidId={bidId} simpleProductName={product}/>}
         </GModal>
     )
 }

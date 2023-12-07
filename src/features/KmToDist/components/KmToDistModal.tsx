@@ -56,10 +56,10 @@ const KmToDistModal: FC<Props> = ({ open, setOpen, bid }) => {
         <GModal title='Километров осталось' open={open} onCancel={handleCancel}>
             {loading && <FillingSkeleton/>}
             <FormLayout className="shadow-none" onFinish={handleSubmit(onSubmit)}>
-                <GInputs.Number disabled={!roleTypes?.isRoleType7} min={0} max={Number.MAX_SAFE_INTEGER}
+                <GInputs.Number disabled={!roleTypes?.isRoleType8} min={0} max={Number.MAX_SAFE_INTEGER}
                                 name={ColumnsKeysEnum.KM_TO_DIST.toLowerCase()}
                                 label="Километров осталось" control={control}/>
-                {roleTypes?.isRoleType7 && <GButton text="Подтвердить"/>}
+                {roleTypes?.isRoleType8 && <GButton text="Подтвердить"/>}
             </FormLayout>
         </GModal>
     )

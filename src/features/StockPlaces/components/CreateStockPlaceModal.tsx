@@ -39,6 +39,7 @@ const CreateStockPlaceModal: FC<ModalProps> = ({ open, setOpen }) => {
     useEffect(() => {
         if (success) {
             handleOpen();
+            setStockPlace(null)
             dispatch(setReDraw())
         }
     }, [success, handleOpen, dispatch]);

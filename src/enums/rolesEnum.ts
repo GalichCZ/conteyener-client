@@ -9,13 +9,13 @@ export enum RolesEnum {
 }
 
 export enum RolesLabelEnum {
-    MANAGER_PATRIOT = 'Менеджер Патриот',
+    MANAGER_PATRIOT = 'Менеджер "Патриот" в Китае',
     MANAGER_BUYER = 'Менеджер по Закупкам',
     HEAD = 'Руководитель',
-    MANAGER_INT = 'Менеджер Международный',
-    MANAGER_SALES = 'Менеджер по Продажам',
+    MANAGER_INT = 'Менеджер Международной Логистики',
+    MANAGER_SALES = 'Менеджер отдела Продаж',
     MANAGER_TREASURY = 'Менеджер Казначейства',
-    MANAGER_STORE = 'Менеджер Склады',
+    MANAGER_STORE = 'Менеджер Склада',
 }
 
 export const RolesLabelEnumMap: Record<string, RolesLabelEnum> = RolesLabelEnum;
