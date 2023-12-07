@@ -13,7 +13,9 @@ interface Props {
 
 const StockPlaceCell: FC<Props> = ({ bid }) => {
     const [open, setOpen] = useState(false);
-
+    
+    const stockPlace = bid.stock_place;
+    
     const user = useAppSelector(state => state.authentication.user);
 
     if (user && user.role !== roleType7[user.role as keyof typeof roleType7])
@@ -25,9 +27,9 @@ const StockPlaceCell: FC<Props> = ({ bid }) => {
 
     return (
         <>
-            {open && createPortal(<StockPlaceModal open={open} setOpen={setOpen}
-                                                   stockPlaceId={bid.stock_place._id}/>, document.body)}
-            <TableCell.Cell onClick={handleOpen}>{stringCut(bid.stock_place_name, 10)}</TableCell.Cell>
+            {open && stockPlace && createPortal(<StockPlaceModal open={open} setOpen={setOpen}
+                                                   stockPlaceId={stockPlace._id}/>, document.body)}
+            <TableCell.Cell onClick={handleOpen}>{stockPlace ? stringCut(stockPlace.name, 10) : ''}</TableCell.Cell>
         </>
     )
 }

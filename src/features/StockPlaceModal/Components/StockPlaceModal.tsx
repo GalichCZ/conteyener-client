@@ -9,8 +9,8 @@ interface Props extends ModalProps {
     stockPlaceId: string;
 }
 
-const StoreInfoModal: FC<Props> = ({ open, setOpen, stockPlaceId }) => {
-    const { error, setError, store, loading } = useGetSingleStockPlace(stockPlaceId);
+const StockInfoModal: FC<Props> = ({ open, setOpen, stockPlaceId }) => {
+    const { error, setError, stock, loading } = useGetSingleStockPlace(stockPlaceId);
 
     const handleCancel = () => {
         setOpen(false);
@@ -26,15 +26,15 @@ const StoreInfoModal: FC<Props> = ({ open, setOpen, stockPlaceId }) => {
     return (
         <GModal title="Информация о стоке сдачи" open={open} onCancel={handleCancel}>
             {loading && <FillingSkeleton/>}
-            {!store && <b>Сток сдачи не найден</b>}
+            {!stock && <b>Сток сдачи не найден</b>}
             <div className="gap-y-4 flex flex-col mt-5 text-[17px]">
-                <p>Название: {store?.name}</p>
-                <p>Адрес: {store?.address}</p>
-                <p>Контакт: {store?.contact}</p>
-                <p>Пометка: {store?.note}</p>
+                <p>Название: {stock?.name}</p>
+                <p>Адрес: {stock?.address}</p>
+                <p>Контакт: {stock?.contact}</p>
+                <p>Пометка: {stock?.note}</p>
             </div>
         </GModal>
     );
 }
 
-export default StoreInfoModal;
+export default StockInfoModal;
