@@ -27,6 +27,7 @@ const DeliveryChannelForm: FC<Props> = ({ control, deliveryChannel, setValue, on
             setValue(names.DECLARATION_ISSUE_DATE, channel.declaration_issue_date);
             setValue(names.TRAIN_DEPART_DATE, channel.train_depart_date);
             setValue(names.TRAIN_ARRIVE_DATE, channel.train_arrive_date);
+            setValue(names.STORE_ARRIVE_DATE, channel.store_arrive_date);
         }
     }, [deliveryChannel, names, setValue]);
 
