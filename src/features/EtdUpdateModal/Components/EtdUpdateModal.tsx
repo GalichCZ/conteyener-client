@@ -50,8 +50,10 @@ const EtdUpdateModal: FC<Props> = ({ open, setOpen, etd, deliveryChannel, dateTy
             setValue("date", dayjs(etd));
         }
         setValue("bidId", bidId);
-        setValue("delivery_channel", deliveryChannel._id);
         setValue("date_type", dateType);
+        if(deliveryChannel) {
+            setValue("delivery_channel", deliveryChannel._id);
+        }
     }, [bidId, dateType, deliveryChannel, etd, setValue]);
 
     const onSubmit = (data: DateCalculateFormType) => {

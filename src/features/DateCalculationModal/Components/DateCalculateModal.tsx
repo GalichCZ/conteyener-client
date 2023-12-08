@@ -30,6 +30,8 @@ const DateCalculateModal: FC<Props> = ({
         setOpen(false);
     }, [setOpen])
 
+    const deliveryChannel = bid.delivery_channel;
+
     useEffect(() => {
         if (error) {
             handleError(error);
@@ -47,11 +49,13 @@ const DateCalculateModal: FC<Props> = ({
     useEffect(() => {
         setValue("date_type", dateType);
         setValue("bidId", bid._id);
-        setValue("delivery_channel", bid.delivery_channel._id);
+        if(deliveryChannel){
+            setValue("delivery_channel", deliveryChannel._id);
+        }
         if (date) {
             setValue("date", dayjs(date));
         }
-    }, [bid, date, dateType, setValue]);
+    }, [bid, date, dateType, deliveryChannel, setValue]);
 
     const onSubmit = (data: DateCalculateFormType) => {
         const dataToSend = { ...data, date: getDateFromDayjs(data.date) }

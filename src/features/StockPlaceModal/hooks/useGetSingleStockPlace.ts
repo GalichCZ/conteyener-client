@@ -28,5 +28,5 @@ export const useGetSingleStockPlace = (id: string) => {
         callGetSingleStockPlace()
     }, [callGetSingleStockPlace]);
 
-    return { store: stockPlace, loading, error, setError };
+    return { stock: stockPlace, loading, error, setError };
 }
