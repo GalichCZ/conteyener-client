@@ -1,4 +1,4 @@
-export enum roleType1 {
+export enum roleType1 {                                 /*manager_int, head, manager_buyer, manager_patriot, manager_treasury, manager_store, manager_sales*/
     manager_int = "manager_int",
     head = "head",
     manager_buyer = "manager_buyer",

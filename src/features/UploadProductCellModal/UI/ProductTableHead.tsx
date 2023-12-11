@@ -1,7 +1,10 @@
 import React from "react";
 import Cell from "@/features/UploadProductCellModal/UI/Cell.tsx";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 const ProductTableHead = () => {
+    const roleType = useGetRoleType()
+
     return (
         <thead className="text-center font-bold">
         <tr>
@@ -14,8 +17,8 @@ const ProductTableHead = () => {
             <Cell>Модификация</Cell>
             <Cell>Кол-во штук</Cell>
             <Cell>Кол-во мест</Cell>
-            <Cell>Цена за еденицу</Cell>
-            <Cell>Общая сумма</Cell>
+            {roleType?.isRoleType1 && <Cell>Цена за еденицу</Cell>}
+            {roleType?.isRoleType1 && <Cell>Общая сумма</Cell>}
             <Cell>Вес нетто</Cell>
             <Cell>Вес брутто</Cell>
             <Cell>Объем</Cell>

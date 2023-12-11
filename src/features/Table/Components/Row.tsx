@@ -46,7 +46,7 @@ const Row: FC<Props> = ({ bid }) => {
 
             {roleTypes?.isRoleType2 && <TableCell.ArrayTooltip className="min-w-[195px]" dataArray={bid.importers}/>}
 
-            {roleTypes?.isRoleType4 && <TableCell.Array dataArray={bid.conditions}/>}
+            {roleTypes?.isRoleType7 && <TableCell.Array dataArray={bid.conditions}/>}
 
             {roleTypes?.isRoleType4 && <TableCell.Cell>{bid.direction}</TableCell.Cell>}
 
@@ -83,7 +83,7 @@ const Row: FC<Props> = ({ bid }) => {
 
             {roleTypes?.isRoleType7 && <TableCell.Cell>{trueOrFalseString(bid.is_ds)}</TableCell.Cell>}
 
-            <TableCell.Cell>{bid.fraht_account}</TableCell.Cell>
+            {roleTypes?.isRoleType7 && <TableCell.Cell>{bid.fraht_account}</TableCell.Cell>}
 
             <UpdateDocsCell bid={bid}/>
 
@@ -104,12 +104,12 @@ const Row: FC<Props> = ({ bid }) => {
 
             {roleTypes?.isRoleType5 && <KmToDistCell bid={bid}/>}
 
-            {roleTypes?.isRoleType1 && <DatesUpdateCell isUpdated={bid.train_depart_date_update} bid={bid}
+            {roleTypes?.isRoleType4 && <DatesUpdateCell isUpdated={bid.train_depart_date_update} bid={bid}
                                                         dateLabel={DatesTypesLabelsEnum.TRAIN_DEPART_DATE}
                                                         date={bid.train_depart_date}
                                                         dateType={DatesTypesEnum.TRAIN_DEPART_DATE}/>}
 
-            {roleTypes?.isRoleType1 && <DatesUpdateCell isUpdated={bid.train_arrive_date_update} bid={bid}
+            {roleTypes?.isRoleType4 && <DatesUpdateCell isUpdated={bid.train_arrive_date_update} bid={bid}
                                                         dateLabel={DatesTypesLabelsEnum.TRAIN_ARRIVE_DATE}
                                                         date={bid.train_arrive_date}
                                                         dateType={DatesTypesEnum.TRAIN_ARRIVE_DATE}/>}

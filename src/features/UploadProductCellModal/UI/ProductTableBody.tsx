@@ -3,6 +3,7 @@ import { Products } from "@/Types";
 import Cell from "@/features/UploadProductCellModal/UI/Cell.tsx";
 import { formatNumber } from "@/utils/formatNumber.ts";
 import { CloseOutlined } from "@ant-design/icons";
+import { useGetRoleType } from "@/hooks/useGetRoleType.ts";
 
 interface Props {
     handleDelete: (id: string) => void;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const ProductTableBody: FC<Props> = ({ products, handleDelete }) => {
+    const roleType = useGetRoleType()
+
     return (
         <tbody>
         {products?.map((product, index) => (
@@ -23,8 +26,8 @@ const ProductTableBody: FC<Props> = ({ products, handleDelete }) => {
                 <Cell>{product.modification}</Cell>
                 <Cell>{product.quantity_pieces}</Cell>
                 <Cell>{product.quantity_places}</Cell>
-                <Cell>{formatNumber(product.piece_price, "en-US")}</Cell>
-                <Cell>{formatNumber(product.total_price, "en-US")}</Cell>
+                {roleType?.isRoleType1 && <Cell>{formatNumber(product.piece_price, "en-US")}</Cell>}
+                {roleType?.isRoleType1 && <Cell>{formatNumber(product.total_price, "en-US")}</Cell>}
                 <Cell>{formatNumber(product.weight_net, "en-US")}</Cell>
                 <Cell>{formatNumber(product.weight_gross, "en-US")}</Cell>
                 <Cell>{formatNumber(product.cbm, "en-US")}</Cell>

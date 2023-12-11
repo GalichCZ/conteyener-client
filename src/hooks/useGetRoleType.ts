@@ -14,8 +14,7 @@ export const useGetRoleType = () => {
     const user = useAppSelector(state => state.authentication.user);
 
     if (!user) return null;
-
-
+    
     const isNewOne = user.role === "new_one";
     const isRoleType1 = roleType1[user.role as keyof typeof roleType1] !== undefined;
     const isRoleType2 = roleType2[user.role as keyof typeof roleType2] !== undefined;
