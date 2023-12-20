@@ -1,9 +1,9 @@
-import React, { FC } from "react";
+import React, {FC, useEffect, useMemo} from "react";
 import { Checkbox } from "antd";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
-import { useLocation } from "react-router-dom";
 import { Dates } from "@/Types";
 import { formatDate } from "@/utils/convertDate.ts";
+import {useAppSelector} from "@/hooks/hooksRedux.ts";
 
 interface Props {
     onCheck: (checkedValues: CheckboxValueType[]) => void;
@@ -12,20 +12,24 @@ interface Props {
 }
 
 export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
+    const {filtersMap} = useAppSelector(state => state.filtersMap)
+    const filtersValues: CheckboxValueType[] = useMemo(() => [], [])
 
-    const defaultCheckedValues: CheckboxValueType[] = [];
+    console.log({filtersMap, filtersValues})
 
-    searchParams.forEach((value, key) => {
-        if (key === tooltipId.toLowerCase()) {
-            defaultCheckedValues.push(value);
-        }
-    });
+    useEffect(() => {
+        if(filtersMap.length === 0 || tooltipId === '') return
+        const filterName = tooltipId.toLowerCase()
+        const filterValuesArr = filtersMap.filter(filter =>
+            Object.keys(filter)[0] === filterName)[0][filterName]
+            .map(value=> value.toString())
+        filtersValues.length = 0
+        filterValuesArr.forEach(value => filtersValues.push(value))
+    }, [filtersMap, filtersValues, tooltipId]);
 
     return (
         <>
-            <Checkbox.Group defaultValue={defaultCheckedValues} onChange={onCheck}>
+            <Checkbox.Group key={filtersMap.length} defaultValue={filtersValues} onChange={onCheck}>
                 <div className="flex flex-col p-2">
                     <Checkbox value="null">Пустые</Checkbox>
                     <Checkbox value="not_null">Не пустые</Checkbox>
