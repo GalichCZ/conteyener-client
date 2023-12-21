@@ -1,9 +1,10 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {CheckboxValueType} from "antd/es/checkbox/Group";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CheckboxValueType } from "antd/es/checkbox/Group";
 
 export type FilterName = string
 export type FilterValues = CheckboxValueType[]
-type FiltersMap = Record<FilterName, FilterValues>
+export type FiltersMap = Record<FilterName, FilterValues>
+
 export interface FiltersMapState {
     filtersMap: FiltersMap[]
 }
@@ -18,12 +19,11 @@ const filtersMapSlice = createSlice({
     reducers: {
         setFiltersMap(state, action: PayloadAction<FiltersMap>) {
             const payloadKey = Object.keys(action.payload)[0];
-            const hasKey = state.filtersMap.some(a=>Object.keys(a)[0] === payloadKey)
-            if(hasKey) {
-                const index = state.filtersMap.findIndex(a=>Object.keys(a)[0] === payloadKey)
+            const hasKey = state.filtersMap.some(a => Object.keys(a)[0] === payloadKey)
+            if (hasKey) {
+                const index = state.filtersMap.findIndex(a => Object.keys(a)[0] === payloadKey)
                 state.filtersMap[index] = action.payload
-            }
-            else {
+            } else {
                 state.filtersMap.push(action.payload);
             }
         },
@@ -33,5 +33,5 @@ const filtersMapSlice = createSlice({
     }
 })
 
-export const {setFiltersMap, clearFiltersMap} = filtersMapSlice.actions
+export const { setFiltersMap, clearFiltersMap } = filtersMapSlice.actions
 export default filtersMapSlice.reducer;

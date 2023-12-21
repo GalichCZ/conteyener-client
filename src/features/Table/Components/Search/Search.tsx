@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 import { Input } from "antd";
-import { useDebounce } from "@/features/Table/hooks/useDebounce.ts";
+import { useDebounce } from "@/hooks/useDebounce.ts";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "@/store/slices/searchSlice.ts";
 import SearchFieldPicker from "@/features/Table/Components/Search/SearchFieldPicker.tsx";

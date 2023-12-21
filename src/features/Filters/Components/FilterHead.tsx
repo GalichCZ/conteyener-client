@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC } from "react";
 import { Input } from "antd";
-import {useDebounce} from "@/features/Table/hooks/useDebounce.ts";
+import { useDebounce } from "@/hooks/useDebounce.ts";
 
 interface Props {
     setSearchValue: (value: string) => void;
@@ -12,7 +12,7 @@ export const FilterHead: FC<Props> = ({ setSearchValue }) => {
     }, 500);
 
     return (
-        <div className="bg-white sticky p-2 z-10 top-0">
+        <div className="bg-white sticky p-2 z-10 top-0 text-black">
             <p>Фильтрация</p>
             <Input onChange={searchHandle} placeholder="Поиск"/>
         </div>

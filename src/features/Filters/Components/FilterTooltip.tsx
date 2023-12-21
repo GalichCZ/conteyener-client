@@ -11,7 +11,9 @@ import FilterHead from "@/features/Filters/Components/FilterHead.tsx";
 import { setTooltipId } from "@/store/slices/uiSlice.ts";
 import { useDispatch } from "react-redux";
 import Button from "@/components/UI/Button.tsx";
-import {FilterName, setFiltersMap} from "@/store/slices/filtersMapSlice.ts";
+import { clearFiltersMap, FilterName, setFiltersMap } from "@/store/slices/filtersMapSlice.ts";
+import { setFilterApplied } from "@/store";
+import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
 interface Props {
     tooltipId: string;
@@ -22,8 +24,11 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
     const isHidden = useIsHidden();
     const dispatch = useDispatch();
     const { filters, setError, isLoading, error } = useGetFilters(tooltipId, isHidden);
+    const { filtersMap } = useAppSelector(state => state.filtersMap)
     const [searchValue, setSearchValue] = useState<string>("");
-    const {filtered, searchParams, setSearchParams} = useSearchThroughArray(filters, searchValue, tooltipId.toLowerCase());
+    const {
+        filtered,
+    } = useSearchThroughArray(filters, searchValue, tooltipId.toLowerCase());
 
     useEffect(() => {
         if (error) {
@@ -32,39 +37,46 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
         }
     }, [error, setError]);
 
+    const applyFiltersHandler = () => {
+        dispatch(setTooltipId({ tooltipId: "" }))
+        dispatch(setFilterApplied(true))
+    }
+
     const onCheck = (checkedValues: CheckboxValueType[]) => {
-        const params = new URLSearchParams(searchParams);
 
         const filterName: FilterName = tooltipId.toLowerCase() as FilterName;
 
-        dispatch(setFiltersMap({[filterName]: checkedValues}))
+        dispatch(setFiltersMap({ [filterName]: checkedValues }))
 
-        params.delete(tooltipId.toLowerCase());
-
-        // checkedValues.forEach(value => {
-        //     params.append(tooltipId.toLowerCase(), value.toString());
-        // })
-
-        if(setSearchParams) setSearchParams(params)
     }
 
     const clearAllFilters = () => {
-        if(setSearchParams) setSearchParams(undefined);
+        if (filtersMap.length !== 0) {
+            dispatch(clearFiltersMap())
+            dispatch(setFilterApplied(true))
+        }
         dispatch(setTooltipId({ tooltipId: "" }))
     }
 
     return (
-        <Tooltip opacity="1" clickable className="z-10" style={{ background: "none" }} id={tooltipId} isOpen={open}>
-            <div className="bg-white text-black shadow-2xl w-[200px] relative pb-8 overflow-auto h-[400px]">
-                {isLoading ? <FillingSkeleton/> :
-                    <>
-                        <FilterHead setSearchValue={setSearchValue} />
-                        <FilterValues tooltipId={tooltipId} onCheck={onCheck} filters={filtered}/>
-                    </>
-                }
+        <Tooltip opacity="1" clickable className="z-10 grid min-w-[280px]" style={{ background: "none" }}
+                 id={tooltipId}
+                 isOpen={open}>
+            <div>
+                <FilterHead setSearchValue={setSearchValue}/>
+                <div className="bg-white text-black relative pb-8 overflow-auto h-[300px]">
+                    {isLoading ? <FillingSkeleton/> :
+                        <>
+                            <FilterValues tooltipId={tooltipId} onCheck={onCheck} filters={filtered}/>
+                        </>
+                    }
+                </div>
+                <div className="bottom-1 w-full bg-white p-2 flex justify-between">
+                    <Button onClick={applyFiltersHandler} text="OK" type="primary"/>
+                    <Button onClick={clearAllFilters} type="side" className=""
+                            text="Сбросить фильтры"/>
+                </div>
             </div>
-            <Button onClick={clearAllFilters} type="primary" className="absolute bottom-1 mb-2 ml-3"
-                    text="Сбросить фильтры"/>
         </Tooltip>
     )
 }
