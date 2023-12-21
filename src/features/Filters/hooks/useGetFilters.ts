@@ -9,11 +9,13 @@ export const useGetFilters = (filter_key: string, is_hidden: boolean) => {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
+        if (filter_key === '') return;
         const callGetFilters = async () => {
             setIsLoading(true);
             try {
                 const { data } = await getFilters(filter_key, is_hidden);
-                setFilters(data.values);
+                const filterValues = data.values.map((item: any) => item.toString());
+                setFilters(filterValues);
                 setIsLoading(false);
             } catch (error) {
                 const err = error as AxiosError;

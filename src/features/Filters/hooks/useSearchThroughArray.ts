@@ -11,7 +11,7 @@ export const useSearchThroughArray = (array: string[] | null, searchValue: strin
         if (key === '') return;
         setFilteredList(array)
         if (searchValue === '') return;
-        const filtered = array?.filter((item) => item.toLowerCase().includes(searchValue.toLowerCase()));
+        const filtered = array?.filter((item) => item.toString().toLowerCase().includes(searchValue.toLowerCase())).map((item) => item.toString());
         setFilteredList(filtered);
 
         dispatch(setFiltersMap({ [key]: filtered }));

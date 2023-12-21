@@ -11,9 +11,8 @@ import FilterHead from "@/features/Filters/Components/FilterHead.tsx";
 import { setTooltipId } from "@/store/slices/uiSlice.ts";
 import { useDispatch } from "react-redux";
 import Button from "@/components/UI/Button.tsx";
-import { clearFiltersMap, FilterName, setFiltersMap } from "@/store/slices/filtersMapSlice.ts";
+import { clearFiltersByKey, FilterName, setFiltersMap } from "@/store/slices/filtersMapSlice.ts";
 import { setFilterApplied } from "@/store";
-import { useAppSelector } from "@/hooks/hooksRedux.ts";
 
 interface Props {
     tooltipId: string;
@@ -24,7 +23,6 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
     const isHidden = useIsHidden();
     const dispatch = useDispatch();
     const { filters, setError, isLoading, error } = useGetFilters(tooltipId, isHidden);
-    const { filtersMap } = useAppSelector(state => state.filtersMap)
     const [searchValue, setSearchValue] = useState<string>("");
     const {
         filtered,
@@ -50,11 +48,9 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
 
     }
 
-    const clearAllFilters = () => {
-        if (filtersMap.length !== 0) {
-            dispatch(clearFiltersMap())
-            dispatch(setFilterApplied(true))
-        }
+    const clearFilters = () => {
+        dispatch(clearFiltersByKey(tooltipId.toLowerCase() as FilterName))
+        dispatch(setFilterApplied(true))
         dispatch(setTooltipId({ tooltipId: "" }))
     }
 
@@ -73,7 +69,7 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
                 </div>
                 <div className="bottom-1 w-full bg-white p-2 flex justify-between">
                     <Button onClick={applyFiltersHandler} text="OK" type="primary"/>
-                    <Button onClick={clearAllFilters} type="side" className=""
+                    <Button onClick={clearFilters} type="side" className=""
                             text="Сбросить фильтры"/>
                 </div>
             </div>

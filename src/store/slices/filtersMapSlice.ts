@@ -27,11 +27,14 @@ const filtersMapSlice = createSlice({
                 state.filtersMap.push(action.payload);
             }
         },
+        clearFiltersByKey(state, action: PayloadAction<FilterName>) {
+            state.filtersMap = state.filtersMap.filter(a => Object.keys(a)[0] !== action.payload)
+        },
         clearFiltersMap(state) {
             state.filtersMap = []
         }
     }
 })
 
-export const { setFiltersMap, clearFiltersMap } = filtersMapSlice.actions
+export const { setFiltersMap, clearFiltersMap, clearFiltersByKey } = filtersMapSlice.actions
 export default filtersMapSlice.reducer;

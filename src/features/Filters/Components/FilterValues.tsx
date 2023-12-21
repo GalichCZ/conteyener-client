@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo } from "react";
+import React, { FC, useCallback, useEffect, useMemo } from "react";
 import { Checkbox } from "antd";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { Dates } from "@/Types";
@@ -33,6 +33,19 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
         filterValuesArr.forEach(value => filtersValues.push(value))
     }, [filtersMap, filtersValues, tooltipId]);
 
+    const data = useCallback((value: string | Date | number | boolean): string => {
+        const isDate = Dates[tooltipId.toLowerCase() as keyof typeof Dates]
+        const isBoolean = typeof value === 'boolean'
+        const isBooleanString = value === 'true' || value === 'false'
+        const isNumber = typeof value === 'number'
+
+        if (isDate) return formatDate(value as string)
+        if (isBoolean) return value ? '+' : '-'
+        if (isBooleanString) return value === 'true' ? '+' : '-'
+        if (isNumber) return value.toString()
+        return value.toString();
+    }, [tooltipId])
+
     return (
         <>
             <Checkbox.Group key={filtersMap.length} defaultValue={filtersValues} onChange={onCheck}>
@@ -43,9 +56,8 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
                     {(!filters || filters.length === 0) && <p>Нет данных</p>}
 
                     {filters?.map((filter, key) => {
-                        const data = Dates[tooltipId.toLowerCase() as keyof typeof Dates] ? formatDate(filter) : filter
                         return <Checkbox value={filter} key={key}>
-                            {data}
+                            {data(filter)}
                         </Checkbox>
                     })
                     }

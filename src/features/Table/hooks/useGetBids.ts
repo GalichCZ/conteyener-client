@@ -52,7 +52,6 @@ export const useGetBids = (page: number, hidden: boolean) => {
     }, [callGetBids, page, reDraw, searchValue]);
 
     useEffect(() => {
-        console.log(filterApplied)
         if (!filterApplied) return;
 
         getBidsWithFilter();
