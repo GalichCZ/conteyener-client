@@ -16,7 +16,6 @@ const Filter: FC<Props> = ({ key_name }) => {
     const tooltipId = useAppSelector(state => state.ui.tooltipId);
 
     const handleFilter = () => {
-        if (key_name === "IS_DOCS") return;
         const id = open ? "" : key_name
         dispatch(setTooltipId({ tooltipId: id }))
         setOpen(true);

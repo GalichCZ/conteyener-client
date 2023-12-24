@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useState } from "react";
-import { Tooltip } from "react-tooltip";
 import { useIsHidden } from "@/hooks/useIsHidden.ts";
 import { useGetFilters } from "@/features/Filters/hooks/useGetFilters.ts";
 import { handleError } from "@/utils/handleError.ts";
@@ -13,6 +12,7 @@ import { useDispatch } from "react-redux";
 import Button from "@/components/UI/Button.tsx";
 import { clearFiltersByKey, FilterName, setFiltersMap } from "@/store/slices/filtersMapSlice.ts";
 import { setFilterApplied } from "@/store";
+import TooltipUI from "@/features/Filters/UI/TooltipUI.tsx";
 
 interface Props {
     tooltipId: string;
@@ -55,9 +55,7 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
     }
 
     return (
-        <Tooltip opacity="1" clickable className="z-10 grid min-w-[280px]" style={{ background: "none" }}
-                 id={tooltipId}
-                 isOpen={open}>
+        <TooltipUI tooltipId={tooltipId} open={open}>
             <div>
                 <FilterHead setSearchValue={setSearchValue}/>
                 <div className="bg-white text-black relative pb-8 overflow-auto h-[300px]">
@@ -73,7 +71,7 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
                             text="Сбросить фильтры"/>
                 </div>
             </div>
-        </Tooltip>
+        </TooltipUI>
     )
 }
 

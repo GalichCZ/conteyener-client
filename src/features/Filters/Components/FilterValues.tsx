@@ -1,9 +1,9 @@
-import React, { FC, useCallback, useEffect, useMemo } from "react";
+import React, { FC, useEffect, useMemo } from "react";
 import { Checkbox } from "antd";
 import { CheckboxValueType } from "antd/es/checkbox/Group";
-import { Dates } from "@/Types";
-import { formatDate } from "@/utils/convertDate.ts";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
+import {getProperString} from "@/utils/getProperString.ts";
+import {DocsLabelsEnum, DocsNamesEnum} from "@/enums/DocsEnum.ts";
 
 interface Props {
     onCheck: (checkedValues: CheckboxValueType[]) => void;
@@ -14,6 +14,8 @@ interface Props {
 export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
     const { filtersMap } = useAppSelector(state => state.filtersMap)
     const filtersValues: CheckboxValueType[] = useMemo(() => [], [])
+
+    const isDocs = tooltipId === 'IS_DOCS'
 
     useEffect(() => {
         if (filtersMap.length === 0 || tooltipId === '') return
@@ -33,18 +35,33 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
         filterValuesArr.forEach(value => filtersValues.push(value))
     }, [filtersMap, filtersValues, tooltipId]);
 
-    const data = useCallback((value: string | Date | number | boolean): string => {
-        const isDate = Dates[tooltipId.toLowerCase() as keyof typeof Dates]
-        const isBoolean = typeof value === 'boolean'
-        const isBooleanString = value === 'true' || value === 'false'
-        const isNumber = typeof value === 'number'
+    const docsCheckBoxes = useMemo(() => {
+        return Object.keys(DocsNamesEnum).map(key => (
+          <Checkbox value={key} key={key}>
+            {DocsLabelsEnum[key as keyof typeof DocsLabelsEnum]}
+          </Checkbox>
+        ))
+    }, [])
 
-        if (isDate) return formatDate(value as string)
-        if (isBoolean) return value ? '+' : '-'
-        if (isBooleanString) return value === 'true' ? '+' : '-'
-        if (isNumber) return value.toString()
-        return value.toString();
+    const data = useMemo(()=>(value: string | Date | number | boolean) => {
+        return getProperString(value, tooltipId)
     }, [tooltipId])
+
+    const otherCheckBoxes = useMemo(() => {
+        return(
+            <>
+                {/*<Checkbox value={'asc'}>От А до Я</Checkbox>*/}
+                {/*<Checkbox value={'desc'}>От Я до А</Checkbox>*/}
+                {filters?.map((filter, key) =>
+                    (<Checkbox value={filter} key={key}>
+                        {data(filter)}
+                    </Checkbox>)
+                )}
+            </>
+        )
+    },[data, filters])
+
+    const noData = (!filters || filters.length === 0) && !isDocs
 
     return (
         <>
@@ -53,14 +70,11 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
                     <Checkbox value="null">Пустые</Checkbox>
                     <Checkbox value="not_null">Не пустые</Checkbox>
 
-                    {(!filters || filters.length === 0) && <p>Нет данных</p>}
+                    <br/>
 
-                    {filters?.map((filter, key) => {
-                        return <Checkbox value={filter} key={key}>
-                            {data(filter)}
-                        </Checkbox>
-                    })
-                    }
+                    {noData && <p>Нет данных</p>}
+
+                    {isDocs ? docsCheckBoxes : otherCheckBoxes}
                 </div>
             </Checkbox.Group>
         </>
