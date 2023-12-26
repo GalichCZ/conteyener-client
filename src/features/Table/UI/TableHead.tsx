@@ -9,6 +9,8 @@ const TableHead = () => {
     const user = useAppSelector(state => state.authentication.user);
     const [columns, setColumns] = useState<string[]>([]);
     const [columnsKeys, setColumnsKeys] = useState<string[]>([]);
+    const { filteredKeys } = useAppSelector(state => state.filtersMap)
+
 
     useEffect(() => {
         if (user) {
@@ -24,7 +26,8 @@ const TableHead = () => {
             {columns.map((column, key) => (
                 <TableCell.Cell className="min-w-[100px]" key={key}>
                     {column}
-                    <Filter key_name={columnsKeys[key]}/>
+                    <Filter isFiltered={filteredKeys.includes(columnsKeys[key].toLowerCase())}
+                            key_name={columnsKeys[key]}/>
                 </TableCell.Cell>
             ))}
         </TableRow>
