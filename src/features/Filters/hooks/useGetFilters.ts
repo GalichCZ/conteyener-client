@@ -14,8 +14,7 @@ export const useGetFilters = (filter_key: string, is_hidden: boolean) => {
             setIsLoading(true);
             try {
                 const { data } = await getFilters(filter_key, is_hidden);
-                const filterValues = data.values.map((item: any) => item.toString());
-                setFilters(filterValues);
+                setFilters(data.values);
                 setIsLoading(false);
             } catch (error) {
                 const err = error as AxiosError;

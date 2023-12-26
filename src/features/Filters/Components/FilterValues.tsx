@@ -4,10 +4,11 @@ import { CheckboxValueType } from "antd/es/checkbox/Group";
 import { useAppSelector } from "@/hooks/hooksRedux.ts";
 import {getProperString} from "@/utils/getProperString.ts";
 import {DocsLabelsEnum, DocsNamesEnum} from "@/enums/DocsEnum.ts";
+import {DbObject} from "@/Types";
 
 interface Props {
     onCheck: (checkedValues: CheckboxValueType[]) => void;
-    filters: string[] | null;
+    filters: string[] | null | DbObject[];
     tooltipId: string
 }
 
@@ -52,7 +53,7 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
             <>
                 {/*<Checkbox value={'asc'}>От А до Я</Checkbox>*/}
                 {/*<Checkbox value={'desc'}>От Я до А</Checkbox>*/}
-                {filters?.map((filter, key) =>
+                {(filters as string[])?.map((filter, key) =>
                     (<Checkbox value={filter} key={key}>
                         {data(filter)}
                     </Checkbox>)
@@ -60,6 +61,21 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
             </>
         )
     },[data, filters])
+
+    const objectArr = useMemo(() => {
+        return (filters as DbObject[])?.map(filter => (
+            <Checkbox value={filter._id} key={filter._id}>
+                {data(filter.name)}
+            </Checkbox>
+        ))
+    }, [data, filters])
+
+    const checkboxArr = useMemo(() => {
+        const isObject = (filters as DbObject[])[0]?._id
+        if(isObject) return objectArr
+        if(isDocs) return docsCheckBoxes
+        return otherCheckBoxes
+    }, [docsCheckBoxes, filters, isDocs, objectArr, otherCheckBoxes])
 
     const noData = (!filters || filters.length === 0) && !isDocs
 
@@ -74,7 +90,7 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
 
                     {noData && <p>Нет данных</p>}
 
-                    {isDocs ? docsCheckBoxes : otherCheckBoxes}
+                    {checkboxArr}
                 </div>
             </Checkbox.Group>
         </>
