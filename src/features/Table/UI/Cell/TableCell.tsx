@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from 'react';
+import React, {CSSProperties, FC, useCallback} from 'react';
 import TableCellArray from "@/features/Table/UI/Cell/TableCellArray.tsx";
 import TableCellArrayTooltip from "@/features/Table/UI/Cell/TableCellArrayTooltip.tsx";
 import { Docs } from "@/Types";
@@ -12,9 +12,10 @@ interface Props {
     children: React.ReactNode;
     className?: string
     onClick?: () => void;
+    style?: CSSProperties
 }
 
-const Cell: FC<Props> = ({ children, className, onClick }) => {
+const Cell: FC<Props> = ({ children, className, onClick, style }) => {
     const getColor = useColorText;
     const searchValue = useAppSelector(state => state.search.searchValue);
 
@@ -35,7 +36,7 @@ const Cell: FC<Props> = ({ children, className, onClick }) => {
 
     return <td onClick={onClick}
                className={`border-2 px-4 border-black h-full text-center relative ${onClick && "cursor-pointer "} ${className}`}>
-        <p className={`${color()}`}>
+        <p style={style} className={`${color()}`}>
             {children}
         </p>
     </td>;

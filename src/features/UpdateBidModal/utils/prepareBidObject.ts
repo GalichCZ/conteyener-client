@@ -20,7 +20,7 @@ export const prepareBidObject = (dataMap: FormBidUpdateValues, _id: string) => {
         importers: arrays.importers,
         conditions: arrays.conditions,
         store_name: dataMap["store"]?.toString(),
-        store: undefined,
+        store: dataMap['store'],
         delivery_channel: dataMap["delivery_channel"]?.toString(),
         agent: dataMap["agent"]?.toString(),
         place_of_dispatch: dataMap["place_of_dispatch"]?.toString(),

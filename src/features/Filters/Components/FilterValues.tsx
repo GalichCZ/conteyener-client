@@ -12,11 +12,19 @@ interface Props {
     tooltipId: string
 }
 
+const BOOLEANS = {
+    BL_SMGS_CMR:'BL_SMGS_CMR',
+    TD:'TD',
+    IS_DS:'IS_DS'
+}
+
 export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
     const { filtersMap } = useAppSelector(state => state.filtersMap)
     const filtersValues: CheckboxValueType[] = useMemo(() => [], [])
 
     const isDocs = tooltipId === 'IS_DOCS'
+
+    const booleanKey = BOOLEANS[tooltipId as keyof typeof BOOLEANS]
 
     useEffect(() => {
         if (filtersMap.length === 0 || tooltipId === '') return
@@ -83,10 +91,10 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
         <>
             <Checkbox.Group key={filtersMap.length} defaultValue={filtersValues} onChange={onCheck}>
                 <div className="flex flex-col p-2">
-                    <Checkbox value="null">Пустые</Checkbox>
-                    <Checkbox value="not_null">Не пустые</Checkbox>
+                    {!booleanKey && <Checkbox value="null">Пустые</Checkbox>}
+                    {!booleanKey && <Checkbox value="not_null">Не пустые</Checkbox>}
 
-                    <br/>
+                    {!booleanKey && <br/>}
 
                     {noData && <p>Нет данных</p>}
 
