@@ -6,7 +6,7 @@ import FillingSkeleton from "@/components/UI/FillingSkeleton.tsx";
 import { handleError } from "@/utils/handleError.ts";
 import { useDispatch } from "react-redux";
 import { setReDraw } from "@/store";
-import { DocsLabelsEnum, DocsNamesEnum } from "@/features/UpdateDocsModal/enums/DocsEnum.ts";
+import { DocsLabelsEnum, DocsNamesEnum } from "@/enums/DocsEnum.ts";
 import { Switch } from "antd";
 import Button from "@/components/UI/Button.tsx";
 import { useGetRoleType } from "@/hooks/useGetRoleType.ts";

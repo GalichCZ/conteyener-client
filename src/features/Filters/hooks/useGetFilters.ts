@@ -9,6 +9,7 @@ export const useGetFilters = (filter_key: string, is_hidden: boolean) => {
     const [error, setError] = useState<Error | null>(null);
 
     useEffect(() => {
+        if (filter_key === '' || filter_key === "IS_DOCS") return;
         const callGetFilters = async () => {
             setIsLoading(true);
             try {
