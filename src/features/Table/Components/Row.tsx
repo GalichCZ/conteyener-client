@@ -92,7 +92,7 @@ const Row: FC<Props> = ({ bid }) => {
             <DatesUpdateCell isUpdated={bid.declaration_issue_date_update} bid={bid}
                              dateLabel={DatesTypesLabelsEnum.DECLARATION_ISSUE_DATE}
                              date={bid.declaration_issue_date}
-                             dateType={DatesTypesEnum.DECLARATION_ISSUE_DATE}/> {/*declaration_issue_date*/}
+                             dateType={DatesTypesEnum.DECLARATION_ISSUE_DATE}/>
 
             {roleTypes?.isRoleType7 && <TableCell.Cell>{formatDate(bid.availability_of_ob)}</TableCell.Cell>}
 
