@@ -6,11 +6,11 @@ import Button from "@/components/UI/Button.tsx";
 
 const GlobalUpload = () => {
     const dispatch = useDispatch();
-    const { uploadFile } = useUpload(`${import.meta.env.VITE_API_URL}/item/global`, dispatch);
+    const { uploadFile } = useUpload(`${import.meta.env.VITE_API_URL}/item/part-upload`, dispatch);
 
     return (
         <Upload {...uploadFile()}>
-            <Button className="w-[170px]" text="Глобальная загрузка" type="primary"/>
+            <Button className="w-[170px]" text="Подзагрузка инвойсов" type="primary"/>
         </Upload>
     )
 }
