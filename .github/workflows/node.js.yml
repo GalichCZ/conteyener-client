@@ -1,0 +1,28 @@
+name: Conteyener CI/CD
+run-name: ${{ github.actor }} is testing out Conteyener 🚀
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches: [master]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: yarn
+      - name: build project
+        run: yarn build
+      - name: run unit tests
+        run: yarn test
+      - name: run eslint check
+        run: yarn lint
