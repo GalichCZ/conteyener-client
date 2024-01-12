@@ -59,8 +59,9 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
     const otherCheckBoxes = useMemo(() => {
         return(
             <>
-                {/*<Checkbox value={'asc'}>От А до Я</Checkbox>*/}
-                {/*<Checkbox value={'desc'}>От Я до А</Checkbox>*/}
+                <Checkbox value={'asc'}>По возрастанию</Checkbox>
+                <Checkbox value={'desc'}>По убыванию</Checkbox>
+                <br/>
                 {(filters as string[])?.map((filter, key) =>
                     (<Checkbox value={filter} key={key}>
                         {data(filter)}

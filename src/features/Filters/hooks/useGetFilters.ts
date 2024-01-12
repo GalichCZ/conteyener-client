@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import { Error } from "@/Types";
 import { getFilters } from "@/features/Filters/Api/getFilters.ts";
 import { AxiosError } from "axios";
+import {useAppSelector} from "@/hooks/hooksRedux.ts";
 
 export const useGetFilters = (filter_key: string, is_hidden: boolean) => {
     const [filters, setFilters] = useState<string[] | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null>(null);
+    const { filtersMap } = useAppSelector(state => state.filtersMap)
+    const hasFilters = filtersMap.length !== 0
 
     useEffect(() => {
         if (filter_key === '' || filter_key === "IS_DOCS") return;
         const callGetFilters = async () => {
             setIsLoading(true);
             try {
-                const { data } = await getFilters(filter_key, is_hidden);
+                const { data } = await getFilters(filter_key, is_hidden, hasFilters);
                 setFilters(data.values);
                 setIsLoading(false);
             } catch (error) {
