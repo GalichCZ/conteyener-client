@@ -4,6 +4,7 @@ import CreateBidModalTrigger from "@/features/CreateBidModal/CreateBidModalTrigg
 import UploadBids from "@/features/Table/Components/UploadBids.tsx";
 import DownloadExcel from "@/features/Table/Components/DownloadExcel.tsx";
 import GlobalUpload from "@/features/Table/Components/GlobalUpload.tsx";
+import PartUpload from "@/features/Table/Components/PartUpload.tsx";
 
 const GDrawer = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -18,6 +19,7 @@ const GDrawer = () => {
                 <CreateBidModalTrigger triggerClose={handleOpen}/>
                 <GlobalUpload/>
                 <UploadBids/>
+                <PartUpload/>
                 <DownloadExcel setOpen={setOpen}/>
             </div>
         </GDrawerWrap>
