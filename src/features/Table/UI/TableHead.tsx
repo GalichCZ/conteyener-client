@@ -11,7 +11,6 @@ const TableHead = () => {
     const [columnsKeys, setColumnsKeys] = useState<string[]>([]);
     const { filteredKeys } = useAppSelector(state => state.filtersMap)
 
-
     useEffect(() => {
         if (user) {
             const { columnsNames, columnsKeys } = getColumns(user.role);
