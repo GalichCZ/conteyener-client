@@ -110,19 +110,12 @@ const columnsMap: ColumnsMap[] = [
     },
     {
         [roles.MANAGER_STORE]: [
-            columns.INSIDE_NUMBER,
-            columns.PROFORM_NUMBER,
             columns.ORDER_NUMBER,
             columns.CONTAINER_NUMBER,
             columns.PRODUCT,
-            columns.DIRECTION,
             columns.STORE,
             columns.CONTAINER_TYPE,
-            columns.ETD,
-            columns.ETA,
-            columns.DECLARATION_ISSUE_DATE,
-            columns.TRAIN_DEPART_DATE,
-            columns.TRAIN_ARRIVE_DATE,
+            columns.KM_TO_DIST,
             columns.STORE_ARRIVE_DATE,
         ]
     }
@@ -142,7 +135,6 @@ const columnsKeysMap: ColumnsKeysMap[] = [
             columnsKeys.DELIVERY_METHOD,
             columnsKeys.PROVIDER,
             columnsKeys.IMPORTER,
-            columnsKeys.CONDITIONS,
             columnsKeys.DIRECTION,
             columnsKeys.STORE,
             columnsKeys.AGENT,
@@ -193,7 +185,6 @@ const columnsKeysMap: ColumnsKeysMap[] = [
             columnsKeys.ORDER_NUMBER,
             columnsKeys.CONTAINER_NUMBER,
             columnsKeys.PRODUCT,
-            columnsKeys.CONDITIONS,
             columnsKeys.DIRECTION,
             columnsKeys.STORE,
             columnsKeys.LOAD_DATE,
@@ -201,8 +192,8 @@ const columnsKeysMap: ColumnsKeysMap[] = [
             columnsKeys.ETA,
             columnsKeys.DECLARATION_ISSUE_DATE,
             columnsKeys.KM_TO_DIST,
-            columns.TRAIN_DEPART_DATE,
-            columns.TRAIN_ARRIVE_DATE,
+            columnsKeys.TRAIN_DEPART_DATE,
+            columnsKeys.TRAIN_ARRIVE_DATE,
             columnsKeys.STORE_ARRIVE_DATE
         ]
     },
@@ -223,18 +214,12 @@ const columnsKeysMap: ColumnsKeysMap[] = [
     },
     {
         [roles.MANAGER_STORE]: [
-            columnsKeys.INSIDE_NUMBER,
-            columnsKeys.PROFORM_NUMBER,
             columnsKeys.ORDER_NUMBER,
             columnsKeys.CONTAINER_NUMBER,
             columnsKeys.PRODUCT,
-            columnsKeys.CONDITIONS,
-            columnsKeys.DIRECTION,
             columnsKeys.STORE,
             columnsKeys.CONTAINER_TYPE,
-            columnsKeys.ETD,
-            columnsKeys.ETA,
-            columnsKeys.DECLARATION_ISSUE_DATE,
+            columnsKeys.KM_TO_DIST,
             columnsKeys.STORE_ARRIVE_DATE,
         ]
     }

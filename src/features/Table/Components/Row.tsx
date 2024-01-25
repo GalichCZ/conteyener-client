@@ -29,9 +29,9 @@ const Row: FC<Props> = ({ bid }) => {
         <TableRow>
             <UpdateBidCell bid={bid}/>
 
-            <TableCell.ArrayTooltip dataArray={bid.inside_number}/>
+            {roleTypes?.isRoleType9 && <TableCell.ArrayTooltip dataArray={bid.inside_number}/>}
 
-            <TableCell.ArrayTooltip cutLength={7} className="min-w-[150px]" dataArray={bid.proform_number}/>
+            {roleTypes?.isRoleType9 && <TableCell.ArrayTooltip cutLength={7} className="min-w-[150px]" dataArray={bid.proform_number}/>}
 
             <TableCell.ArrayTooltip dataArray={bid.order_number}/>
 
@@ -48,7 +48,7 @@ const Row: FC<Props> = ({ bid }) => {
 
             {roleTypes?.isRoleType7 && <TableCell.Array dataArray={bid.conditions}/>}
 
-            {roleTypes?.isRoleType4 && <TableCell.Cell>{bid.direction}</TableCell.Cell>}
+            {roleTypes?.isRoleType10 && <TableCell.Cell>{bid.direction}</TableCell.Cell>}
 
             <StoreInfoCell bid={bid}/>
 
@@ -64,10 +64,10 @@ const Row: FC<Props> = ({ bid }) => {
 
             {roleTypes?.isRoleType5 && <TableCell.Cell>{formatDate(bid.load_date)}</TableCell.Cell>}
 
-            <EtdUpdateCell bid={bid}/>
+            {roleTypes?.isRoleType9 && <EtdUpdateCell bid={bid}/>}
 
-            <DatesUpdateCell isUpdated={bid.eta_update} bid={bid} dateLabel={DatesTypesLabelsEnum.ETA} date={bid.eta}
-                             dateType={DatesTypesEnum.ETA}/>
+            {roleTypes?.isRoleType9 && <DatesUpdateCell isUpdated={bid.eta_update} bid={bid} dateLabel={DatesTypesLabelsEnum.ETA} date={bid.eta}
+                              dateType={DatesTypesEnum.ETA}/>}
 
             {roleTypes?.isRoleType7 && <TableCell.Cell>{formatDate(bid.release)}</TableCell.Cell>}
 
@@ -89,10 +89,10 @@ const Row: FC<Props> = ({ bid }) => {
 
             <DeclarationCell bid={bid}/>
 
-            <DatesUpdateCell isUpdated={bid.declaration_issue_date_update} bid={bid}
-                             dateLabel={DatesTypesLabelsEnum.DECLARATION_ISSUE_DATE}
-                             date={bid.declaration_issue_date}
-                             dateType={DatesTypesEnum.DECLARATION_ISSUE_DATE}/>
+            {roleTypes?.isRoleType9 && <DatesUpdateCell isUpdated={bid.declaration_issue_date_update} bid={bid}
+                              dateLabel={DatesTypesLabelsEnum.DECLARATION_ISSUE_DATE}
+                              date={bid.declaration_issue_date}
+                              dateType={DatesTypesEnum.DECLARATION_ISSUE_DATE}/>}
 
             {roleTypes?.isRoleType7 && <TableCell.Cell>{formatDate(bid.availability_of_ob)}</TableCell.Cell>}
 
@@ -102,14 +102,14 @@ const Row: FC<Props> = ({ bid }) => {
 
             {roleTypes?.isRoleType7 && <TableCell.Cell>{bid.destination_station}</TableCell.Cell>}
 
-            {roleTypes?.isRoleType5 && <KmToDistCell bid={bid}/>}
+            {roleTypes?.isRoleType4 && <KmToDistCell bid={bid}/>}
 
-            {roleTypes?.isRoleType4 && <DatesUpdateCell isUpdated={bid.train_depart_date_update} bid={bid}
+            {roleTypes?.isRoleType10 && <DatesUpdateCell isUpdated={bid.train_depart_date_update} bid={bid}
                                                         dateLabel={DatesTypesLabelsEnum.TRAIN_DEPART_DATE}
                                                         date={bid.train_depart_date}
                                                         dateType={DatesTypesEnum.TRAIN_DEPART_DATE}/>}
 
-            {roleTypes?.isRoleType4 && <DatesUpdateCell isUpdated={bid.train_arrive_date_update} bid={bid}
+            {roleTypes?.isRoleType10 && <DatesUpdateCell isUpdated={bid.train_arrive_date_update} bid={bid}
                                                         dateLabel={DatesTypesLabelsEnum.TRAIN_ARRIVE_DATE}
                                                         date={bid.train_arrive_date}
                                                         dateType={DatesTypesEnum.TRAIN_ARRIVE_DATE}/>}
