@@ -1,7 +1,7 @@
-import axios from "@/provider/axiosInstanse.ts";
+import axios from '@/provider/axiosInstanse.ts'
 
-const { axiosInstance } = axios;
+const { axiosInstance } = axios
 
 export const getSingleStockPlace = async (id: string) => {
-    return await axiosInstance.get(`/stock/${id}`);
+  return await axiosInstance.get(`/stock/${id}`)
 }

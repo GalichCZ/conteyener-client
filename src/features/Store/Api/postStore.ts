@@ -1,8 +1,8 @@
-import axios from "@/provider/axiosInstanse.ts";
-import { StoreFormType } from "@/Types";
+import axios from '@/provider/axiosInstanse.ts'
+import { StoreFormType } from '@/Types'
 
-const { axiosInstance } = axios;
+const { axiosInstance } = axios
 
 export const postStore = async (data: StoreFormType) => {
-    return await axiosInstance.post("/store", data);
+  return await axiosInstance.post('/store', data)
 }

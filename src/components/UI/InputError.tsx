@@ -1,13 +1,11 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 
 interface Props {
-    children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const InputError: FC<Props> = ({ children }) => {
-    return (
-        <span className="text-red-500">{children}</span>
-    )
+  return <span className="text-red-500">{children}</span>
 }
 
-export default InputError;
+export default InputError

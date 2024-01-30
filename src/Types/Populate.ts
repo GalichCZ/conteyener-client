@@ -1,1 +1,1 @@
-export type DbObject = {_id: string, name: string}
+export type DbObject = { _id: string; name: string }

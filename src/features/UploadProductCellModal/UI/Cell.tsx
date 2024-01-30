@@ -1,15 +1,11 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 
 interface Props {
-    children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Cell: FC<Props> = ({ children }) => {
-    return (
-        <td className="border-2 border-black p-2">
-            {children}
-        </td>
-    )
+  return <td className="border-2 border-black p-2">{children}</td>
 }
 
-export default Cell;
+export default Cell

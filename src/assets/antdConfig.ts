@@ -1,8 +1,8 @@
-import { Colors } from "@/assets/colors.ts";
+import { Colors } from '@/assets/colors.ts'
 
 export const theme = {
-    token: {
-        colorPrimary: Colors.PATRIOT,
-        colorPrimaryHover: Colors.PATRIOT,
-    },
+  token: {
+    colorPrimary: Colors.PATRIOT,
+    colorPrimaryHover: Colors.PATRIOT,
+  },
 }

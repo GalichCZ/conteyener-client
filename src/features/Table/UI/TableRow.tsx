@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 
 interface Props {
-    children: React.ReactNode;
-    className?: string
+  children: React.ReactNode
+  className?: string
 }
 
 const TableRow: FC<Props> = ({ children, className }) => {
-    return <tr className={`table-row-extern min-h-[50px] h-[50px] ${className}`}>{children}</tr>;
+  return <tr className={`table-row-extern min-h-[50px] h-[50px] ${className}`}>{children}</tr>
 }
 
-export default TableRow;
+export default TableRow

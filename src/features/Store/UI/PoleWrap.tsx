@@ -1,16 +1,12 @@
-import React, { FC } from "react";
+import React, { FC } from 'react'
 
 interface Props {
-    children: React.ReactNode;
-    className?: string;
+  children: React.ReactNode
+  className?: string
 }
 
 const PoleWrap: FC<Props> = ({ children, className }) => {
-    return (
-        <div className={`${className} w-[100px] text-center`}>
-            {children}
-        </div>
-    );
+  return <div className={`${className} w-[100px] text-center`}>{children}</div>
 }
 
-export default PoleWrap;
+export default PoleWrap

@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react'
 
 const FillingSkeleton = () => {
-    return (
-        <div className="animate-pulse"/>
-    )
+  return <div className="animate-pulse" />
 }
 
-export default FillingSkeleton;
+export default FillingSkeleton

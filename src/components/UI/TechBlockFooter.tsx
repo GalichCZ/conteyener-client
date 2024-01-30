@@ -1,15 +1,11 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react'
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode
 }
 
 const TechBlockFooter: FC<Props> = ({ children }) => {
-    return (
-        <div className="sticky p-4 bottom-0 bg-white w-full">
-            {children}
-        </div>
-    )
+  return <div className="sticky p-4 bottom-0 bg-white w-full">{children}</div>
 }
 
-export default TechBlockFooter;
+export default TechBlockFooter

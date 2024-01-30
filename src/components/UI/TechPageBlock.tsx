@@ -1,15 +1,15 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react'
 
 interface Props {
-    children: ReactNode;
+  children: ReactNode
 }
 
 const TechPageBlock: FC<Props> = ({ children }) => {
-    return (
-        <div className="mt-20 relative overflow-auto shadow-2xl rounded-xl bg-white h-fit max-h-[70%] w-[90%]">
-            {children}
-        </div>
-    )
+  return (
+    <div className="mt-20 relative overflow-auto shadow-2xl rounded-xl bg-white h-fit max-h-[70%] w-[90%]">
+      {children}
+    </div>
+  )
 }
 
-export default TechPageBlock;
+export default TechPageBlock

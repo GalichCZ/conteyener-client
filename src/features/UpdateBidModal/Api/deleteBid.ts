@@ -1,7 +1,7 @@
-import axios from "@/provider/axiosInstanse.ts";
+import axios from '@/provider/axiosInstanse.ts'
 
-const { axiosInstance } = axios;
+const { axiosInstance } = axios
 
 export const deleteBid = async (bidId: string) => {
-    return await axiosInstance.delete(`item/${bidId}`);
+  return await axiosInstance.delete(`item/${bidId}`)
 }

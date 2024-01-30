@@ -1,8 +1,8 @@
-import axios from "@/provider/axiosInstanse.ts";
-import { DeliveryChannelFormType } from "@/Types";
+import axios from '@/provider/axiosInstanse.ts'
+import { DeliveryChannelFormType } from '@/Types'
 
-const { axiosInstance } = axios;
+const { axiosInstance } = axios
 
 export const postDeliveryChannel = async (data: DeliveryChannelFormType) => {
-    return await axiosInstance.post('/channel', data);
+  return await axiosInstance.post('/channel', data)
 }

@@ -1,30 +1,33 @@
-import React, { FC, useState } from "react";
-import Button from "@/components/UI/Button.tsx";
-import { createPortal } from "react-dom";
-import CreateBidModal from "./CreateBidModal.tsx";
+import React, { FC, useState } from 'react'
+import Button from '@/components/UI/Button.tsx'
+import { createPortal } from 'react-dom'
+import CreateBidModal from './CreateBidModal.tsx'
 
 interface Props {
-    triggerClose: () => void;
+  triggerClose: () => void
 }
 
 const CreateBidModalTrigger: FC<Props> = ({ triggerClose }) => {
-    const [open, setOpen] = useState<boolean>(false);
-    const handleOpen = () => {
-        setOpen((prev) => !prev);
-    }
+  const [open, setOpen] = useState<boolean>(false)
+  const handleOpen = () => {
+    setOpen((prev) => !prev)
+  }
 
-    const handleOnClick = () => {
-        triggerClose();
-        handleOpen();
-    }
+  const handleOnClick = () => {
+    triggerClose()
+    handleOpen()
+  }
 
-    return (
-        <>
-            <Button onClick={handleOnClick} text="Создать запись" className="border-2 border-gray-300 w-[170px]"/>
-            {open && createPortal(<CreateBidModal open={open}
-                                                  setOpen={setOpen}/>, document.body)}
-        </>
-    )
+  return (
+    <>
+      <Button
+        onClick={handleOnClick}
+        text="Создать запись"
+        className="border-2 border-gray-300 w-[170px]"
+      />
+      {open && createPortal(<CreateBidModal open={open} setOpen={setOpen} />, document.body)}
+    </>
+  )
 }
 
-export default CreateBidModalTrigger;
+export default CreateBidModalTrigger

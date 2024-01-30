@@ -1,7 +1,7 @@
-import axios from "@/provider/axiosInstanse.ts";
+import axios from '@/provider/axiosInstanse.ts'
 
-const { axiosInstance } = axios;
+const { axiosInstance } = axios
 
 export const getMe = async () => {
-    return await axiosInstance.get("/user");
+  return await axiosInstance.get('/user')
 }

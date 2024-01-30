@@ -1,7 +1,7 @@
-import axios from "@/provider/axiosInstanse.ts";
+import axios from '@/provider/axiosInstanse.ts'
 
 const { axiosInstance } = axios
 
 export const hideBid = async (bidId: string) => {
-    return await axiosInstance.patch("/item/hide", { _id: bidId })
+  return await axiosInstance.patch('/item/hide', { _id: bidId })
 }

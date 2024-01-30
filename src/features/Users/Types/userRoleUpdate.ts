@@ -1,4 +1,4 @@
 export type UserRoleUpdate = {
-    email: string;
-    role: string | undefined;
+  email: string
+  role: string | undefined
 }

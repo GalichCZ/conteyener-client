@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out Conteyener 🚀
 on:
   push:
     branches:
-      - "*"
+      - '*'
   pull_request:
     branches: [master]
 jobs:

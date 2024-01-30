@@ -4,9 +4,9 @@
 
 - [ ] Add tests
 - [ ] Add all modals with all functionality
-    - [ ] UI
-    - [ ] Requests
-    - [ ] Utils
+  - [ ] UI
+  - [ ] Requests
+  - [ ] Utils
 - [ ] Add Search
 - [ ] Add Filters
 - [ ] Add Authentication check

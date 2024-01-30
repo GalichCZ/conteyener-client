@@ -1,8 +1,8 @@
-import axios from "@/provider/axiosInstanse.ts";
-import { Store } from "@/Types";
+import axios from '@/provider/axiosInstanse.ts'
+import { Store } from '@/Types'
 
-const { axiosInstance } = axios;
+const { axiosInstance } = axios
 
 export const patchStore = async (data: Store) => {
-    return await axiosInstance.patch(`/store`, data);
+  return await axiosInstance.patch(`/store`, data)
 }

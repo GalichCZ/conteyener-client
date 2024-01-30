@@ -3,35 +3,40 @@
 @tailwind utilities;
 
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 #g-button {
-    border-color: transparent !important;
+  border-color: transparent !important;
 }
 
-.ant-input:focus, .ant-input-focused, .ant-input:hover, .ant-input-affix-wrapper:focus, .ant-input-affix-wrapper:hover, .ant-input-affix-wrapper-focused {
-    border-color: #fb511e !important;
+.ant-input:focus,
+.ant-input-focused,
+.ant-input:hover,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper-focused {
+  border-color: #fb511e !important;
 }
 
 .ant-switch {
-    background-color: #cccccc !important;
+  background-color: #cccccc !important;
 }
 
 .ant-switch-checked {
-    background-color: #fb511e !important;
+  background-color: #fb511e !important;
 }
 
 .ant-upload-list-item-container {
-    display: none;
+  display: none;
 }
 
 #g-button:hover {
-    color: #fff !important;
-    scale: 1.05 !important;
-    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1) !important;
-    border-color: transparent !important;
+  color: #fff !important;
+  scale: 1.05 !important;
+  box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.1) !important;
+  border-color: transparent !important;
 }
 
 /*#g-switch {*/
@@ -43,38 +48,39 @@
 /*}*/
 
 body {
-    background: #f8f9fa;
+  background: #f8f9fa;
 }
 
 .animate-pulse {
-    width: 100%;
-    height: 100%;
-    background-color: #ccc;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 10;
-    opacity: 0.5;
-    animation: skeletonPulse 2s infinite alternate;
-    transform-origin: center bottom;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  opacity: 0.5;
+  animation: skeletonPulse 2s infinite alternate;
+  transform-origin: center bottom;
+  border-radius: 10px;
 }
 
 @keyframes skeletonPulse {
-    0% {
-        transform: scaleY(1);
-        background-color: #ccc;
-    }
-    100% {
-        transform: scaleY(1.01); /* Scale vertically */
-        background-color: #f0f0f0; /* Color you want to transition to */
-    }
+  0% {
+    transform: scaleY(1);
+    background-color: #ccc;
+  }
+  100% {
+    transform: scaleY(1.01); /* Scale vertically */
+    background-color: #f0f0f0; /* Color you want to transition to */
+  }
 }
 
 .table-row-extern:nth-child(odd) {
-    background-color: rgba(126, 125, 125, 0.25);
+  background-color: rgba(126, 125, 125, 0.25);
 }
 
-.table-body-extern tr:hover, .table-body-extern tr td:hover {
-    background: rgba(251, 81, 30, 0.38);
+.table-body-extern tr:hover,
+.table-body-extern tr td:hover {
+  background: rgba(251, 81, 30, 0.38);
 }

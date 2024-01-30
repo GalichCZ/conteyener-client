@@ -1,7 +1,7 @@
-import axios from "@/provider/axiosInstanse.ts";
+import axios from '@/provider/axiosInstanse.ts'
 
-const { cacheAxios } = axios;
+const { cacheAxios } = axios
 
 export const getStockPlaces = async () => {
-    return await cacheAxios.get(`/stock?timestamp=${new Date().getTime()}`);
+  return await cacheAxios.get(`/stock?timestamp=${new Date().getTime()}`)
 }

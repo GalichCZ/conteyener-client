@@ -1,15 +1,11 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, ReactNode } from 'react'
 
 interface Props {
-    children: ReactNode
+  children: ReactNode
 }
 
 const PoleWrapper: FC<Props> = ({ children }) => {
-    return (
-        <div className="w-[220px]">
-            {children}
-        </div>
-    );
+  return <div className="w-[220px]">{children}</div>
 }
 
-export default PoleWrapper;
+export default PoleWrapper

@@ -1,6 +1,6 @@
-import { Dayjs } from "dayjs";
+import { Dayjs } from 'dayjs'
 
 type BidKey = string
-type BidValue = string | number | boolean | Dayjs | Date;
+type BidValue = string | number | boolean | Dayjs | Date
 
 export type FormBidCreateValues = Record<BidKey, BidValue>

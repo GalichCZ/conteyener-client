@@ -1,16 +1,12 @@
-import React from 'react';
-import { Result } from "antd";
+import React from 'react'
+import { Result } from 'antd'
 
 const NotFoundPage = () => {
-    return (
-        <div>
-            <Result
-                status="404"
-                title="404"
-                subTitle="Извините, страница не найдена."
-            />
-        </div>
-    );
+  return (
+    <div>
+      <Result status="404" title="404" subTitle="Извините, страница не найдена." />
+    </div>
+  )
 }
 
-export default NotFoundPage;
+export default NotFoundPage
