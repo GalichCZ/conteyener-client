@@ -13,6 +13,8 @@ interface Props {
 const ProductTableBody: FC<Props> = ({ products, handleDelete }) => {
   const roleType = useGetRoleType()
 
+  if (!products) return <h3>Нет продуктов</h3>
+
   return (
     <tbody>
       {products?.map((product, index) => (

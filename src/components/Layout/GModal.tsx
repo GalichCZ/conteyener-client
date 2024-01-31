@@ -9,11 +9,19 @@ interface Props {
   onCancel: VoidFunction
   title?: string
   width?: string
+  className?: string
 }
 
-const GModal: FC<Props> = ({ children, open, title, onCancel, width }) => {
+const GModal: FC<Props> = ({ children, open, title, onCancel, width, className }) => {
   return (
-    <Modal footer={null} open={open} title={title} onCancel={onCancel} width={width}>
+    <Modal
+      footer={null}
+      className={className}
+      open={open}
+      title={title}
+      onCancel={onCancel}
+      width={width}
+    >
       {children}
     </Modal>
   )
