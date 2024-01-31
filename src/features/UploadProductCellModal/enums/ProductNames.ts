@@ -1,0 +1,16 @@
+export enum ProductNames {
+  hs_code = 'hs_code',
+  article = 'article',
+  trade_mark = 'trade_mark',
+  model = 'model',
+  modification = 'modification',
+  product_name = 'product_name',
+  quantity_pieces = 'quantity_pieces',
+  quantity_places = 'quantity_places',
+  piece_price = 'piece_price',
+  total_price = 'total_price',
+  weight_net = 'weight_net',
+  weight_gross = 'weight_gross',
+  cbm = 'cbm',
+  manufacturer = 'manufacturer',
+}

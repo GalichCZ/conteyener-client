@@ -1,5 +1,4 @@
 import axios from '@/provider/axiosInstanse.ts'
-
 const { axiosInstance } = axios
 
 export const getProducts = async (id: string, product_name: string) => {
