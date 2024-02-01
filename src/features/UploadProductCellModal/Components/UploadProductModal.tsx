@@ -12,6 +12,7 @@ import UploadButton from '@/features/UploadProductCellModal/Components/UploadBut
 import { ModalProps } from '@/Types/ModalProps.ts'
 import { useGetRoleType } from '@/hooks/useGetRoleType.ts'
 import HandMadeWrite from '@/features/UploadProductCellModal/Components/HandMadeWrite.tsx'
+import TotalSums from '@/features/UploadProductCellModal/UI/TotalSums.tsx'
 
 interface Props extends ModalProps {
   product: string
@@ -70,10 +71,13 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
     >
       {loading && <FillingSkeleton />}
       {deleteLoading && <FillingSkeleton />}
-      <table className="mt-3">
-        <ProductTableHead />
-        <ProductTableBody handleDelete={handleDelete} products={products} />
-      </table>
+      <div className="max-h-[400px] overflow-y-auto mt-3">
+        <table>
+          <ProductTableHead />
+          <ProductTableBody handleDelete={handleDelete} products={products} />
+        </table>
+      </div>
+      {products && <TotalSums products={products} />}
       <HandMadeWrite id={bidId} simpleName={product} />
       {roleTypes?.isRoleType8 && <UploadButton bidId={bidId} simpleProductName={product} />}
     </GModal>

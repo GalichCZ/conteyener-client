@@ -6,7 +6,7 @@ const ProductTableHead = () => {
   const roleType = useGetRoleType()
 
   return (
-    <thead className="text-center font-bold">
+    <thead className="text-center font-bold sticky top-0 bg-white">
       <tr>
         <Cell>№ п/п</Cell>
         <Cell>Код ТнВЭД</Cell>
