@@ -49,7 +49,7 @@ const HandMadeWrite: FC<Props> = ({ id, simpleName }) => {
   ]
 
   return (
-    <div>
+    <div className="mt-5">
       {loading && <FillingSkeleton />}
       <Collapse items={collapse} />
     </div>

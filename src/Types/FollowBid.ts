@@ -1,6 +1,8 @@
 import { Container } from '@/Types/Container.ts'
 import { Docs } from '@/Types/Docs.ts'
 
+type ProductExistanceMap = { [product_name: string]: boolean }
+
 export interface FollowBid {
   _id: string
   request_date: string | null
@@ -61,6 +63,7 @@ export interface FollowBid {
   stock_place: { _id: string; name: string }
   hidden: boolean
   direction: string | undefined
+  product_has_added: ProductExistanceMap
 
   [key: string]: any
 }

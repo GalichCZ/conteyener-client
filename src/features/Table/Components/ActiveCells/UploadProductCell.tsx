@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 
 import TableCell from '@/features/Table/UI/Cell/TableCell.tsx'
 import { FollowBid } from '@/Types'
@@ -24,10 +24,18 @@ const UploadProductCell: FC<Props> = ({ bid }) => {
   const [product, setProduct] = useState<string>('')
   const user = useAppSelector((state) => state.authentication.user)
 
-  if (user && user.role !== allowedRoles[user.role as keyof typeof allowedRoles]) return <></>
+  const productNames = useMemo(
+    () =>
+      bid.simple_product_name.map((name) => {
+        const hasAdded = bid.product_has_added ? bid.product_has_added[name] : false
+        return name.concat(hasAdded ? '✔️' : '')
+      }),
+    [bid.product_has_added, bid.simple_product_name]
+  )
 
+  if (user && user.role !== allowedRoles[user.role as keyof typeof allowedRoles]) return <></>
   const onProductClick = (product: string) => {
-    setProduct(product)
+    setProduct(product.replace('✔️', ''))
     openHandler()
   }
 
@@ -42,11 +50,7 @@ const UploadProductCell: FC<Props> = ({ bid }) => {
           <UploadProductModal open={open} setOpen={setOpen} product={product} bidId={bid._id} />,
           document.body
         )}
-      <TableCell.Array
-        modelArray={[]}
-        onClick={onProductClick}
-        dataArray={bid.simple_product_name}
-      />
+      <TableCell.Array modelArray={[]} onClick={onProductClick} dataArray={productNames} />
     </>
   )
 }
