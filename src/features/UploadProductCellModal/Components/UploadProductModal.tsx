@@ -78,8 +78,12 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
         </table>
       </div>
       {products && <TotalSums products={products} />}
-      <HandMadeWrite id={bidId} simpleName={product} />
-      {roleTypes?.isRoleType8 && <UploadButton bidId={bidId} simpleProductName={product} />}
+      {roleTypes?.isRoleType8 && (
+        <>
+          <HandMadeWrite id={bidId} simpleName={product} />
+          <UploadButton bidId={bidId} simpleProductName={product} />
+        </>
+      )}
     </GModal>
   )
 }
