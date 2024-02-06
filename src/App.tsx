@@ -22,7 +22,7 @@ function App() {
   const { callGetMe, error } = useGetMe()
   useEffect(() => {
     callGetMe()
-  }, [callGetMe])
+  }, [])
 
   useEffect(() => {
     if (error) {
