@@ -1,6 +1,7 @@
 export enum ProductLabels {
   hs_code = 'Код ТнВЭД',
-  article = 'Артикул',
+  article_ved = 'Артикул ВЭД',
+  article_erp = 'Артикул ERP',
   trade_mark = 'Торговая марка',
   model = 'Модель/Серия(Тип)',
   modification = 'Модификация',

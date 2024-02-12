@@ -1,6 +1,7 @@
 export enum ProductNames {
   hs_code = 'hs_code',
-  article = 'article',
+  article_ved = 'article_ved',
+  article_erp = 'article_erp',
   trade_mark = 'trade_mark',
   model = 'model',
   modification = 'modification',

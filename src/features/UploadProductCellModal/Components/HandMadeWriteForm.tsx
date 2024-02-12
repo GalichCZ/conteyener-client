@@ -14,9 +14,18 @@ interface Props {
 
 const HandMadeWriteForm: FC<Props> = ({ onSubmit, control }) => {
   return (
-    <FormLayout className="grid grid-cols-7 w-full gap-x-3" onFinish={onSubmit}>
+    <FormLayout className="grid grid-cols-5 w-full gap-x-3" onFinish={onSubmit}>
       <GInputs.Text name={ProductNames.hs_code} label={ProductLabels.hs_code} control={control} />
-      <GInputs.Text name={ProductNames.article} label={ProductLabels.article} control={control} />
+      <GInputs.Text
+        name={ProductNames.article_ved}
+        label={ProductLabels.article_ved}
+        control={control}
+      />
+      <GInputs.Text
+        name={ProductNames.article_erp}
+        label={ProductLabels.article_erp}
+        control={control}
+      />
       <GInputs.Text
         name={ProductNames.trade_mark}
         label={ProductLabels.trade_mark}

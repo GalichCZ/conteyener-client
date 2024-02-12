@@ -19,15 +19,16 @@ const ProductTableBody: FC<Props> = ({ products, handleDelete }) => {
     <tbody>
       {products?.map((product, index) => (
         <tr key={index}>
-          <Cell>{index + 1}</Cell>
+          <Cell className="w-[40px]">{index + 1}</Cell>
           <Cell>{product.hs_code}</Cell>
-          <Cell>{product.article}</Cell>
+          <Cell className="min-w-[120px]">{product.article_ved}</Cell>
+          <Cell>{product.article_erp}</Cell>
           <Cell>{product.trade_mark}</Cell>
           <Cell>{product.product_name}</Cell>
           <Cell>{product.model}</Cell>
           <Cell>{product.modification}</Cell>
-          <Cell>{product.quantity_pieces}</Cell>
-          <Cell>{product.quantity_places}</Cell>
+          <Cell className="w-[70px]">{product.quantity_pieces}</Cell>
+          <Cell className="w-[70px]">{product.quantity_places}</Cell>
           {roleType?.isRoleType1 && <Cell>{formatNumber(product.piece_price, 'en-US')}</Cell>}
           {roleType?.isRoleType1 && <Cell>{formatNumber(product.total_price, 'en-US')}</Cell>}
           <Cell>{formatNumber(product.weight_net, 'en-US')}</Cell>

@@ -2,6 +2,8 @@ export interface Products {
   _id: string
   hs_code: number
   article: string
+  article_ved: string
+  article_erp: string
   trade_mark: string
   model: string
   modification: string

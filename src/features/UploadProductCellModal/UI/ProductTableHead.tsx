@@ -10,7 +10,8 @@ const ProductTableHead = () => {
       <tr>
         <Cell>№ п/п</Cell>
         <Cell>Код ТнВЭД</Cell>
-        <Cell>Артикул</Cell>
+        <Cell>Артикул ВЭД</Cell>
+        <Cell>Артикул ERP</Cell>
         <Cell>Торговая марка</Cell>
         <Cell>Наименование товара</Cell>
         <Cell>Модель/Серия(Тип)</Cell>
