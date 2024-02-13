@@ -42,7 +42,7 @@ const Table = ({ hidden }: { hidden: boolean }) => {
         {loading && <FillingSkeleton />}
         <table className="relative">
           <TableHead />
-          <TableBody bids={bids} />
+          <TableBody hidden={hidden} bids={bids} />
         </table>
       </div>
       <PageHandler

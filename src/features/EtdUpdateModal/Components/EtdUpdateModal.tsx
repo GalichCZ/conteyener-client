@@ -17,9 +17,18 @@ interface Props extends ModalProps {
   deliveryChannel: { _id: string; name: string }
   dateType: number
   bidId: string
+  hidden: boolean
 }
 
-const EtdUpdateModal: FC<Props> = ({ open, setOpen, etd, deliveryChannel, dateType, bidId }) => {
+const EtdUpdateModal: FC<Props> = ({
+  open,
+  setOpen,
+  etd,
+  deliveryChannel,
+  dateType,
+  bidId,
+  hidden,
+}) => {
   const handleClose = useCallback(() => setOpen(false), [setOpen])
   const { control, handleSubmit, setValue } = useForm<DateCalculateFormType>()
   const [dateCalculate, setDateCalculate] = useState<DateCalculateFormType | null>(null)
@@ -59,7 +68,7 @@ const EtdUpdateModal: FC<Props> = ({ open, setOpen, etd, deliveryChannel, dateTy
   return (
     <GModal title="Настройка канала поставки" open={open} onCancel={handleClose}>
       {isLoading && <FillingSkeleton />}
-      <EtdUpdateForm onSubmit={handleSubmit(onSubmit)} control={control} />
+      <EtdUpdateForm hidden={hidden} onSubmit={handleSubmit(onSubmit)} control={control} />
     </GModal>
   )
 }

@@ -16,17 +16,19 @@ import { DatesTypesEnum, DatesTypesLabelsEnum } from '@/enums/datesTypesEnum.ts'
 import { useGetRoleType } from '@/hooks/useGetRoleType.ts'
 import KmToDistCell from '@/features/Table/Components/ActiveCells/KmToDistCell.tsx'
 import DeclarationCell from '@/features/Table/Components/ActiveCells/DeclarationCell.tsx'
+import UnhideBid from '@/features/Table/Components/UnhideBid.tsx'
 
 interface Props {
   bid: FollowBid
+  hidden: boolean
 }
 
-const Row: FC<Props> = memo(({ bid }) => {
+const Row: FC<Props> = memo(({ bid, hidden }) => {
   const roleTypes = useGetRoleType()
 
   return (
     <TableRow>
-      <UpdateBidCell bid={bid} />
+      <UpdateBidCell hidden={hidden} bid={bid} />
 
       {roleTypes?.isRoleType9 && <TableCell.ArrayTooltip dataArray={bid.inside_number} />}
 
@@ -78,10 +80,11 @@ const Row: FC<Props> = memo(({ bid }) => {
 
       {roleTypes?.isRoleType5 && <TableCell.Cell>{formatDate(bid.load_date)}</TableCell.Cell>}
 
-      {roleTypes?.isRoleType9 && <EtdUpdateCell bid={bid} />}
+      {roleTypes?.isRoleType9 && <EtdUpdateCell hidden={hidden} bid={bid} />}
 
       {roleTypes?.isRoleType9 && (
         <DatesUpdateCell
+          hidden={hidden}
           isUpdated={bid.eta_update}
           bid={bid}
           dateLabel={DatesTypesLabelsEnum.ETA}
@@ -100,6 +103,7 @@ const Row: FC<Props> = memo(({ bid }) => {
 
       {roleTypes?.isRoleType7 && (
         <DatesUpdateCell
+          hidden={hidden}
           isUpdated={bid.date_do_update}
           bid={bid}
           dateLabel={DatesTypesLabelsEnum.DATE_DO}
@@ -120,6 +124,7 @@ const Row: FC<Props> = memo(({ bid }) => {
 
       {roleTypes?.isRoleType9 && (
         <DatesUpdateCell
+          hidden={hidden}
           isUpdated={bid.declaration_issue_date_update}
           bid={bid}
           dateLabel={DatesTypesLabelsEnum.DECLARATION_ISSUE_DATE}
@@ -142,6 +147,7 @@ const Row: FC<Props> = memo(({ bid }) => {
 
       {roleTypes?.isRoleType10 && (
         <DatesUpdateCell
+          hidden={hidden}
           isUpdated={bid.train_depart_date_update}
           bid={bid}
           dateLabel={DatesTypesLabelsEnum.TRAIN_DEPART_DATE}
@@ -152,6 +158,7 @@ const Row: FC<Props> = memo(({ bid }) => {
 
       {roleTypes?.isRoleType10 && (
         <DatesUpdateCell
+          hidden={hidden}
           isUpdated={bid.train_arrive_date_update}
           bid={bid}
           dateLabel={DatesTypesLabelsEnum.TRAIN_ARRIVE_DATE}
@@ -163,6 +170,7 @@ const Row: FC<Props> = memo(({ bid }) => {
       {roleTypes?.isRoleType7 && <TableCell.Cell>{bid.pickup}</TableCell.Cell>}
 
       <DatesUpdateCell
+        hidden={hidden}
         isUpdated={bid.store_arrive_date_update}
         bid={bid}
         dateLabel={DatesTypesLabelsEnum.STORE_ARRIVE_DATE}
@@ -173,6 +181,8 @@ const Row: FC<Props> = memo(({ bid }) => {
       <StockPlaceCell bid={bid} />
 
       <CommentsCell bid={bid} />
+
+      {hidden && roleTypes?.isRoleType7 && <UnhideBid bidId={bid._id} />}
     </TableRow>
   )
 })

@@ -12,9 +12,10 @@ interface Props {
   dateLabel: string
   bid: FollowBid
   isUpdated: boolean
+  hidden: boolean
 }
 
-const DatesUpdateCell: FC<Props> = ({ dateType, date, dateLabel, bid, isUpdated }) => {
+const DatesUpdateCell: FC<Props> = ({ dateType, date, dateLabel, bid, isUpdated, hidden }) => {
   const [open, setOpen] = useState(false)
 
   const handleOpen = () => {
@@ -39,6 +40,7 @@ const DatesUpdateCell: FC<Props> = ({ dateType, date, dateLabel, bid, isUpdated 
             bid={bid}
             date={date}
             dateType={dateType}
+            hidden={hidden}
           />,
           document.body
         )}
