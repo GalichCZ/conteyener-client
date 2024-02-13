@@ -17,9 +17,18 @@ interface Props extends ModalProps {
   dateLabel: string
   bid: FollowBid
   date: string
+  hidden: boolean
 }
 
-const DateCalculateModal: FC<Props> = ({ open, setOpen, dateType, dateLabel, bid, date }) => {
+const DateCalculateModal: FC<Props> = ({
+  open,
+  setOpen,
+  dateType,
+  dateLabel,
+  bid,
+  date,
+  hidden,
+}) => {
   const { control, handleSubmit, setValue } = useForm<DateCalculateFormType>()
   const [data, setData] = useState<DateCalculateFormType | null>(null)
   const { error, setError, success, loading } = useCalculateDate(data)
@@ -63,7 +72,12 @@ const DateCalculateModal: FC<Props> = ({ open, setOpen, dateType, dateLabel, bid
   return (
     <GModal title="Перерасчет дат" open={open} onCancel={handleCancel}>
       {loading && <FillingSkeleton />}
-      <DateCalculateForm label={dateLabel} onSubmit={handleSubmit(onSubmit)} control={control} />
+      <DateCalculateForm
+        hidden={hidden}
+        label={dateLabel}
+        onSubmit={handleSubmit(onSubmit)}
+        control={control}
+      />
     </GModal>
   )
 }

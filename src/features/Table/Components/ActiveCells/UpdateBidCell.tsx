@@ -10,16 +10,17 @@ import { useGetRoleType } from '@/hooks/useGetRoleType.ts'
 
 interface Props {
   bid: FollowBid
+  hidden: boolean
 }
 
-const UpdateBidCell: FC<Props> = ({ bid }) => {
+const UpdateBidCell: FC<Props> = ({ bid, hidden }) => {
   const [open, setOpen] = useState<boolean>(false)
   const user = useAppSelector((state) => state.authentication.user)
 
   const roleTypes = useGetRoleType()
 
   const handleOpen = () => {
-    if (!roleTypes?.isRoleType8) {
+    if (!roleTypes?.isRoleType8 || hidden) {
       return
     }
     setOpen((prev) => !prev)

@@ -8,9 +8,10 @@ import { DatesTypesEnum } from '@/enums/datesTypesEnum.ts'
 
 interface Props {
   bid: FollowBid
+  hidden: boolean
 }
 
-const EtdUpdateCell: FC<Props> = ({ bid }) => {
+const EtdUpdateCell: FC<Props> = ({ bid, hidden }) => {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
 
@@ -19,6 +20,7 @@ const EtdUpdateCell: FC<Props> = ({ bid }) => {
       {open &&
         createPortal(
           <EtdUpdateModal
+            hidden={hidden}
             bidId={bid._id}
             etd={bid.etd}
             dateType={DatesTypesEnum.ETD}

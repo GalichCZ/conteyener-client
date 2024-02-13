@@ -10,20 +10,23 @@ interface Props {
   onSubmit: () => void
   control: Control<DateCalculateFormType>
   label: string
+  hidden: boolean
 }
 
-const DateCalculateForm: FC<Props> = ({ onSubmit, control, label }) => {
+const DateCalculateForm: FC<Props> = ({ onSubmit, control, label, hidden }) => {
   const roleTypes = useGetRoleType()
 
   return (
     <FormLayout className="shadow-none" onFinish={onSubmit}>
       <GInputs.Date
-        disabled={!roleTypes?.isRoleType8}
+        disabled={!roleTypes?.isRoleType8 || hidden}
         name="date"
         label={label}
         control={control}
       />
-      {roleTypes?.isRoleType8 && <GButton text="Пересчитать" className="mt-8 mb-0" />}
+      {roleTypes?.isRoleType8 && (
+        <GButton disabled={hidden} text="Пересчитать" className="mt-8 mb-0" />
+      )}
     </FormLayout>
   )
 }

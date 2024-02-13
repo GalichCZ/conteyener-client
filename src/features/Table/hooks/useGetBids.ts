@@ -45,7 +45,7 @@ export const useGetBids = (page: number, hidden: boolean) => {
       setError({ message: err.message, status: err.request.status })
     }
     dispatch(setFilterApplied(false))
-  }, [dispatch, page, hidden, filtersMap])
+  }, [page, hidden, filtersMap])
 
   useEffect(() => {
     callGetBids()
