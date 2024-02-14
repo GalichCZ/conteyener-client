@@ -35,7 +35,7 @@ function CreateBidForm<T extends FieldValues>({
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   const submitHandler = () => {
     setIsSubmitted(true)

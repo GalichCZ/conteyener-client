@@ -38,14 +38,14 @@ const UpdateStockPlaceModal: FC<Props> = ({ open, setOpen, stockPlace }) => {
       setError(null)
       setStockPlaceData(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       handleOpen()
       dispatch(setReDraw())
     }
-  }, [success, handleOpen, dispatch])
+  }, [success])
 
   return (
     <GModal title="Редактировать канал поставки" onCancel={handleOpen} open={open}>

@@ -25,7 +25,7 @@ export const useGetStockPlaces = () => {
 
   useEffect(() => {
     callGetStockPlaces()
-  }, [callGetStockPlaces, reDraw])
+  }, [reDraw])
 
   return { stockPlaces, isLoading, error, setError }
 }

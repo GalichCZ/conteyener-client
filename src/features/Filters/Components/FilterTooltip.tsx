@@ -31,7 +31,7 @@ const FilterTooltip: FC<Props> = ({ tooltipId, open }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   const applyFiltersHandler = () => {
     dispatch(setTooltipId({ tooltipId: '' }))

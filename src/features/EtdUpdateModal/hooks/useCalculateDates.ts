@@ -25,7 +25,7 @@ export const useCalculateDates = (data: DateCalculateFormType | null) => {
     if (!data) return
 
     callCalculateDates(data)
-  }, [callCalculateDates, data])
+  }, [data])
 
   return { success, isLoading, error, setError }
 }

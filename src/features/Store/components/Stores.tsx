@@ -25,7 +25,7 @@ const Stores = () => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <>

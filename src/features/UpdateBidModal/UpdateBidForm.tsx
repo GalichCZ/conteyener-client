@@ -47,7 +47,7 @@ const UpdateBidForm: FC<Props> = ({ onSubmit, control, setValue, followBid, unre
       handleError(errorStock)
       setStockError(null)
     }
-  }, [errorStock, errorStores, setStockError, setStoresError])
+  }, [errorStock, errorStores])
 
   return (
     <FormLayout className="w-full" onFinish={onSubmit}>

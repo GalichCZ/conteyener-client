@@ -21,7 +21,7 @@ const StoreInfoModal: FC<Props> = ({ open, setOpen, storeId }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <GModal title="Информация о складе" open={open} onCancel={handleCancel}>

@@ -34,7 +34,7 @@ const CreateStockPlaceModal: FC<ModalProps> = ({ open, setOpen }) => {
       setStockPlace(null)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
@@ -42,7 +42,7 @@ const CreateStockPlaceModal: FC<ModalProps> = ({ open, setOpen }) => {
       setStockPlace(null)
       dispatch(setReDraw())
     }
-  }, [success, handleOpen, dispatch])
+  }, [success])
 
   return (
     <GModal title="Создание" open={open} onCancel={handleOpen}>

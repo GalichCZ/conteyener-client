@@ -29,7 +29,7 @@ const Table = ({ hidden }: { hidden: boolean }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <>

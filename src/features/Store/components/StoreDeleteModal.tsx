@@ -26,14 +26,14 @@ const StoreDeleteModal: FC<Props> = ({ open, setOpen, storeId }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       dispatch(setReDraw())
       handleOpen()
     }
-  }, [dispatch, handleOpen, setOpen, success])
+  }, [success])
 
   const handleDelete = () => {
     if (storeId) setId(storeId)

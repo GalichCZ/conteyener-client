@@ -35,14 +35,14 @@ const CreateBidModal: FC<ModalProps> = ({ open, setOpen }) => {
       dispatch(setReDraw())
       handleOpen()
     }
-  }, [dispatch, handleOpen, isSuccess])
+  }, [isSuccess])
 
   useEffect(() => {
     if (error) {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <GModal width="90%" title="Создать слежение" open={open} onCancel={handleOpen}>

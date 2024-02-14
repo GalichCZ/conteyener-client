@@ -31,20 +31,20 @@ const UploadBids = () => {
       updateDates(response)
       setCalled(true)
     }
-  }, [called, response, updateDates])
+  }, [called, response])
 
   useEffect(() => {
     if (error) {
       handleError(error)
       reloadPage()
     }
-  }, [error, reloadPage])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       reloadPage()
     }
-  }, [reloadPage, success])
+  }, [success])
 
   return (
     <>

@@ -24,7 +24,7 @@ const CommentsModal: FC<Props> = ({ setOpen, open, bid }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <GModal title="Комментарии" open={open} onCancel={handleCancel}>

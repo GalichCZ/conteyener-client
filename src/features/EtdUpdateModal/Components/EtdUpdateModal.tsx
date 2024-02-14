@@ -40,14 +40,14 @@ const EtdUpdateModal: FC<Props> = ({
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       dispatch(setReDraw())
       handleClose()
     }
-  }, [dispatch, handleClose, success])
+  }, [success])
 
   useEffect(() => {
     if (etd) {
@@ -58,7 +58,7 @@ const EtdUpdateModal: FC<Props> = ({
     if (deliveryChannel) {
       setValue('delivery_channel', deliveryChannel._id)
     }
-  }, [bidId, dateType, deliveryChannel, etd, setValue])
+  }, [bidId, dateType, deliveryChannel, etd])
 
   const onSubmit = (data: DateCalculateFormType) => {
     const dataToSend = { ...data, date: getDateFromDayjs(data.date) }

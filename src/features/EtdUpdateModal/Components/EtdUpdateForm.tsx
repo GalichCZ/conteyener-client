@@ -31,7 +31,7 @@ const EtdUpdateForm: FC<Props> = ({ onSubmit, control, hidden }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <FormLayout className="shadow-none" onFinish={onSubmit}>

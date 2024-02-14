@@ -44,14 +44,14 @@ const DateCalculateModal: FC<Props> = ({
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       dispatch(setReDraw())
       handleCancel()
     }
-  }, [dispatch, handleCancel, success])
+  }, [success])
 
   useEffect(() => {
     setValue('date_type', dateType)
@@ -62,7 +62,7 @@ const DateCalculateModal: FC<Props> = ({
     if (date) {
       setValue('date', dayjs(date))
     }
-  }, [bid, date, dateType, deliveryChannel, setValue])
+  }, [bid, date, dateType, deliveryChannel])
 
   const onSubmit = (data: DateCalculateFormType) => {
     const dataToSend = { ...data, date: getDateFromDayjs(data.date) }

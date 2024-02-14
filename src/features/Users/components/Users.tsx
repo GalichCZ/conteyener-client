@@ -14,7 +14,7 @@ const Users = () => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   const noUsers = (!isLoading && users === undefined) || (!isLoading && users?.length === 0)
 

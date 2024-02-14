@@ -30,14 +30,14 @@ const DeleteStockPlaceModal: FC<Props> = ({ open, setOpen, stockPlaceId }) => {
       setError(null)
       setId('')
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       handleOpen()
       dispatch(setReDraw())
     }
-  }, [dispatch, handleOpen, success])
+  }, [success])
 
   return (
     <GModal open={open} onCancel={handleOpen}>

@@ -8,12 +8,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { UserRegisterSchema } from '../validation/UserRegisterSchema.js'
 import { useRegisterUser } from '@/features/SignUp/hooks/useRegisterUser.ts'
 import { RoutesEnum } from '@/enums/routesEnum.ts'
-import { useNavigate } from 'react-router-dom'
 import { handleError } from '@/utils/handleError.ts'
 
 const SignUp = () => {
-  const navigate = useNavigate()
-
   const { isLoading, success, error, setError, callRegisterUser } = useRegisterUser()
 
   const { handleSubmit, control } = useForm<UserRegister>({
@@ -29,13 +26,13 @@ const SignUp = () => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       window.location.href = RoutesEnum.MAIN
     }
-  }, [navigate, success])
+  }, [success])
 
   return (
     <FormLayout

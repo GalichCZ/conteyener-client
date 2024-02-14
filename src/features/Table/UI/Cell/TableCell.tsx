@@ -31,7 +31,7 @@ const Cell: FC<Props> = ({ children, className, onClick, style }) => {
 
   const color = useCallback(() => {
     return getColor(string, searchValue)
-  }, [getColor, searchValue, string])
+  }, [searchValue, string])
 
   return (
     <td

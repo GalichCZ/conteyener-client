@@ -25,7 +25,7 @@ export const useGetStores = () => {
 
   useEffect(() => {
     callGetStores()
-  }, [callGetStores, reDraw])
+  }, [reDraw])
 
   return { stores, isLoading, error, setError }
 }

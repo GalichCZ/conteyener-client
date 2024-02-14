@@ -33,14 +33,14 @@ const StoreCreateModal: FC<ModalProps> = ({ open, setOpen }) => {
       dispatch(setReDraw())
       handleOpen()
     }
-  }, [dispatch, handleOpen, isSuccess])
+  }, [isSuccess])
 
   useEffect(() => {
     if (error) {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <GModal open={open} onCancel={handleOpen} title="Создать склад">

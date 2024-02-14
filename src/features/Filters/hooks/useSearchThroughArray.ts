@@ -21,7 +21,7 @@ export const useSearchThroughArray = (
     setFilteredList(filtered)
 
     dispatch(setFiltersMap({ [key]: filtered }))
-  }, [array, searchValue, key, dispatch])
+  }, [array, searchValue, key])
 
   return { filtered: filteredList }
 }

@@ -53,14 +53,14 @@ const UserModal: FC<Props> = ({ open, user, setOpen }) => {
       setSuccess(false)
       handleOpen()
     }
-  }, [dispatch, handleOpen, setOpen, setSuccess, success])
+  }, [success])
 
   useEffect(() => {
     if (error) {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <GModal onCancel={handleOpen} open={open}>

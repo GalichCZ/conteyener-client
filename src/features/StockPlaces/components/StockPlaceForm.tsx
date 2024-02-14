@@ -20,7 +20,7 @@ const StockPlaceForm: FC<Props> = ({ onSubmit, stockPlace, control, setValue }) 
       setValue('contact', stockPlace.contact)
       setValue('note', stockPlace.note)
     }
-  }, [setValue, stockPlace])
+  }, [stockPlace])
 
   return (
     <FormLayout className="shadow-none" onFinish={onSubmit}>

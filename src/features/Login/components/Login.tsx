@@ -26,7 +26,7 @@ const Login = () => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {

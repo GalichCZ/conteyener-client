@@ -13,13 +13,13 @@ const DownloadExcel = ({ setOpen }: { setOpen: (c: boolean) => void }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       setOpen(false)
     }
-  }, [setOpen, success])
+  }, [success])
 
   return (
     <>

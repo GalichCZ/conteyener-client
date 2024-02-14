@@ -23,7 +23,7 @@ const StockPlaces = () => {
       setError(null)
       handleError(error)
     }
-  }, [error, setError])
+  }, [error])
 
   return (
     <>

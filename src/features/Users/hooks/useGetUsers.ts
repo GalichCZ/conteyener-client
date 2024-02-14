@@ -26,7 +26,7 @@ export const useGetUsers = () => {
 
   useEffect(() => {
     callGetUsers()
-  }, [callGetUsers, reDraw])
+  }, [reDraw])
 
   return { users, error, isLoading, setError }
 }

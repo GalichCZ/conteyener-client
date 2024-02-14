@@ -22,7 +22,7 @@ const StoreForm: FC<Props> = ({ onSubmit, setValue, control, store }) => {
       setValue('contact', contact)
       setValue('receiver', receiver)
     }
-  }, [setValue, store])
+  }, [store])
 
   return (
     <FormLayout className="shadow-none" onFinish={onSubmit}>

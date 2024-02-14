@@ -34,13 +34,13 @@ const CreateComment: FC<Props> = ({ bidId }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       dispatch(setReDraw())
     }
-  }, [dispatch, success])
+  }, [success])
 
   return (
     <div className="mt-3 flex flex-col gap-4">

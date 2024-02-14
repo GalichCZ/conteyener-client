@@ -36,21 +36,21 @@ const KmToDistModal: FC<Props> = ({ open, setOpen, bid }) => {
 
   useEffect(() => {
     if (open) setValue('km_to_dist', bid.km_to_dist)
-  }, [bid.km_to_dist, open, setValue])
+  }, [bid.km_to_dist, open])
 
   useEffect(() => {
     if (error) {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   useEffect(() => {
     if (success) {
       handleCancel()
       dispatch(setReDraw())
     }
-  }, [dispatch, handleCancel, success])
+  }, [success])
 
   return (
     <GModal title="Километров осталось" open={open} onCancel={handleCancel}>

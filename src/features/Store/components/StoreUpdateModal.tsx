@@ -34,14 +34,14 @@ const StoreUpdateModal: FC<Props> = ({ open, store, setOpen }) => {
       dispatch(setReDraw())
       handleOpen()
     }
-  }, [dispatch, handleOpen, isSuccess])
+  }, [isSuccess])
 
   useEffect(() => {
     if (error) {
       handleError(error)
       setError(null)
     }
-  }, [error, setError])
+  }, [error])
 
   const onSubmit = (data: Store) => {
     setStoreData({ _id: store._id, ...data })

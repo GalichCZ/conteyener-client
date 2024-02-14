@@ -49,13 +49,13 @@ export const useGetBids = (page: number, hidden: boolean) => {
 
   useEffect(() => {
     callGetBids()
-  }, [callGetBids, page, reDraw, searchValue])
+  }, [page, reDraw, searchValue])
 
   useEffect(() => {
     if (!filterApplied) return
 
     getBidsWithFilter()
-  }, [filterApplied, getBidsWithFilter])
+  }, [filterApplied])
 
   return { loading, error, setError, bids, pages }
 }

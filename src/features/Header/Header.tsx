@@ -31,12 +31,16 @@ const Header = memo(() => {
               <li className="cursor-pointer" onClick={logoutHandler}>
                 Выйти
               </li>
-              <li>
-                <Link to={RoutesEnum.TABLE}>Таблица</Link>
-              </li>
-              <li>
-                <Link to={RoutesEnum.TABLE_HIDDEN}>Таблица скрытых</Link>
-              </li>
+              {!roleTypes?.isNewOne && (
+                <>
+                  <li>
+                    <Link to={RoutesEnum.TABLE}>Таблица</Link>
+                  </li>
+                  <li>
+                    <Link to={RoutesEnum.TABLE_HIDDEN}>Таблица скрытых</Link>
+                  </li>
+                </>
+              )}
               {roleTypes && roleTypes.isRoleType8 && (
                 <li>
                   <DropdownMenu />

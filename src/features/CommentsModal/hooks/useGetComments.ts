@@ -29,7 +29,7 @@ export const useGetComments = (bidId: string | null) => {
 
   useEffect(() => {
     callGetComments()
-  }, [callGetComments, reDraw])
+  }, [reDraw])
 
   return { loading, comments, error, setError }
 }
