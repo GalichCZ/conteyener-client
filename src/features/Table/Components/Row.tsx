@@ -21,13 +21,16 @@ import UnhideBid from '@/features/Table/Components/UnhideBid.tsx'
 interface Props {
   bid: FollowBid
   hidden: boolean
+  number: number
 }
 
-const Row: FC<Props> = memo(({ bid, hidden }) => {
+const Row: FC<Props> = memo(({ bid, hidden, number }) => {
   const roleTypes = useGetRoleType()
 
   return (
     <TableRow>
+      <TableCell.Cell className="w-[5px] max-w-[5px] px-0">{number + 1}</TableCell.Cell>
+
       <UpdateBidCell hidden={hidden} bid={bid} />
 
       {roleTypes?.isRoleType9 && <TableCell.ArrayTooltip dataArray={bid.inside_number} />}

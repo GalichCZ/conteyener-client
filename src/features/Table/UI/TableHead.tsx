@@ -23,7 +23,7 @@ const TableHead = () => {
     <thead className="h-10 sticky top-0 z-10 bg-gray-300">
       <TableRow className="">
         {columns.map((column, key) => (
-          <TableCell.Cell className="min-w-[100px]" key={key}>
+          <TableCell.Cell className={`min-w-[100px] ${key === 0 ? 'min-w-[50px]' : ''}`} key={key}>
             {column}
             <Filter
               isFiltered={filteredKeys.includes(columnsKeys[key].toLowerCase())}

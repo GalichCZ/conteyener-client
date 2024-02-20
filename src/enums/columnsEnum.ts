@@ -1,4 +1,5 @@
 export enum ColumnsEnum {
+  NUMBER = '№',
   REQUEST_DATE = 'Дата заявки',
   INSIDE_NUMBER = 'Внутренний №',
   PROFORM_NUMBER = '№ проформы',
@@ -43,6 +44,7 @@ export enum ColumnsEnum {
 }
 
 export enum ColumnsKeysEnum {
+  NUMBER = 'NUMBER',
   REQUEST_DATE = 'REQUEST_DATE',
   INSIDE_NUMBER = 'INSIDE_NUMBER',
   PROFORM_NUMBER = 'PROFORM_NUMBER',

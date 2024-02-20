@@ -23,6 +23,7 @@ const columnsMap: ColumnsMap[] = [
   { [roles.HEAD]: Object.values(columns) },
   {
     [roles.MANAGER_PATRIOT]: [
+      columns.NUMBER,
       columns.REQUEST_DATE,
       columns.INSIDE_NUMBER,
       columns.PROFORM_NUMBER,
@@ -51,6 +52,7 @@ const columnsMap: ColumnsMap[] = [
   },
   {
     [roles.MANAGER_BUYER]: [
+      columns.NUMBER,
       columns.REQUEST_DATE,
       columns.INSIDE_NUMBER,
       columns.PROFORM_NUMBER,
@@ -77,6 +79,7 @@ const columnsMap: ColumnsMap[] = [
   },
   {
     [roles.MANAGER_SALES]: [
+      columns.NUMBER,
       columns.INSIDE_NUMBER,
       columns.PROFORM_NUMBER,
       columns.ORDER_NUMBER,
@@ -96,6 +99,7 @@ const columnsMap: ColumnsMap[] = [
   },
   {
     [roles.MANAGER_TREASURY]: [
+      columns.NUMBER,
       columns.INSIDE_NUMBER,
       columns.PROFORM_NUMBER,
       columns.ORDER_NUMBER,
@@ -111,6 +115,7 @@ const columnsMap: ColumnsMap[] = [
   },
   {
     [roles.MANAGER_STORE]: [
+      columns.NUMBER,
       columns.ORDER_NUMBER,
       columns.CONTAINER_NUMBER,
       columns.PRODUCT,
@@ -127,6 +132,7 @@ const columnsKeysMap: ColumnsKeysMap[] = [
   { [roles.HEAD]: Object.values(columnsKeys) },
   {
     [roles.MANAGER_PATRIOT]: [
+      columnsKeys.NUMBER,
       columnsKeys.REQUEST_DATE,
       columnsKeys.INSIDE_NUMBER,
       columnsKeys.PROFORM_NUMBER,
@@ -155,6 +161,7 @@ const columnsKeysMap: ColumnsKeysMap[] = [
   },
   {
     [roles.MANAGER_BUYER]: [
+      columnsKeys.NUMBER,
       columnsKeys.REQUEST_DATE,
       columnsKeys.INSIDE_NUMBER,
       columnsKeys.PROFORM_NUMBER,
@@ -181,6 +188,7 @@ const columnsKeysMap: ColumnsKeysMap[] = [
   },
   {
     [roles.MANAGER_SALES]: [
+      columnsKeys.NUMBER,
       columnsKeys.INSIDE_NUMBER,
       columnsKeys.PROFORM_NUMBER,
       columnsKeys.ORDER_NUMBER,
@@ -200,6 +208,7 @@ const columnsKeysMap: ColumnsKeysMap[] = [
   },
   {
     [roles.MANAGER_TREASURY]: [
+      columnsKeys.NUMBER,
       columnsKeys.INSIDE_NUMBER,
       columnsKeys.PROFORM_NUMBER,
       columnsKeys.ORDER_NUMBER,
@@ -215,6 +224,7 @@ const columnsKeysMap: ColumnsKeysMap[] = [
   },
   {
     [roles.MANAGER_STORE]: [
+      columnsKeys.NUMBER,
       columnsKeys.ORDER_NUMBER,
       columnsKeys.CONTAINER_NUMBER,
       columnsKeys.PRODUCT,

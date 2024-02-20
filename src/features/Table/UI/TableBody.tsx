@@ -10,7 +10,9 @@ interface Props {
 const TableBody: FC<Props> = ({ bids, hidden }) => {
   return (
     <tbody className="bg-white table-body-extern">
-      {bids ? bids.map((bid, index) => <Row hidden={hidden} key={index} bid={bid} />) : null}
+      {bids
+        ? bids.map((bid, index) => <Row hidden={hidden} number={index} key={index} bid={bid} />)
+        : null}
     </tbody>
   )
 }
