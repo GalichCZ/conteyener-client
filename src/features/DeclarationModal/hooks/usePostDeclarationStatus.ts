@@ -5,13 +5,14 @@ import { AxiosError } from 'axios'
 import { useDispatch } from 'react-redux'
 import { setReDraw } from '@/store'
 
-export const usePostDeclarationStatus = (declarationStatus: Declaration | null) => {
+export const usePostDeclarationStatus = () => {
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<Error | null>(null)
   const [success, setSuccess] = useState<boolean>(false)
   const dispatch = useDispatch()
 
-  const postDeclarationStatus = async () => {
+  const postDeclarationStatus = async (declarationStatus: Declaration) => {
+    setSuccess(false)
     setLoading(true)
     try {
       await postStatus(declarationStatus)

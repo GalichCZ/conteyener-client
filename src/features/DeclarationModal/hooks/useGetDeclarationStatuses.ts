@@ -28,7 +28,7 @@ export const useGetDeclarationStatuses = (declaration_number: string) => {
 
   useEffect(() => {
     getDeclarationStatuses()
-  }, [getDeclarationStatuses, reDraw])
+  }, [reDraw])
 
   return { statuses, loading, error, setError }
 }
