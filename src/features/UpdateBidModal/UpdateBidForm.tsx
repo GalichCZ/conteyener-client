@@ -35,8 +35,8 @@ const UpdateBidForm: FC<Props> = ({ onSubmit, control, setValue, followBid, unre
     error: errorStock,
     setError: setStockError,
   } = useGetStockPlaces()
-  const preparedStores = prepareValuesAndNames(stores)
-  const preparedStockPlaces = prepareValuesAndNames(stockPlaces)
+  const preparedStores = prepareValuesAndNames(stores || [])
+  const preparedStockPlaces = prepareValuesAndNames(stockPlaces || [])
 
   useEffect(() => {
     if (errorStores) {
@@ -194,6 +194,13 @@ const UpdateBidForm: FC<Props> = ({ onSubmit, control, setValue, followBid, unre
           placeholder={columns.LOAD_DATE}
           name="load_date"
           label={columns.LOAD_DATE}
+          control={control}
+        />
+
+        <GInputs.Date
+          placeholder={columns.RELEASE}
+          name="release"
+          label={columns.RELEASE}
           control={control}
         />
 
