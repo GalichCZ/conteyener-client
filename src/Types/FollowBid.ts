@@ -77,6 +77,7 @@ export enum Dates {
   date_do = 'date_do',
   eta = 'eta',
   etd = 'etd',
+  release = 'release',
   train_depart_date = 'train_depart_date',
   train_arrive_date = 'train_arrive_date',
   store_arrive_date = 'store_arrive_date',
