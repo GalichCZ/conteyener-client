@@ -12,7 +12,7 @@ import TechBlockFooter from '@/components/UI/TechBlockFooter.tsx'
 const StockPlaces = () => {
   const { error, setError, isLoading, stockPlaces } = useGetStockPlaces()
   const [open, setOpen] = useState(false)
-  const noStockPlaces = stockPlaces.length === 0 && !isLoading && !error
+  const noStockPlaces = !stockPlaces || (stockPlaces.length === 0 && !isLoading && !error)
 
   const handleOpen = () => {
     setOpen(true)
@@ -31,8 +31,9 @@ const StockPlaces = () => {
       <TechPageBlock>
         <HeadRow />
         {isLoading && <FillingSkeleton />}
-        {noStockPlaces && <p className="text-center font-bold mt-20">Нет стоков сдачи</p>}
-        {stockPlaces.map((stockPlace) => (
+        {noStockPlaces ||
+          (!stockPlaces && <p className="text-center font-bold mt-20">Нет стоков сдачи</p>)}
+        {stockPlaces?.map((stockPlace) => (
           <StockPlaceInfo key={stockPlace._id} stockPlace={stockPlace} />
         ))}
         <TechBlockFooter>

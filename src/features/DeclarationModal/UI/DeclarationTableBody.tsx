@@ -5,11 +5,11 @@ import { formatDate } from '@/utils/convertDate.ts'
 import Cell from '@/components/UI/Cell.tsx'
 
 interface Props {
-  declarations: Declaration[]
+  declarations: Declaration[] | null
 }
 
 const DeclarationTableBody: FC<Props> = ({ declarations }) => {
-  if (declarations.length === 0)
+  if (!declarations || declarations.length === 0)
     return (
       <tr>
         <Cell colSpan={4}>Нет информации о декларации</Cell>

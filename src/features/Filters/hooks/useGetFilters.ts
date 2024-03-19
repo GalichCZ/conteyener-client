@@ -1,32 +1,27 @@
-import { useEffect, useState } from 'react'
-import { Error } from '@/Types'
 import { getFilters } from '@/features/Filters/Api/getFilters.ts'
-import { AxiosError } from 'axios'
 import { useAppSelector } from '@/hooks/hooksRedux.ts'
+import { useGetDataFromServer } from '@/hooks/useGetDataFromServer.ts'
+
+type FilterObject = {
+  values: string[]
+}
 
 export const useGetFilters = (filter_key: string, is_hidden: boolean) => {
-  const [filters, setFilters] = useState<string[] | null>(null)
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [error, setError] = useState<Error | null>(null)
   const { filtersMap } = useAppSelector((state) => state.filtersMap)
   const hasFilters = filtersMap.length !== 0
+  const { data, isLoading, setError, error } = useGetDataFromServer<FilterObject>({
+    callGetData: () => getFilters(filter_key, is_hidden, hasFilters),
+  })
 
-  useEffect(() => {
-    if (filter_key === '' || filter_key === 'IS_DOCS') return
-    const callGetFilters = async () => {
-      setIsLoading(true)
-      try {
-        const { data } = await getFilters(filter_key, is_hidden, hasFilters)
-        setFilters(data.values)
-        setIsLoading(false)
-      } catch (error) {
-        const err = error as AxiosError
-        setError({ message: err.message, status: err.request.status })
-        setIsLoading(false)
-      }
+  const filters = data ? data.values : null
+
+  if (filter_key === '' || filter_key === 'IS_DOCS') {
+    return {
+      filters: null,
+      isLoading,
+      error,
+      setError,
     }
-    callGetFilters()
-  }, [filter_key, is_hidden])
-
+  }
   return { filters, isLoading, error, setError }
 }

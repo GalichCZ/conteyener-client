@@ -29,17 +29,20 @@ const DeliveryChannels = () => {
     <>
       {createPortal(<DeliveryChannelCreateModal open={open} setOpen={setOpen} />, document.body)}
       <TechPageBlock>
-        <DeliverChannelsHead />
-        {isLoading && <FillingSkeleton />}
-        {deliveryChannels.length === 0 && (
+        {!deliveryChannels || deliveryChannels.length === 0 ? (
           <p className="text-center mt-10">Каналы поставки отсутствуют</p>
+        ) : (
+          <>
+            <DeliverChannelsHead />
+            {isLoading && <FillingSkeleton />}
+            {deliveryChannels.map((deliveryChannel) => (
+              <DeliveryChannelInfo key={deliveryChannel._id} deliveryChannel={deliveryChannel} />
+            ))}
+            <TechBlockFooter>
+              <CreateDeliveryChannelButton onClick={handleOpen} />
+            </TechBlockFooter>
+          </>
         )}
-        {deliveryChannels.map((deliveryChannel) => (
-          <DeliveryChannelInfo key={deliveryChannel._id} deliveryChannel={deliveryChannel} />
-        ))}
-        <TechBlockFooter>
-          <CreateDeliveryChannelButton onClick={handleOpen} />
-        </TechBlockFooter>
       </TechPageBlock>
     </>
   )

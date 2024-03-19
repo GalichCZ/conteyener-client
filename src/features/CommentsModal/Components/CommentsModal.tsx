@@ -13,7 +13,7 @@ interface Props extends ModalProps {
 }
 
 const CommentsModal: FC<Props> = ({ setOpen, open, bid }) => {
-  const { loading, comments, error, setError } = useGetComments(bid._id)
+  const { isLoading, comments, error, setError } = useGetComments(bid._id)
 
   const handleCancel = () => {
     setOpen(false)
@@ -28,7 +28,7 @@ const CommentsModal: FC<Props> = ({ setOpen, open, bid }) => {
 
   return (
     <GModal title="Комментарии" open={open} onCancel={handleCancel}>
-      {loading && <FillingSkeleton />}
+      {isLoading && <FillingSkeleton />}
       <Comments comments={comments} />
       <CreateComment bidId={bid._id} />
     </GModal>

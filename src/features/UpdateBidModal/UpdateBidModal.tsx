@@ -54,21 +54,21 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
     if (followBid) {
       setValuesInForm(followBid, setValue)
     }
-  }, [followBid, setValue])
+  }, [followBid])
 
   useEffect(() => {
     if (success || isDeleted || hideSuccess) {
       dispatch(setReDraw())
       handleOpen()
     }
-  }, [dispatch, handleOpen, hideSuccess, isDeleted, success])
+  }, [isDeleted, success])
 
   useEffect(() => {
     if (hideError) {
       handleError(hideError)
       setHideError(null)
     }
-  }, [hideError, setHideError])
+  }, [hideError])
 
   useEffect(() => {
     if (error) {
@@ -83,7 +83,7 @@ const UpdateBidModal: FC<Props> = ({ open, followBid, setOpen }) => {
       handleError(error)
       setError(null)
     }
-  }, [error, handleOpen, setError])
+  }, [error])
 
   return (
     <GModal width="90%" title="Изменение слежения" open={open} onCancel={handleOpen}>

@@ -45,7 +45,7 @@ function CreateBidForm<T extends FieldValues>({
     }, 5000)
   }
 
-  const values = prepareValuesAndNames(stores)
+  const values = prepareValuesAndNames(stores || [])
 
   return (
     <FormLayout className="w-full" onFinish={submitHandler}>

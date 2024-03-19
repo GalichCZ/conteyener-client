@@ -22,7 +22,7 @@ const EtdUpdateForm: FC<Props> = ({ onSubmit, control, hidden }) => {
   const roleTypes = useGetRoleType()
 
   useEffect(() => {
-    const values = prepareValuesAndNames(deliveryChannels)
+    const values = prepareValuesAndNames(deliveryChannels || [])
     setDeliveryChannelsOptions(values)
   }, [deliveryChannels])
 

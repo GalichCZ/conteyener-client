@@ -1,35 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Comment, Error } from '@/Types'
-import { AxiosError } from 'axios'
+import { Comment } from '@/Types'
 import { getComment } from '@/features/CommentsModal/Api/getComments.ts'
-import { useAppSelector } from '@/hooks/hooksRedux.ts'
+import { useGetDataFromServer } from '@/hooks/useGetDataFromServer.ts'
 
-export const useGetComments = (bidId: string | null) => {
-  const [loading, setLoading] = useState(false)
-  const [comments, setComments] = useState<Comment[] | null>(null)
-  const [error, setError] = useState<Error | null>(null)
-  const reDraw = useAppSelector((state) => state.reDraw.reDraw)
+export const useGetComments = (bidId: string) => {
+  const {
+    isLoading,
+    error,
+    setError,
+    data: comments,
+  } = useGetDataFromServer<Comment[]>({ callGetData: () => getComment(bidId) })
 
-  const callGetComments = useCallback(async () => {
-    if (!bidId) return
-    console.log('fetched')
-
-    setLoading(true)
-    try {
-      const { data } = await getComment(bidId)
-      console.log(data)
-      setComments(data)
-      setLoading(false)
-    } catch (e) {
-      const err = e as AxiosError
-      setError({ message: err.message, status: err.request.status })
-      setLoading(false)
-    }
-  }, [bidId])
-
-  useEffect(() => {
-    callGetComments()
-  }, [reDraw])
-
-  return { loading, comments, error, setError }
+  return { isLoading, comments, error, setError }
 }

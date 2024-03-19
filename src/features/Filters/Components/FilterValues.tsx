@@ -63,9 +63,9 @@ export const FilterValues: FC<Props> = ({ onCheck, filters, tooltipId }) => {
         <Checkbox value={'asc'}>По возрастанию</Checkbox>
         <Checkbox value={'desc'}>По убыванию</Checkbox>
         <br />
-        {(filters as string[])?.map((filter, key) => (
+        {filters?.map((filter, key) => (
           <Checkbox value={filter} key={key}>
-            {data(filter)}
+            {data(filter.toString())}
           </Checkbox>
         ))}
       </>

@@ -20,7 +20,7 @@ interface Props extends ModalProps {
 }
 
 const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
-  const { products, setError, error, loading } = useGetProducts(bidId, product)
+  const { products, setError, error, isLoading } = useGetProducts(bidId, product)
   const [productId, setProductId] = useState<string>('')
   const {
     error: deleteError,
@@ -69,7 +69,7 @@ const UploadProductModal: FC<Props> = ({ open, product, setOpen, bidId }) => {
       open={open}
       onCancel={handleCancel}
     >
-      {loading && <FillingSkeleton />}
+      {isLoading && <FillingSkeleton />}
       {deleteLoading && <FillingSkeleton />}
       <div className="max-h-[400px] overflow-y-auto mt-3">
         <table>

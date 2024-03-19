@@ -10,7 +10,7 @@ interface Props extends ModalProps {
 }
 
 const StoreInfoModal: FC<Props> = ({ open, setOpen, storeId }) => {
-  const { error, setError, store, loading } = useGetSingleStore(storeId)
+  const { error, setError, store, isLoading } = useGetSingleStore(storeId)
 
   const handleCancel = () => {
     setOpen(false)
@@ -25,7 +25,7 @@ const StoreInfoModal: FC<Props> = ({ open, setOpen, storeId }) => {
 
   return (
     <GModal title="Информация о складе" open={open} onCancel={handleCancel}>
-      {loading && <FillingSkeleton />}
+      {isLoading && <FillingSkeleton />}
       {!store ? (
         <b>Склад не найден</b>
       ) : (

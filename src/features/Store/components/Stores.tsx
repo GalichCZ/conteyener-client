@@ -14,7 +14,7 @@ const Stores = () => {
   const { stores, isLoading, error, setError } = useGetStores()
   const [open, setOpen] = useState(false)
 
-  const noStores = stores.length === 0 && !isLoading
+  const noStores = !stores || (stores.length === 0 && !isLoading)
 
   const handleOpen = () => {
     setOpen((prev) => !prev)
@@ -34,9 +34,7 @@ const Stores = () => {
         {isLoading && <FillingSkeleton />}
         <HeadNames />
         {noStores && <p className="text-center text-2xl">Нет складов</p>}
-        {stores.map((store) => (
-          <StoreInfo key={store._id} store={store} />
-        ))}
+        {stores?.map((store) => <StoreInfo key={store._id} store={store} />)}
         <TechBlockFooter>
           <CreateStoreButton onClick={handleOpen} />
         </TechBlockFooter>

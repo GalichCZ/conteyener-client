@@ -9,7 +9,7 @@ interface Props {
 }
 
 const DeclarationTable: FC<Props> = ({ declarationNumber }) => {
-  const { error, setError, statuses, loading } = useGetDeclarationStatuses(declarationNumber)
+  const { error, setError, statuses, isLoading } = useGetDeclarationStatuses(declarationNumber)
 
   useEffect(() => {
     if (error) {
@@ -21,7 +21,7 @@ const DeclarationTable: FC<Props> = ({ declarationNumber }) => {
   return (
     <table>
       <DeclarationTableHead />
-      {loading ? (
+      {isLoading ? (
         <tr>
           <td colSpan={4}>Загрузка...</td>
         </tr>
