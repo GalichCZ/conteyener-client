@@ -4,9 +4,13 @@ import { useDownloadExcel } from '@/features/Table/hooks/useDownloadExcel.ts'
 import { handleError } from '@/utils/handleError.ts'
 import { createPortal } from 'react-dom'
 import FillingSkeleton from '@/components/UI/FillingSkeleton.tsx'
+import { useAppSelector } from '@/hooks/hooksRedux.ts'
 
 const DownloadExcel = ({ setOpen }: { setOpen: (c: boolean) => void }) => {
-  const { loading, createDownload, error, setError, success } = useDownloadExcel()
+  const { loading, createDownload, error, setError, success, createDownloadProducts } =
+    useDownloadExcel()
+
+  const { user } = useAppSelector(({ authentication }) => authentication)
 
   useEffect(() => {
     if (error) {
@@ -30,6 +34,14 @@ const DownloadExcel = ({ setOpen }: { setOpen: (c: boolean) => void }) => {
         type="primary"
         className="w-[170px]"
       />
+      {user?.email === 'a.dubovskaya@onlypatriot.com' && (
+        <Button
+          text="Скачать инфо о товарах"
+          onClick={createDownloadProducts}
+          type="primary"
+          className="w-[170px]"
+        />
+      )}
     </>
   )
 }

@@ -1,4 +1,8 @@
-import { createExcelFile, downloadFile } from '@/features/Table/Api/downloadExcel.ts'
+import {
+  createExcelFile,
+  downloadFile,
+  downloadFileAboutProducts,
+} from '@/features/Table/Api/downloadExcel.ts'
 import { useState } from 'react'
 import { Error } from '@/Types'
 import { AxiosError } from 'axios'
@@ -22,5 +26,18 @@ export const useDownloadExcel = () => {
     }
   }
 
-  return { loading, error, setError, success, createDownload }
+  const createDownloadProducts = async () => {
+    setLoading(true)
+    try {
+      await downloadFileAboutProducts()
+      setSuccess(true)
+      setLoading(false)
+    } catch (e) {
+      const err = error as AxiosError
+      setLoading(false)
+      setError({ message: err.message, status: err.status || 500 })
+    }
+  }
+
+  return { loading, error, setError, success, createDownload, createDownloadProducts }
 }

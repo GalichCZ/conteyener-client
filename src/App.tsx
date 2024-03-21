@@ -17,9 +17,11 @@ import StockPlacesPage from '@/pages/StockPlacesPage.tsx'
 import { useGetMe } from '@/hooks/useGetMe.ts'
 import { handleError } from '@/utils/handleError.ts'
 import HiddenTablePage from '@/pages/HiddenTablePage.tsx'
+import { useAppSelector } from '@/hooks/hooksRedux.ts'
 
 function App() {
   const { callGetMe, error } = useGetMe()
+  const { user } = useAppSelector(({ authentication }) => authentication)
   useEffect(() => {
     callGetMe()
   }, [])
@@ -38,17 +40,20 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           {/*Public routes*/}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/main" element={<MainPage />} />
+          <Route path={RoutesEnum.LOGIN} element={<LoginPage />} />
+          <Route path={RoutesEnum.SIGNUP} element={<SignUpPage />} />
+          <Route path={RoutesEnum.MAIN} element={<MainPage />} />
 
-          {/*Private routes*/}
-          <Route path={RoutesEnum.TABLE} element={<TablePage />} />
-          <Route path={RoutesEnum.USERS} element={<UsersPage />} />
-          <Route path={RoutesEnum.STORES} element={<StoresPage />} />
-          <Route path={RoutesEnum.DELIVERY_CHANNELS} element={<DeliveryChannelPage />} />
-          <Route path={RoutesEnum.CONTAINER_STOCK} element={<StockPlacesPage />} />
-          <Route path={RoutesEnum.TABLE_HIDDEN} element={<HiddenTablePage />} />
+          {user && (
+            <>
+              <Route path={RoutesEnum.TABLE} element={<TablePage />} />
+              <Route path={RoutesEnum.USERS} element={<UsersPage />} />
+              <Route path={RoutesEnum.STORES} element={<StoresPage />} />
+              <Route path={RoutesEnum.DELIVERY_CHANNELS} element={<DeliveryChannelPage />} />
+              <Route path={RoutesEnum.CONTAINER_STOCK} element={<StockPlacesPage />} />
+              <Route path={RoutesEnum.TABLE_HIDDEN} element={<HiddenTablePage />} />
+            </>
+          )}
           {/*Catch all*/}
           <Route path="*" element={<NotFoundPage />} />
         </Route>

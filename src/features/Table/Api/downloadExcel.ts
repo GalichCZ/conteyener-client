@@ -30,3 +30,22 @@ export const downloadFile = async (fileName: string) => {
     handleError(handlingError)
   }
 }
+
+export const downloadFileAboutProducts = async () => {
+  try {
+    const response = await axiosInstance.get(`${import.meta.env.VITE_API_URL}/file/download`, {
+      responseType: 'blob',
+    })
+    const blob = response.data
+    const url = window.URL.createObjectURL(new Blob([blob]))
+    const link = document.createElement('a')
+    link.href = url
+    link.setAttribute('download', 'products.xlsx')
+    document.body.appendChild(link)
+    link.click()
+  } catch (error) {
+    const err = error as AxiosError
+    const handlingError: Error = { message: err.message, status: err.status || 500 }
+    handleError(handlingError)
+  }
+}
