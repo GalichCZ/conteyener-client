@@ -12,7 +12,7 @@ const Comments: FC<Props> = ({ comments }) => {
   }
 
   return (
-    <div className="mt-8 border-b-2 pb-4 border-b-gray-400">
+    <div className="mt-8 border-b-2 pb-4 border-b-gray-400 overflow-auto max-h-[400px]">
       {comments.map((com) => (
         <Comment comment={com} key={com._id} />
       ))}

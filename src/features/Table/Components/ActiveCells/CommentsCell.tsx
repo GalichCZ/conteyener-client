@@ -5,6 +5,7 @@ import { useAppSelector } from '@/hooks/hooksRedux.ts'
 import { roleType7 } from '@/features/Table/enums/roleTypes.ts'
 import { createPortal } from 'react-dom'
 import CommentsModal from '@/features/CommentsModal/Components/CommentsModal.tsx'
+import { stringCut } from '@/utils/stringCut.ts'
 
 interface Props {
   bid: FollowBid
@@ -24,7 +25,9 @@ const CommentsCell: FC<Props> = ({ bid }) => {
     <>
       {open &&
         createPortal(<CommentsModal bid={bid} open={open} setOpen={setOpen} />, document.body)}
-      <TableCell.Cell onClick={handleOpen}>...</TableCell.Cell>
+      <TableCell.Cell onClick={handleOpen}>
+        {bid.latest_comment ? stringCut(bid.latest_comment, 10) : '...'}
+      </TableCell.Cell>
     </>
   )
 }

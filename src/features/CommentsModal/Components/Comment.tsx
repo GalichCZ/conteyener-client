@@ -3,6 +3,9 @@ import { Input } from 'antd'
 import Button from '@/components/UI/Button.tsx'
 import { Comment as IComment } from '@/Types'
 import { formatDate } from '@/utils/convertDate.ts'
+import { usePatchComment } from '@/features/CommentsModal/hooks/usePatchComment.ts'
+import { handleError } from '@/utils/handleError.ts'
+import { displaySuccess } from '@/utils/displaySuccess.ts'
 
 interface Props {
   comment: IComment
@@ -11,10 +14,25 @@ interface Props {
 const Comment: FC<Props> = ({ comment }) => {
   const [com, setCom] = useState<string>(comment.comment_text)
   const [isChanged, setIsChanged] = useState(true)
+  const { callPatchComment, error, setError, success } = usePatchComment()
 
   const areaHandle = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setCom(e.target.value)
   }
+
+  const submitHandle = () => {
+    callPatchComment({ commentText: com, bidId: comment.comment_item, commentId: comment._id })
+  }
+
+  useEffect(() => {
+    if (error) {
+      handleError(error)
+      setError(null)
+    }
+    if (success) {
+      displaySuccess('Комментарий успешно обновлен')
+    }
+  }, [error, success])
 
   useEffect(() => {
     setIsChanged(com === comment.comment_text)
@@ -32,7 +50,13 @@ const Comment: FC<Props> = ({ comment }) => {
         {formatDate(comment.comment_date)}
       </span>
 
-      <Button className="h-8" type="side" disabled={isChanged} text="Редактировать" />
+      <Button
+        className="h-8"
+        onClick={submitHandle}
+        type="side"
+        disabled={isChanged}
+        text="Редактировать"
+      />
     </div>
   )
 }

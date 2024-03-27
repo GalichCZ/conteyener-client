@@ -28,9 +28,6 @@ const Header = memo(() => {
               <li>
                 <Link to={RoutesEnum.MAIN}>Главная</Link>
               </li>
-              <li className="cursor-pointer" onClick={logoutHandler}>
-                Выйти
-              </li>
               {!roleTypes?.isNewOne && (
                 <>
                   <li>
@@ -46,6 +43,9 @@ const Header = memo(() => {
                   <DropdownMenu />
                 </li>
               )}
+              <li className="cursor-pointer ml-4" onClick={logoutHandler}>
+                Выйти
+              </li>
             </>
           ) : (
             <>

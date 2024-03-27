@@ -10,6 +10,7 @@ export const useCreateComment = () => {
 
   const callCreateComment = async (comment: NewComment) => {
     setLoading(true)
+    setSuccess(false)
     try {
       await createComment(comment)
       setLoading(false)

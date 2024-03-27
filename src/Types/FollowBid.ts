@@ -64,6 +64,7 @@ export interface FollowBid {
   hidden: boolean
   direction: string | undefined
   product_has_added: ProductExistanceMap
+  latest_comment: string
 
   [key: string]: any
 }
